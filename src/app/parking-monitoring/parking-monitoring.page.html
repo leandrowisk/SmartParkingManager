@@ -1,0 +1,112 @@
+
+<ion-content>
+  <side-menu></side-menu>
+
+  <div class="container">
+  <h2>Detalhes do estacionamento</h2>
+  <!-- <div class="hello-message">
+    <h2>Olá Leandro</h2>
+  </div>
+  <div class="informations">
+    <mat-icon>data_range</mat-icon>
+    <h2>{{date | date: 'MMM d, y'}}</h2>
+  </div> -->
+  <div class="charts-container">
+    <div class="vacancy-details">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Detalhes do estacionamento</mat-card-title>
+        </mat-card-header>
+
+        <div class="percentage-chart">
+          <canvas baseChart [data]="doughnutChartData" [labels]="parkingCapacity" [plugins]="chartPlugins"
+            [colors]="chartColors" [chartType]="doughnutChartType">
+          </canvas>
+
+          <div class="details">
+            <div class="performance">
+              <span>Vagas utilizadas: 8 </span>
+              <mat-icon class="up">arrow_upward</mat-icon>
+            </div>
+            <div class="available">
+              <span>2 vagas dísponiveis</span>
+            </div>
+            <div class="occupied">
+              <span>2 vagas dísponiveis</span>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="users-avaliations">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Avaliações dos usuários</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="user-avaliation-charts">
+          <div class="very-satisfied">
+            <h2>Ótimo</h2>
+            <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#008000'" [animation]="true"
+              [animationDuration]="300">
+            </circle-progress>
+          </div>
+
+          <div class="satisfied">
+            <h2>Bom</h2>
+            <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#0000FF'" [animation]="true"
+              [animationDuration]="300">
+            </circle-progress>
+          </div>
+
+          <div class="good">
+            <h2>Mediano</h2>
+            <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#000000'" [animation]="true"
+              [animationDuration]="300">
+            </circle-progress>
+          </div>
+
+          <div class="bad">
+            <h2>Ruim</h2>
+            <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#A52A2A'" [animation]="true"
+              [animationDuration]="300">
+            </circle-progress>
+          </div>
+
+          <div class="terrible">
+            <h2>Pessimo</h2>
+            <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#FF0000'" [animation]="true"
+              [animationDuration]="300">
+            </circle-progress>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="spaces-container">
+    <div class="parking-space" routerLink="/vacancy-details">
+      <h2>Ocupada</h2>
+    </div>
+
+    <div class="parking-space">
+      <h2>Ocupada</h2>
+    </div>
+
+    <div class="parking-space disponible">
+      <h2>Livre</h2>
+    </div>
+
+    <div class="parking-space disponible">
+      <h2>Livre</h2>
+    </div>
+
+  </div>
+</div>
+</ion-content>

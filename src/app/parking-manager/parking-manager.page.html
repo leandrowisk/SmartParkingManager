@@ -1,0 +1,89 @@
+
+<ion-content>
+  <side-menu></side-menu>
+
+  <h2 class="title">GERENCIAMENTO DO ESTACIONAMENTO</h2>
+  <div class="services-manager">
+    <div class="new-service">
+
+      <div class="add-new-service" (click)="addNewService()">
+        <span>adicionar serviço</span>
+        <mat-icon>add</mat-icon>
+      </div>
+      
+      <div class="input-container"  *ngIf="newService">
+        <mat-label>nome</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="input-container" *ngIf="newService">
+        <mat-label>Dias</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="input-container"  *ngIf="newService">
+        <mat-label>Valor</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput>
+        </mat-form-field>
+      </div>
+
+      <button mat-button>
+        Adicionar
+      </button>
+    </div>
+
+    <div class="services-status">
+      <div class="services">
+        <h2>Serviços</h2>
+        <span class="value">Lavagem</span>
+      </div>
+
+      <div class="status">
+        <h2>Status</h2>
+        <div class='status-item'>
+        <span class="value">ativo</span>
+        <ion-toggle></ion-toggle>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="period-manager">
+    <div class="update-period">
+      <div class="new-period" (click)="addNewPeriod()">
+        <span>alterar horário</span>
+        <mat-icon>add</mat-icon>
+      </div>
+
+      <div class="input-container" *ngIf="newPeriod">
+        <mat-label>dias</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="input-container" *ngIf="newPeriod">  
+        <mat-label>Periodo</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput>
+        </mat-form-field>
+      </div>
+
+      <button mat-button>
+        Alterar
+      </button>
+    </div>
+
+    <div class="period-details">
+      <h2>Funcionamento</h2>
+      <span class="days">Dias <span class="value">Segunda a sexta</span></span>
+      <span>Periodo <span class="value">9h às 18h</span></span>
+    </div>
+  </div>
+</ion-content>

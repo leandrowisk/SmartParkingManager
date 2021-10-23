@@ -1,0 +1,64 @@
+<ion-content id="menu-content">
+
+  <div class="logo-container">
+    <img class="logo" src="../../assets/images/Logo.png" *ngIf="isOpen">
+  <mat-divider *ngIf="isOpen"></mat-divider>
+
+    <div class="menu" (click)="showMenu()">
+      <div id="line-1" class=""></div>
+      <div id="line-2" class=""></div>
+      <div id="line-3" class=""></div>
+    </div>
+  </div>
+
+  <ion-item class="perfil" lines='none' *ngIf="isOpen">
+    <div class="perfil-image-container">
+      <ion-avatar>
+        <img src="../assets/images/perfil.jpeg">
+      </ion-avatar>
+      <p>Bem vindo Leandro</p>
+    </div>
+  </ion-item>
+  <ion-item routerLink="/registration" class="menu-item first" lines='none'>
+    <div class="item-container">
+      <mat-icon>person</mat-icon>
+      <ion-label *ngIf="isOpen">Cadastro</ion-label>
+    </div>
+  </ion-item>
+
+  <ion-item routerLink="/parking-monitoring" class="menu-item" lines='none'>
+    <div class="item-container">
+      <mat-icon>leaderboard</mat-icon>
+      <ion-label *ngIf="isOpen" class="two-lines">Monitoramento do estacionamento</ion-label>
+    </div>
+  </ion-item>
+
+
+  <ion-item routerLink="/services-monitoring" class="menu-item" lines='none'>
+    <div class="item-container">
+      <mat-icon>settings</mat-icon>
+      <ion-label *ngIf="isOpen" class="two-lines">Monitoramento dos serviços</ion-label>
+    </div>
+  </ion-item>
+
+  <ion-item routerLink="/parking-manager" class="menu-item" lines='none'>
+    <div class="item-container">
+      <mat-icon>manage_accounts</mat-icon>
+      <ion-label *ngIf="isOpen">Gerenciamento</ion-label>
+    </div>
+  </ion-item>
+
+  <ion-item routerLink="/lease-management" class="menu-item" lines='none'>
+    <div class="item-container">
+      <mat-icon>paid</mat-icon>
+      <ion-label *ngIf="isOpen" class="two-lines">Gerenciamento de locações e financeiro</ion-label>
+    </div>
+  </ion-item>
+
+  <ion-item class="logout-item menu-item" (click)="logout()" lines='none'>
+    <div class="item-container">
+      <mat-icon>logout</mat-icon>
+      <ion-label *ngIf="isOpen">Sair</ion-label>
+    </div>
+  </ion-item>
+</ion-content>

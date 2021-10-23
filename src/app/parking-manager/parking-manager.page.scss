@@ -1,0 +1,176 @@
+.services-manager{
+    width: 80vw;
+    margin-left: 10vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 20px;
+    background: snow;
+    padding: 16px;
+    column-gap: 24px;
+    margin-top: 50px;
+}
+
+mat-label {
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+button {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    width: 200px;
+    border-radius: 40px;
+    height: 42px;
+    margin-top: 25px;
+}
+
+.services-status {
+    display: flex;
+    column-gap: 25%;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-new-service {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.new-period {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.value {
+    background-color: white;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.services-status, .status, h2 {
+    border-radius: 20px;
+}
+
+.services-status, span {
+
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.status {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .status-item {
+        display: flex;
+
+        ion-toggle {
+            padding-top: 3px;
+            margin-left: auto;
+            margin-top: 6px;
+        }
+    }
+
+    .line {
+        background-color: black;
+        height: 2px;
+        width: 18px;
+        margin-left: 5px;
+    }
+    span {
+        font-size: 16px;
+        font-weight: 500;
+        margin-left: 8px;
+    }
+}
+
+mat-form-field {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+}
+
+.period-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.period-manager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: snow;
+    width: 80vw;
+    margin-left: 10vw;
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 16px;
+    column-gap: 16px;
+}
+
+.management-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+#activate {
+    margin-right: 8px;
+}
+
+h2 {
+    background-color: lightblue;
+    padding: 8px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.title {
+    margin-left: 10%;
+    margin-top: 50px;
+}
+
+.checkbox {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 8px;
+
+    p {
+        margin-left: 8px;
+    }
+}
+
+input {
+    padding-left: 8px;
+}
+
+.description {
+    p {
+        font-size: 16px;
+    }
+}
+
+.days {
+    margin-bottom: 16px;
+}
+
+ion-content {
+    --ion-background-color: #e5e5e5;
+}

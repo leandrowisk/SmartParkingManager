@@ -1,0 +1,114 @@
+.parking-space {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    margin-left: 32px;
+    margin-top: 100px;
+    background: lightgrey;
+    border: 5px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: green;
+    cursor: pointer;
+}
+
+.disponible {
+    border-color:red;
+    color: red;
+}
+
+.performance {
+    display: flex;
+    align-items: center;
+}
+
+.up {
+    color: green;
+}
+
+.spaces-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.informations {
+
+    width: fit-content;
+    padding: 16px;
+    background: lightgray;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: 32px;
+    margin-top: 32px;
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+.vacancy-details {
+    width: 50vw;
+}
+
+.charts-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.available {
+    border-left: 3px solid green;
+    padding-left: 4px;
+    margin: 8px 0;
+}
+
+.occupied {
+    border-left: 3px solid red;
+    padding-left: 4px;
+}
+
+circle-progress {
+    svg {
+        transform: scale(0.7);
+    }
+}
+
+.very-satisfied {
+    text-align: center;
+    color: green;
+}
+
+.user-avaliation-charts {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px 150px;
+}
+
+.satisfied {
+    text-align: center;
+    color: blue;
+}
+
+.good {
+    text-align: center;
+    color: black;
+}
+
+.bad {
+    text-align: center;
+    color: rgb(230, 73, 73);
+}
+
+.terrible {
+    text-align: center;
+    color: red;
+}
+
+ion-content {
+    --ion-background-color: #e5e5e5;
+}
+
+.container {
+    padding: 25px;
+    margin-left: 64px;
+}

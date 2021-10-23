@@ -1,0 +1,44 @@
+.item-clicked {
+    --ion-item-background: lightblue;
+    color: white;
+    border-radius: 10px;
+    margin: 8px;
+}
+
+ion-content{
+    --ion-background-color:cornflowerblue;
+}
+
+.logout-item {
+    display: flex;
+    position: absolute;
+    bottom: 25px;
+    margin-left: 70%;
+}
+
+.menu-item {
+    color: white;
+
+    .item-inner{
+        border-style: unset !important;
+    }
+}
+
+.perfil-image-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-menu{
+    --side-min-width: 64px;
+}
+
+.first {
+    margin-top: 100px;
+}
+
+.menu-close {
+    width: 80px;
+}
+

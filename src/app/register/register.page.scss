@@ -1,0 +1,86 @@
+.father-div {
+    width: 720px;
+    background-color: lightblue;
+    border-bottom-right-radius: 40px;
+    border-top-left-radius: 40px;
+    width: 80vw;
+    margin-left: 10vw;
+    padding: 32px;
+    border: 5px solid white;
+    margin-top: 50px;
+    margin-bottom:  50px;
+}
+
+img {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.mat-form-field-subscript-wrapper {
+    background-color:white;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 50px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+   
+
+    button {
+        background-color: black;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        width: 280px;
+        border-radius: 40px;
+        height: 52px;
+    }
+}
+
+.right {
+    width: 350px;
+}
+
+.input-container, .password{
+    width: 60%;
+}
+
+ion-content{
+
+    --ion-background-color:cornflowerblue;
+}
+
+.form-input {
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 8px;
+    height: 52px;
+    margin-bottom: 18px;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+mat-label {
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.password {
+    width: 60%;
+}

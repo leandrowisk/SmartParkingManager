@@ -1,0 +1,32 @@
+<ion-content>
+
+  <div class="login-container">
+
+    <div class="content-container">
+      <img class="logo" src="../../assets/images/Logo.png">
+
+      <div class="input-container">
+        <mat-label>Email</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input type="email" matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="input-container">
+        <mat-label>Senha</mat-label>
+        <mat-form-field class="form-input" appearance="none">
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" class="enter" routerLink="/parking-monitoring">Entrar</button>
+      <button mat-raised-button color="primary" class="register" routerLink="/register">Cadastre-se</button>
+      <p class="forgot-password">Esqueci minha senha</p>
+    </div>
+  </div>
+
+</ion-content>

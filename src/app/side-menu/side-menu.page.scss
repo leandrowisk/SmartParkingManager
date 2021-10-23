@@ -1,0 +1,143 @@
+ion-content {
+    float: left;
+    width: 64px;
+    height: 100%;
+    visibility: visible;
+    --ion-background-color: snow;
+    position: fixed;
+}
+.menu-item {
+    margin-top: 18px;
+    // --background: #15495a;
+    // color: white;
+    // width: 90%;
+    // margin-left: auto;
+    // margin-right: auto;
+    // border-radius: 5px;
+}
+
+.menu {
+    width: 100%;
+    margin-top: 15px;
+    height: 15px;
+    #line-1 {
+        width: 30px;
+        height: 5px;
+        background-color: black;
+        margin-left: auto;
+        margin-right: 10px;
+        border-radius: 20px;
+        margin-top: 5px;
+        position: absolute;
+        transition: 0.3s ease;
+        left: 0;
+        right: 0;
+    }
+
+    #line-2 {
+        width: 25px;
+        height: 5px;
+        margin-right: 16px;
+        background-color: black;
+        margin-left: auto;
+        border-radius: 20px;
+        margin-top: 15px;
+        position: absolute;
+        transition: 0.3s ease;
+        left: 0;
+        right: 0;
+    }
+
+    #line-3 {
+        width: 20px;
+        height: 5px;
+        background-color: black;
+        margin-right: 20px;
+        margin-left: auto;
+        border-radius: 20px;
+        margin-top: 25px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.rotate1 {
+    transform: rotate(45deg);
+    margin-top: 5px;
+    transition: 0.3s ease;
+    margin-left: auto;
+    margin-right: 14px !important;
+}
+
+.rotate2{
+    transform: rotate(-45deg);
+    transition: 0.3s ease;
+    margin-top: 6px !important;
+    margin-left: auto;
+    width: 30px !important;
+}
+
+.rotate3{
+    display: none;
+}
+
+.open {
+    width: 250px;
+    transition: width 0.5s;
+}
+
+.close {
+    width: 64px;
+    transition: width 0.5s;
+}
+
+.menu-button {
+    margin-left: auto;
+}
+
+ion-label {
+    padding: 0 16px;
+    font-family: 'Quicksand';
+    font-weight: bold;
+}
+
+.two-lines {
+    white-space: break-spaces;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+}
+
+mat-icon {
+    font-size: 32px;
+    color: lightgrey;
+}
+
+mat-icon:hover {
+    color: lightblue;
+}
+
+.perfil-image-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18px;
+}
+
+.perfil {
+    margin-top: 18px;
+}
+
+.logo {
+    width: 60%;
+    height: 80px;
+    margin-left: 8px;
+}

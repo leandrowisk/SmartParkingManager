@@ -1,0 +1,86 @@
+.spaces-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.space-informations {
+    display: flex;
+}
+
+.parking-space {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    margin-left: 32px;
+    margin-top: 100px;
+    background: lightgrey;
+    border: 5px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: green;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: 80px;
+    margin-top: auto;
+    row-gap: 8px;
+    width: 500px;
+
+    p {
+        font-weight: 500;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    button {
+        background-color: black;
+        border-radius: 20px;
+        color: white;
+        height: 42px;
+        width: 250px;
+    }
+
+    .first {
+        margin-right: 18px;
+    }
+}
+
+table {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.table-title {
+    margin-left: 10%;
+}
+
+.value {
+    font-weight: 500;
+    color: lightgreen;
+}
+
+mat-card {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: 10vw;
+}
+
+.mat-header-cell {
+    background-color: cornflowerblue;   
+}
+
+th {
+    font-size: 18px;
+    color: white;
+}
+
+td {
+    font-size: 16px;
+}
+

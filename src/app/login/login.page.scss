@@ -1,0 +1,80 @@
+.logo {
+    height: 200px;
+}
+
+.login-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    width: 60vw;
+    row-gap: 18px;
+    background-color: lightblue;
+    margin-top: 50px;
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 5px solid white;
+}
+
+mat-form-field {
+    width: 80%;
+}
+
+.enter, .register {
+    width: 60%;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+}
+
+.enter {
+    margin-top: 50px;
+}
+.content-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    row-gap: 18px;
+    align-items: center;
+}
+
+ion-content{
+
+    --ion-background-color:cornflowerblue;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+mat-form-field {
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 8px;
+    height: 52px;
+}
+
+.forgot-password {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-input {
+    button {
+        margin-top: 5px;
+    }
+}
+
+mat-label {
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 20%;
+}

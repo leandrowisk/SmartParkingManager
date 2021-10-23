@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgModule }       from '@angular/core';
+import { RouterModule, Routes }      from '@angular/router';
+import { AlertController,
+         MenuController }            from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {}
+  
+
 }
