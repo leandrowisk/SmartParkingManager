@@ -9,11 +9,19 @@ import { AppComponent }            from './app.component';
 import { AppRoutingModule }        from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule }          from './material-module.module';
+import { CommonModule }            from '@angular/common';
+import { SideMenuPageModule } from './side-menu/side-menu.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MaterialModule],
+  imports: [BrowserModule, 
+            IonicModule.forRoot(), 
+            AppRoutingModule, 
+            BrowserAnimationsModule, 
+            MaterialModule,
+            CommonModule,
+            SideMenuPageModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

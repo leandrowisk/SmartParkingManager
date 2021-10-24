@@ -6,6 +6,10 @@
     border-radius: 10px;
     margin-top: 50px;
 }
+
+.resize {
+    width: 70vw;
+}
 .user-infos {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,4 +62,14 @@ ion-content {
 
 mat-card {
     background-color: snow;
+}
+
+.open {
+    margin-left: 250px;
+    transition: margin-left 0.5s;
+}
+
+.close {
+    margin-left: 64px;
+    transition: margin-left 0.5s;
 }

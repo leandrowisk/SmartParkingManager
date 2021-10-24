@@ -6,8 +6,12 @@ import { PreloadAllModules,
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'root',
     pathMatch: 'full'
+  },
+  {
+    path: 'root',
+    loadChildren: () => import('./app.module').then(m => m.AppModule)
   },
   {
     path: 'login',

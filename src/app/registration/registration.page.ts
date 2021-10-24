@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-
-  constructor() { }
+  public isMenuOpen: boolean = false;
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    if (this.route.snapshot.paramMap.get('menuState'))
+      this.isMenuOpen = true;
+    else 
+      this.isMenuOpen = false;
   }
 
+  updateRegister() {
+    this.router.navigate(['/update-register', {isMenuOpen: this.isMenuOpen}])
+  }
 }

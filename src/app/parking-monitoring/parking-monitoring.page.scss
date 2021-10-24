@@ -13,6 +13,16 @@
     cursor: pointer;
 }
 
+.open {
+    margin-left: 250px;
+    transition: margin-left 0.5s;
+}
+
+.close {
+    margin-left: 64px;
+    transition: margin-left 0.5s;
+}
+
 .disponible {
     border-color:red;
     color: red;
@@ -55,6 +65,7 @@
 .charts-container {
     display: flex;
     align-items: baseline;
+    column-gap: 20px;
 }
 
 .available {
@@ -81,8 +92,18 @@ circle-progress {
 
 .user-avaliation-charts {
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px 150px 150px !important;
 }
+
+.resize-avaliation {
+    grid-template-columns: 150px 150px 150px !important;
+}
+
+.resize-percent-chart {
+    width: 40vw;
+}
+
+
 
 .satisfied {
     text-align: center;
@@ -110,5 +131,4 @@ ion-content {
 
 .container {
     padding: 25px;
-    margin-left: 64px;
 }

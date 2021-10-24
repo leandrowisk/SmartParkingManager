@@ -31,4 +31,14 @@ ion-content {
     --ion-background-color: #e5e5e5;
 }
 
+.open {
+    margin-left: 250px;
+    transition: margin-left 0.5s;
+}
+
+.close {
+    margin-left: 64px;
+    transition: margin-left 0.5s;
+}
+
 

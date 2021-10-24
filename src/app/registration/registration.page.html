@@ -1,15 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="side-menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Informações Cadastrais</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
 
-  <mat-card class="info-container">
+  <div class="container"
+      [class.open]="isMenuOpen"
+      [class.close]="!isMenuOpen">
+  <mat-card class="info-container" [class.resize]="isMenuOpen">
     <h2>INFORMAÇÕES CADASTRAIS</h2>
     <div class="user-infos">
     <div class="info">
@@ -63,7 +58,7 @@
     </div>
    
   </div>
-    <button mat-button routerLink="/update-register">Editar Informações</button>
+    <button mat-button (click)="updateRegister()">Editar Informações</button>
   </mat-card>
-
+</div>
 </ion-content>

@@ -1,8 +1,9 @@
 
 <ion-content>
-  <side-menu></side-menu>
 
-  <div class="container">
+  <div class="container" 
+       [class.open]="isMenuOpen"
+       [class.close]="!isMenuOpen">
   <h2>Detalhes do estacionamento</h2>
   <!-- <div class="hello-message">
     <h2>Olá Leandro</h2>
@@ -12,10 +13,10 @@
     <h2>{{date | date: 'MMM d, y'}}</h2>
   </div> -->
   <div class="charts-container">
-    <div class="vacancy-details">
+    <div class="vacancy-details" [class.resize-percent-chart]="isMenuOpen">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Detalhes do estacionamento</mat-card-title>
+          <mat-card-title>Detalhes do estacionamento!</mat-card-title>
         </mat-card-header>
 
         <div class="percentage-chart">
@@ -45,7 +46,7 @@
           <mat-card-title>Avaliações dos usuários</mat-card-title>
         </mat-card-header>
 
-        <mat-card-content class="user-avaliation-charts">
+        <mat-card-content class="user-avaliation-charts" [class.resizeAvaliation]="isMenuOpen">
           <div class="very-satisfied">
             <h2>Ótimo</h2>
             <circle-progress [percent]="85" [radius]="60" [showUnits]="true" [showSubtitle]="false" [unitsFontSize]="18"
@@ -91,7 +92,7 @@
     </div>
   </div>
   <div class="spaces-container">
-    <div class="parking-space" routerLink="/vacancy-details">
+    <div class="parking-space" (click)="details()">
       <h2>Ocupada</h2>
     </div>
 

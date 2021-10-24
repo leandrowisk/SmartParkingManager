@@ -1,6 +1,6 @@
 <ion-content>
-  <side-menu></side-menu>
-  <h2>GESTÃO DE LOCAÇÕES E FINANCEIRO</h2>
+  <div class="container" [class.open]="isMenuOpen"
+                         [class.close]="!isMenuOpen">
   <div class="table-container">
     <span class="title">Histórico de Locações</span>
     <table mat-table [dataSource]="diaryHistoric" class="mat-elevation-z8" multiTemplateDataRows>
@@ -109,4 +109,5 @@
       </canvas>
     </div>
   </div>
+</div>
 </ion-content>

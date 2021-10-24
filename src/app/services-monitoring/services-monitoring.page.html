@@ -1,8 +1,11 @@
 <ion-content>
-  <side-menu></side-menu>
-
-  <h2>MONITORAMENTO DOS SERVIÇOS</h2>
-  <div class="services-table-container">
+  
+  <div class="services-table-container"
+      [class.open]="isMenuOpen"
+      [class.close]="!isMenuOpen">
+  
+    <h2>MONITORAMENTO DOS SERVIÇOS</h2>
+  
     <table mat-table [dataSource]="services" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">

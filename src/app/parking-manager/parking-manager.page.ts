@@ -11,16 +11,13 @@ export class ParkingManagerPage implements OnInit {
 
   public newService: boolean = false;
   public newPeriod: boolean = false;
+  public isMenuOpen: boolean = false;
 
   constructor(private menu: MenuController) { }
   
   ngOnInit() {
-    this.close();
   }
 
-  close() {  
-    this.menu.close();
-  }
 
   addNewService() {
     if(!this.newService) 

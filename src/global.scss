@@ -38,3 +38,13 @@ mat-card {
     font-family: "Abel";
     font-weight: 700;
 }
+
+.open-menu {
+    width: 250px !important;
+    transition: width 0.5s;
+}
+
+.close-menu {
+    width: 64px !important;
+    transition: width 0.5s;
+}

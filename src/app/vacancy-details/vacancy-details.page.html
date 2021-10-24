@@ -1,14 +1,10 @@
-<ion-header>
-  <ion-toolbar no-border>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="side-menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Detalhes da Vaga</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  <side-menu (menuState)="menuState($event)"></side-menu>
 
+  <div class="container"
+      [class.open]="isMenuOpen"
+      [class.close]="!isMenuOpen">
   <div class="space-informations">
     <div class="spaces-container">
       <div class="parking-space" routerLink="/vacancy-details">
@@ -75,6 +71,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
+  </div>
   </div>
 
 </ion-content>

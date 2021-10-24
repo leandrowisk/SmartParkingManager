@@ -1,5 +1,5 @@
-import { Component, Input, OnInit }                      from '@angular/core';
-import { MenuController }                         from '@ionic/angular';
+import { Component, OnInit }                      from '@angular/core';
+import { Router }                                 from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet }             from 'ng2-charts';
 
@@ -11,10 +11,14 @@ import { Color, Label, MultiDataSet }             from 'ng2-charts';
 export class ParkingMonitoringPage implements OnInit {
   
   public date: Date = new Date();
-  @Input() menuState: boolean;
-  constructor(private menu: MenuController) { }
+  public isMenuOpen: boolean = false;
+  constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+  details() {
+    this.router.navigate(['/vacancy-details', {isMenuOpen: this.isMenuOpen}])
   }
 
   chartOptions: ChartOptions = {

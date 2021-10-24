@@ -1,31 +1,41 @@
 ion-content {
     float: left;
-    width: 64px;
     height: 100%;
     visibility: visible;
     --ion-background-color: snow;
     position: fixed;
+    width: 64px;
+    transition: width 0.5s;
 }
 .menu-item {
     margin-top: 18px;
-    // --background: #15495a;
-    // color: white;
-    // width: 90%;
-    // margin-left: auto;
-    // margin-right: auto;
-    // border-radius: 5px;
+    cursor: pointer;    
+}
+
+ion-item-divider {
+    width: 100%;
+}
+
+.active {
+    width: 90%;
+    --background: #50bfe3;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
 }
 
 .menu {
     width: 100%;
     margin-top: 15px;
     height: 15px;
+    cursor: pointer;
     #line-1 {
         width: 30px;
-        height: 5px;
+        height: 2px;
         background-color: black;
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 16px;
         border-radius: 20px;
         margin-top: 5px;
         position: absolute;
@@ -36,8 +46,8 @@ ion-content {
 
     #line-2 {
         width: 25px;
-        height: 5px;
-        margin-right: 16px;
+        height: 2px;
+        margin-right: 20px;
         background-color: black;
         margin-left: auto;
         border-radius: 20px;
@@ -50,9 +60,9 @@ ion-content {
 
     #line-3 {
         width: 20px;
-        height: 5px;
+        height: 2px;
         background-color: black;
-        margin-right: 20px;
+        margin-right: 25px;
         margin-left: auto;
         border-radius: 20px;
         margin-top: 25px;
@@ -69,16 +79,16 @@ ion-content {
 
 .rotate1 {
     transform: rotate(45deg);
-    margin-top: 5px;
+    margin-top: 11px;
     transition: 0.3s ease;
     margin-left: auto;
-    margin-right: 14px !important;
+    margin-right: 20px !important;
 }
 
 .rotate2{
     transform: rotate(-45deg);
     transition: 0.3s ease;
-    margin-top: 6px !important;
+    margin-top: 5px !important;
     margin-left: auto;
     width: 30px !important;
 }
@@ -87,28 +97,24 @@ ion-content {
     display: none;
 }
 
-.open {
-    width: 250px;
-    transition: width 0.5s;
-}
-
-.close {
-    width: 64px;
-    transition: width 0.5s;
-}
-
 .menu-button {
     margin-left: auto;
 }
 
 ion-label {
-    padding: 0 16px;
-    font-family: 'Quicksand';
+    padding-left: 16px;
+    font-family: 'Quicksand' !important;
     font-weight: bold;
 }
 
 .two-lines {
     white-space: break-spaces;
+}
+
+.welcome-message {
+    padding: 8px;
+    font-family: "Quicksand";
+    font-weight: bold;
 }
 
 .item-container {
@@ -130,6 +136,10 @@ mat-icon:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 18px;
+}
+
+.space {
+    margin-top: 100px;
 }
 
 .perfil {

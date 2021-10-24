@@ -1,3 +1,6 @@
 <ion-app>
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-router-outlet id="main" (activate)="activated($event)"></ion-router-outlet>
+
+   <side-menu [initApp]="init" (menuState)="collapse($event)"></side-menu>
+   <h1>App component</h1>
 </ion-app>

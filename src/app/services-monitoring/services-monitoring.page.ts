@@ -9,7 +9,16 @@ import { service }           from '../interfaces/historic';
 })
 export class ServicesMonitoringPage implements OnInit {
 
+  public isMenuOpen: boolean = false;
   constructor(private menu: MenuController) { }
+
+  menuState(state: boolean) {
+    if (state)
+      this.isMenuOpen = true;
+    else
+      this.isMenuOpen = false;
+  }
+
 
   ngOnInit() {
     this.close();

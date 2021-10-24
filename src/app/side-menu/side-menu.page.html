@@ -2,7 +2,6 @@
 
   <div class="logo-container">
     <img class="logo" src="../../assets/images/Logo.png" *ngIf="isOpen">
-  <mat-divider *ngIf="isOpen"></mat-divider>
 
     <div class="menu" (click)="showMenu()">
       <div id="line-1" class=""></div>
@@ -11,22 +10,24 @@
     </div>
   </div>
 
+  <ion-item-divider *ngIf="isOpen"></ion-item-divider>
+
   <ion-item class="perfil" lines='none' *ngIf="isOpen">
     <div class="perfil-image-container">
       <ion-avatar>
         <img src="../assets/images/perfil.jpeg">
       </ion-avatar>
-      <p>Bem vindo Leandro</p>
+      <p class="welcome-message">Bem vindo Leandro</p>
     </div>
   </ion-item>
-  <ion-item routerLink="/registration" class="menu-item first" lines='none'>
+  <ion-item (click)="registration()" class="menu-item" id="first" lines='none' [class.active]="register">
     <div class="item-container">
       <mat-icon>person</mat-icon>
       <ion-label *ngIf="isOpen">Cadastro</ion-label>
     </div>
   </ion-item>
 
-  <ion-item routerLink="/parking-monitoring" class="menu-item" lines='none'>
+  <ion-item (click)="parkingMonitoring()" class="menu-item" lines='none' [class.active]="monitoring">
     <div class="item-container">
       <mat-icon>leaderboard</mat-icon>
       <ion-label *ngIf="isOpen" class="two-lines">Monitoramento do estacionamento</ion-label>
@@ -34,28 +35,28 @@
   </ion-item>
 
 
-  <ion-item routerLink="/services-monitoring" class="menu-item" lines='none'>
+  <ion-item (click)="servicesMonitoring()"  class="menu-item" lines='none' [class.active]="services">
     <div class="item-container">
       <mat-icon>settings</mat-icon>
       <ion-label *ngIf="isOpen" class="two-lines">Monitoramento dos serviços</ion-label>
     </div>
   </ion-item>
 
-  <ion-item routerLink="/parking-manager" class="menu-item" lines='none'>
+  <ion-item (click)="parkingManagement()"  class="menu-item" lines='none' [class.active]="management">
     <div class="item-container">
       <mat-icon>manage_accounts</mat-icon>
       <ion-label *ngIf="isOpen">Gerenciamento</ion-label>
     </div>
   </ion-item>
 
-  <ion-item routerLink="/lease-management" class="menu-item" lines='none'>
+  <ion-item (click)="leaseManagement()" class="menu-item" lines='none' [class.active]="leasesManagement">
     <div class="item-container">
       <mat-icon>paid</mat-icon>
       <ion-label *ngIf="isOpen" class="two-lines">Gerenciamento de locações e financeiro</ion-label>
     </div>
   </ion-item>
 
-  <ion-item class="logout-item menu-item" (click)="logout()" lines='none'>
+  <ion-item class="logout-item menu-item" (click)="logout()" lines='none' [class.active]="out">
     <div class="item-container">
       <mat-icon>logout</mat-icon>
       <ion-label *ngIf="isOpen">Sair</ion-label>
