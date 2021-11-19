@@ -1,0 +1,130 @@
+<ion-content>
+
+  <div class="register-form" *ngIf="userInfoForm && carInfoForm">
+
+    <mat-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="userInfoForm">
+        <form [formGroup]="userInfoForm">
+          <ng-template matStepLabel>
+            <div class="first-step">
+              <mat-icon>person_outline</mat-icon>
+              <p>Informações do usuário</p>
+            </div>
+          </ng-template>
+          <div class="form">
+            <div class="input-container">
+              <mat-label>Nome:</mat-label>
+              <mat-form-field class="form-input name" appearance='none' color="primary">
+                <input type="text" matInput formControlName="name">
+                <mat-error *ngIf="userInfoForm.get('name').hasError('required')">O nome é obrigatório</mat-error>
+                <mat-error *ngIf="userInfoForm.get('name').hasError('min')">É necessário ter pelo menos 3 caracteres
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>E-mail:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color="primary">
+                <input type="email" matInput formControlName="email">
+                <mat-error *ngIf="userInfoForm.get('email').hasError('pattern')">Formato de email inválido</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Endereço:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color="primary">
+                <input type="text" matInput formControlName="endereco">
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Telefone:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color="primary">
+                <input matInput formControlName="phone" mask="(00) 00000-0000">
+                <mat-error *ngIf="userInfoForm.get('phone').hasError('pattern')">Insira um telefone válido</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>CPF:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color="primary">
+                <input matInput formControlName="cpf" mask="000.000.000-00">
+                <mat-error *ngIf="userInfoForm.get('cpf').hasError('required')">O Cpf é obrigatório</mat-error>
+                <mat-error *ngIf="userInfoForm.get('cpf').hasError('min')">Insira um Cpf Válido</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Data de Nascimento</mat-label>
+              <mat-form-field class="form-input" appearance="none" color="primary">
+                <input matInput [matDatepicker]="picker" formControlName="birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [color]="brown"></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Sexo</mat-label>
+              <mat-form-field appearance="none" color="primary" class="form-input">
+                <mat-select [(value)]="user.sex" formControlName="sex">
+                  <mat-option value="Masculino">Masculino</mat-option>
+                  <mat-option value="Feminino">Feminino</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="next-button" matStepperNext>
+            <span>Informações do Veículo</span>
+            <mat-icon>navigate_next</mat-icon>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="carInfoForm">
+        <form [formGroup]="carInfoForm">
+          <ng-template class="second-step" matStepLabel>
+            <div class="second-step">
+              <mat-icon>time_to_leave</mat-icon>
+              <p>Informações do Veículo</p>
+            </div>
+          </ng-template>
+          <div class="form">
+
+            <div class="input-container">
+              <mat-label>Modelo:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color='primary'>
+                <input matInput formControlName="model">
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Marca:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color='primary'>
+                <input matInput formControlName="brand">
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Placa:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color='primary'>
+                <input matInput formControlName="plaque">
+              </mat-form-field>
+            </div>
+
+            <div class="input-container">
+              <mat-label>Cor do carro:</mat-label>
+              <mat-form-field class="form-input" appearance='none' color='primary'>
+                <input type="text" matInput formControlName="color">
+                <mat-error *ngIf="carInfoForm.get('color').hasError('required')">Este campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="finish-button" (click)="rentVacancy()">
+            <span>Alugar vaga</span>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</ion-content>

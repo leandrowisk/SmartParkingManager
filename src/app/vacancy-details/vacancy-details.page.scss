@@ -39,11 +39,10 @@
     display: flex;
     justify-content: space-between;
     button {
-        background-color: black;
         border-radius: 20px;
-        color: white;
         height: 42px;
         width: 250px;
+        border: 1px solid green;
     }
 
     .first {
@@ -72,7 +71,7 @@ mat-card {
 }
 
 .mat-header-cell {
-    background-color: cornflowerblue;   
+    background-color: rgb(6, 155, 6);   
 }
 
 th {
@@ -82,6 +81,11 @@ th {
 
 td {
     font-size: 16px;
+}
+
+ion-avatar {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .open {

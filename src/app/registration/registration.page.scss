@@ -25,6 +25,10 @@
     }
 }
 
+mat-icon {
+    margin-top: 3px;
+}
+
 button {
     display: flex;
     align-items: center;
@@ -43,6 +47,10 @@ button {
     background: lightgrey;
     padding: 8px;
     border-radius: 20px;
+    font-weight: normal !important;
+    height: 52px;
+    display: flex;
+    align-items: center;
 }
 
 .info {

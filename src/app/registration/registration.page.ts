@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,10 @@ export class RegistrationPage implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+   this.resize();
+  }
+  
+  resize() {
     if (this.route.snapshot.paramMap.get('menuState'))
       this.isMenuOpen = true;
     else 

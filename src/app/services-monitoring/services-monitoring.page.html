@@ -1,78 +1,30 @@
 <ion-content>
-  
-  <div class="services-table-container"
-      [class.open]="isMenuOpen"
-      [class.close]="!isMenuOpen">
-  
+
+  <div class="services-table-container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+
     <h2>MONITORAMENTO DOS SERVIÇOS</h2>
-  
-    <table mat-table [dataSource]="services" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let service">{{service.name}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="vacancy">
-        <th mat-header-cell *matHeaderCellDef> Vaga </th>
-        <td mat-cell *matCellDef="let service">{{service.vacancy}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="period">
-        <th mat-header-cell *matHeaderCellDef>Periodo</th>
-        <td mat-cell *matCellDef="let service">{{service.period}}</td>
-      </ng-container>
+    <table mat-table [dataSource]="services" class="mat-elevation-z8" *ngIf="services">
 
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+      <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of displayedColumns; let index=index">
+        <th mat-header-cell *matHeaderCellDef>{{collumn}}</th>
+        <td mat-cell *matCellDef="let services">
+          <div [class.flex-field]="index == 0">
+            <ion-avatar *ngIf="index == 0">
+              <img class="user-perfil" src="{{services.imagem}}">
+            </ion-avatar>
+            {{services[collumn]}}
+          </div>
 
-
-    <table mat-table [dataSource]="services" class="mat-elevation-z8">
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let service">{{service.name}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="vacancy">
-        <th mat-header-cell *matHeaderCellDef> Vaga </th>
-        <td mat-cell *matCellDef="let service">{{service.vacancy}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="period">
-        <th mat-header-cell *matHeaderCellDef>Periodo</th>
-        <td mat-cell *matCellDef="let service">{{service.period}}</td>
+        </td>
       </ng-container>
 
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-
-    <table mat-table [dataSource]="services" class="mat-elevation-z8">
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let service">{{service.name}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="vacancy">
-        <th mat-header-cell *matHeaderCellDef> Vaga </th>
-        <td mat-cell *matCellDef="let service">{{service.vacancy}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="period">
-        <th mat-header-cell *matHeaderCellDef>Periodo</th>
-        <td mat-cell *matCellDef="let service">{{service.period}}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
+    <mat-paginator [pageSize]="10" [length]="10"></mat-paginator>
 
   </div>
 

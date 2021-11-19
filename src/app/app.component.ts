@@ -1,4 +1,8 @@
-import { Component, OnInit }       from '@angular/core';
+import { LoginPage }                from './login/login.page';
+import { Component, 
+         Input, 
+         OnInit }                  from '@angular/core';
+import { BehaviorSubject }         from 'rxjs';
 import { LeaseManagementPage }     from './lease-management/lease-management.page';
 import { ParkingManagerPage }      from './parking-manager/parking-manager.page';
 import { ParkingMonitoringPage }   from './parking-monitoring/parking-monitoring.page';
@@ -7,59 +11,66 @@ import { RegistrationPage }        from './registration/registration.page';
 import { ServicesMonitoringPage }  from './services-monitoring/services-monitoring.page';
 import { UpdateRegisterPage }      from './update-register/update-register.page';
 import { VacancyDetailsPage }      from './vacancy-details/vacancy-details.page';
-
+import { ActivatedRoute, Router }  from '@angular/router';
+import { Platform }                from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public init: boolean = false;
-  public isOpen: boolean = false;
-  public comp: any;
+  public init;
+  public component: any;
+  public isOpen: boolean = false
   public pages: Array<any>;
+  public open: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor() {}
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private platform: Platform) {}
   
   ngOnInit() {
-    this.init = true;
+    console.log(this.route.snapshot.paramMap.get('init'));
+    if(this.route.snapshot.paramMap.get('init')){
+      this.init = true;
+    }
     this.pages = [LeaseManagementPage, ParkingMonitoringPage, 
     RegistrationPage, VacancyDetailsPage,
     UpdateRegisterPage, RegisterPage, ServicesMonitoringPage, ParkingManagerPage];
-    this.comp = this.comp instanceof ParkingMonitoringPage
+    this.component = this.component instanceof ParkingMonitoringPage 
   }
 
-  collapse(menuState: boolean) {
+  resize(menuState: boolean) {
+    console.log('resize')
     if(menuState)
-      this.isOpen = true
+      this.isOpen = true;
     else
       this.isOpen = false;
-    this.activated(this.comp, this.isOpen);
+    this.activated(this.component, this.isOpen);
   }
- 
-  activated(comp?: any, isOpen?: boolean) {
+    
+  activated(component?: any, isOpen?: boolean) {
     for (let page of this.pages) {
-      if (comp) {
-        this.comp = comp;
-        if(comp instanceof page) {
-          if (!isOpen)
-            comp.isMenuOpen = this.isOpen;
-          else
-            comp.isMenuOpen = isOpen;
+      if (component) {
+        this.component = component;
+        if(component instanceof page) {
+          if (!isOpen) {
+            component.isMenuOpen = this.isOpen;
+          }
+          else {
+            component.isMenuOpen = isOpen;
+          }
         }
       }
       else {
-        if(this.comp instanceof page) {
+        if(this.component instanceof page) {
           if (!isOpen)
-            this.comp.isMenuOpen = this.isOpen;
+            this.component.isMenuOpen = this.isOpen;
           else
-            this.comp.isMenuOpen = isOpen;
+            this.component.isMenuOpen = isOpen;
         }
       }
-        
     }
-  
   }
-  
 
 }

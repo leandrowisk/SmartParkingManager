@@ -2,15 +2,16 @@ import { NgModule }           from '@angular/core';
 import { PreloadAllModules, 
          RouterModule, 
          Routes }             from '@angular/router';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'root',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'root',
+    path: 'app',
     loadChildren: () => import('./app.module').then(m => m.AppModule)
   },
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'side-menu',
     loadChildren: () => import('./side-menu/side-menu.module').then( m => m.SideMenuPageModule)
+  },
+  {
+    path: 'register-user',
+    loadChildren: () => import('./register-user/register-user.module').then( m => m.RegisterUserPageModule)
   },
 ];
 

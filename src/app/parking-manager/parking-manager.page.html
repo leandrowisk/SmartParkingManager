@@ -1,92 +1,131 @@
-
 <ion-content>
 
-  <div class="container"
-       [class.open]="isMenuOpen"
-       [class.close]="!isMenuOpen">
-  <h2 class="title">GERENCIAMENTO DO ESTACIONAMENTO</h2>
-  <div class="services-manager" [class.resise]="isMenuOpen">
-    <div class="new-service" >
+  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+    <h2 class="title">GERENCIAMENTO DO ESTACIONAMENTO</h2>
+    <div class="services-manager" [class.resise]="isMenuOpen">
+      <div class="new-service">
 
-      <div class="add-new-service" (click)="addNewService()">
-        <span>adicionar serviço</span>
-        <mat-icon>add</mat-icon>
-      </div>
-      
-      <div class="input-container"  *ngIf="newService">
-        <mat-label>nome</mat-label>
-        <mat-form-field class="form-input" appearance="none">
-          <input matInput>
-        </mat-form-field>
-      </div>
+        <div class="add-new-service" (click)="addNewService()">
+          <span>adicionar serviço</span>
+          <mat-icon *ngIf="!newService">add</mat-icon>
+          <mat-icon *ngIf="newService">remove</mat-icon>
+        </div>
+        <div class="mini-form" [class.show-form]="newService">
+          <div class="input-container" *ngIf="newService">
+            <mat-label>nome</mat-label>
+            <mat-form-field class="form-input" appearance="none">
+              <input matInput>
+            </mat-form-field>
+          </div>
 
-      <div class="input-container" *ngIf="newService">
-        <mat-label>Dias</mat-label>
-        <mat-form-field class="form-input" appearance="none">
-          <input matInput>
-        </mat-form-field>
-      </div>
+          <div class="input-container" *ngIf="newService">
+            <mat-label>Qtd de Dias ativos na semana</mat-label>
+            <mat-form-field class="form-input" appearance="none">
+              <input matInput>
+            </mat-form-field>
+          </div>
 
-      <div class="input-container"  *ngIf="newService">
-        <mat-label>Valor</mat-label>
-        <mat-form-field class="form-input" appearance="none">
-          <input matInput>
-        </mat-form-field>
-      </div>
-
-      <button mat-button>
-        Adicionar
-      </button>
-    </div>
-
-    <div class="services-status">
-      <div class="services">
-        <h2>Serviços</h2>
-        <span class="value">Lavagem</span>
+          <div class="input-container" *ngIf="newService">
+            <mat-label>Valor</mat-label>
+            <mat-form-field class="form-input" appearance="none">
+              <input matInput currencyMask [options]='currencyOption' ngDefaultControl>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-button>
+          Adicionar
+        </button>
       </div>
 
-      <div class="status">
-        <h2>Status</h2>
-        <div class='status-item'>
-        <span class="value">ativo</span>
-        <ion-toggle></ion-toggle>
+      <div class="services-status">
+        <div class="services">
+          <h2>Serviços</h2>
+          <span class="value">Lavagem</span>
+        </div>
+
+        <div class="status">
+          <h2>Status</h2>
+          <div class='status-item'>
+            <span class="value">ativo</span>
+            <ion-toggle></ion-toggle>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="period-manager" [class.resise]="isMenuOpen">
-    <div class="update-period">
-      <div class="new-period" (click)="addNewPeriod()">
-        <span>alterar horário</span>
-        <mat-icon>add</mat-icon>
+    <div class="period-manager" [class.resise]="isMenuOpen">
+      <div class="update-period">
+        <div class="new-period" (click)="addNewPeriod()">
+          <span>alterar horário</span>
+          <mat-icon *ngIf="!newPeriod">add</mat-icon>
+          <mat-icon *ngIf="newPeriod">remove</mat-icon>
+        </div>
+
+        <div class="mini-form" [class.show-form-2]="newPeriod" *ngIf="newPeriod">
+
+          <mat-label>Horário de funcionamento</mat-label>
+
+          <div class="working-hours">
+          <div class="flex-form" *ngIf="newPeriod">
+            <mat-label>Abertura</mat-label>
+            <mat-form-field class="form-input work-hour first" appearance="none">
+              <mat-select [(value)]="openHour">
+                <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                  {{hour}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="flex-form" *ngIf="newPeriod">
+            <mat-label>Fechamento</mat-label>
+            <mat-form-field class="form-input work-hour second" appearance="none">
+              <mat-select [(value)]="closeHour">
+                <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                  {{hour}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      
+          <div class="period">
+            <mat-label>Dias de funcionamento</mat-label>
+            <div class="flex-form" *ngIf="newPeriod">
+              <mat-label>Dê</mat-label>
+              <mat-form-field class="form-input open-period" appearance="none">
+                <mat-select [(value)]="dayFrom">
+                  <mat-option *ngFor="let weekDay of weekDays" value="{{weekDay}}">
+                    {{weekDay}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="flex-form" *ngIf="newPeriod">
+              <mat-label>À</mat-label>
+              <mat-form-field class="form-input close-period" appearance="none">
+                <mat-select [(value)]="dayFrom">
+                  <mat-option *ngFor="let weekDay of weekDays" value="{{weekDay}}">
+                    {{weekDay}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </div>
+        <button mat-button>
+          Alterar
+        </button>
       </div>
 
-      <div class="input-container" *ngIf="newPeriod">
-        <mat-label>dias</mat-label>
-        <mat-form-field class="form-input" appearance="none">
-          <input matInput>
-        </mat-form-field>
+      <div class="period-details">
+        <h2>Funcionamento</h2>
+        <span class="days">Dias <span class="value">Segunda a sexta</span></span>
+        <span>Periodo <span class="value">9h às 18h</span></span>
       </div>
-
-      <div class="input-container" *ngIf="newPeriod">  
-        <mat-label>Periodo</mat-label>
-        <mat-form-field class="form-input" appearance="none">
-          <input matInput>
-        </mat-form-field>
-      </div>
-
-      <button mat-button>
-        Alterar
-      </button>
     </div>
-
-    <div class="period-details">
-      <h2>Funcionamento</h2>
-      <span class="days">Dias <span class="value">Segunda a sexta</span></span>
-      <span>Periodo <span class="value">9h às 18h</span></span>
-    </div>
   </div>
-</div>
 </ion-content>

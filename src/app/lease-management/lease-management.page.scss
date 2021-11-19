@@ -15,6 +15,10 @@ table {
     background-color: cornflowerblue;   
 }
 
+.user-perfil {
+    transform: scale(0.7);
+}
+
 th {
     font-size: 18px;
     color: white;
@@ -22,6 +26,9 @@ th {
 
 td {
     font-size: 16px;
+    .flex-field {
+        justify-content: normal;
+    }
 }
 
 .financial-card {
@@ -47,6 +54,7 @@ td {
 
 mat-select {
     padding: 0 8px;
+    font-size: 18px;
     .mat-select-arrow {
         background: lightblue;
         border-radius: 50%;
@@ -61,20 +69,30 @@ mat-select {
 
 .daily {
     display: flex;
+    flex-direction: column;
 }
 
 .daily-infos {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
 }
 
 .monthly {
     display: flex;
+    flex-direction: column;
 }
 
 .monthly-infos {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
 }
 
 h4 {
@@ -84,8 +102,9 @@ h4 {
 }
 
 .total {
-    background: cornflowerblue;
-    color: white;
+    color: grey;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 20px;
     height: 42px;
     display: flex;
@@ -94,6 +113,10 @@ h4 {
     margin-top: 16px;
     font-size: 16px;
     font-weight: 500;
+}
+
+.total-value {
+    margin-left: 8px;
 }
 
 ion-content {
@@ -122,29 +145,31 @@ border-bottom-width: 0;
 }
 
 .example-element-detail {
-overflow: hidden;
-display: flex;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .example-element-diagram {
 min-width: 80px;
 padding: 8px;
 font-weight: lighter;
-margin: 8px 0;
-height: 104px;
+}
+
+.justified {
+    justify-content: space-between !important;
+}
+
+.details-title {
+    text-align: center;
 }
 
 .expand {
-    background-color: #dfdfdf;
-}
-
-h2 {
-    margin-left: 10%;
-    margin-top: 50px;
+    background-color: #e5e5e5;
 }
 
 .title {
-    margin-left: 5%;
+    margin-left: 10%;
     font-size: large;
     font-weight: 500;
     color: grey;
@@ -175,6 +200,7 @@ opacity: 0.5;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 16px;
+    margin-left: 70px;
     .info {
         display: flex;
         flex-direction: column;
@@ -184,9 +210,6 @@ opacity: 0.5;
     }
 }
 
-#checkbox {
-    margin-right: 8px;
-}
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     background-color: snow !important;
@@ -199,6 +222,7 @@ opacity: 0.5;
     transform: rotate(180deg);
     transition: trasform 1s ease;
 }
+
 .flex-field {
     display: flex;
     align-items: center;
@@ -215,3 +239,19 @@ opacity: 0.5;
     transition: margin-left 0.5s;
 }
 
+.lease-details {
+    color: cornflowerblue;
+    margin-left: 32px;
+}
+
+.mat-option .mat-option-text{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+mat-paginator {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}

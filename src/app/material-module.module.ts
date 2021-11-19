@@ -18,6 +18,8 @@ import { MatSnackBarModule }               from '@angular/material/snack-bar';
 import { MatTableModule }                  from '@angular/material/table';
 import { MatCardModule }                   from '@angular/material/card';
 import { MatDialogModule }                 from '@angular/material/dialog';
+import { MatStepperModule }                from '@angular/material/stepper';
+import { MatPaginatorModule }              from '@angular/material/paginator';
 
 
 @NgModule({
@@ -37,10 +39,11 @@ import { MatDialogModule }                 from '@angular/material/dialog';
      MatMomentDateModule,
      MatProgressSpinnerModule,
      MatSnackBarModule,
-     MatSelectModule,
      MatTableModule,
      MatCardModule,
      MatDialogModule,
+     MatStepperModule,
+     MatPaginatorModule
     ],
     providers: [
       { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }

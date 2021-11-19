@@ -17,9 +17,9 @@ export class SideMenuPage implements OnInit {
   public services: boolean = false;
   public management: boolean = false;
   public leasesManagement: boolean = false;
-
   @Output() menuState: EventEmitter<boolean> = new EventEmitter();
   @Input() initApp: boolean = false;
+
   constructor(private alert: AlertController,
               private router: Router) { }
 

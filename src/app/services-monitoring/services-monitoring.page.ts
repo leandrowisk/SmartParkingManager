@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController }    from '@ionic/angular';
-import { service }           from '../interfaces/historic';
+import { Component, 
+         OnInit, ViewChild }  from '@angular/core';
+import { MatPaginator }       from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute }     from '@angular/router';
+import { MenuController }     from '@ionic/angular';
+import { Service }            from '../interfaces/Services';
+import { ServicesService }    from '../services/services.service';
 
 @Component({
   selector: 'app-services-monitoring',
@@ -10,7 +15,22 @@ import { service }           from '../interfaces/historic';
 export class ServicesMonitoringPage implements OnInit {
 
   public isMenuOpen: boolean = false;
-  constructor(private menu: MenuController) { }
+  public services: MatTableDataSource<Service> = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private menu: MenuController,
+              private _services: ServicesService,
+              private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.resize();
+    this.getLeases();
+  }
+
+  ngAfterViewInit() {
+    this.resize();
+  }
+
 
   menuState(state: boolean) {
     if (state)
@@ -19,9 +39,21 @@ export class ServicesMonitoringPage implements OnInit {
       this.isMenuOpen = false;
   }
 
+  resize() {
+    console.log('chamou resize');
+    if (this.route.snapshot.paramMap.get('menuState'))
+      this.isMenuOpen = true;
+    else 
+      this.isMenuOpen = false;
+  }
 
-  ngOnInit() {
-    this.close();
+  
+  getLeases() {
+    this._services.getServices().subscribe(service=> {
+        this.services.paginator = this.paginator;
+        this.services.data = service;
+        console.log('services',this.services.data)
+    })
   }
 
   close() {  
@@ -29,7 +61,5 @@ export class ServicesMonitoringPage implements OnInit {
   }
 
   
-  displayedColumns: string[] = ['name', 'vacancy', 'period'];
-  services = service;
-
+  displayedColumns: string[] = ['usuário','descrição', 'vaga', 'período'];
 }

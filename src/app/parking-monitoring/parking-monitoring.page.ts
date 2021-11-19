@@ -1,5 +1,5 @@
 import { Component, OnInit }                      from '@angular/core';
-import { Router }                                 from '@angular/router';
+import { ActivatedRoute, Router }                                 from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet }             from 'ng2-charts';
 
@@ -12,9 +12,21 @@ export class ParkingMonitoringPage implements OnInit {
   
   public date: Date = new Date();
   public isMenuOpen: boolean = false;
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.resize();
+    
+  }
+
+  resize() {
+    console.log('chamou resize do monitoring')
+    console.log('menu state',this.route.snapshot.paramMap.get('menuState'));
+    if (this.route.snapshot.paramMap.get('menuState'))
+      this.isMenuOpen = true;
+    else 
+      this.isMenuOpen = false;
   }
 
   details() {

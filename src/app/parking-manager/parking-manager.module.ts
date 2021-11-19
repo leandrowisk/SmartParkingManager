@@ -4,10 +4,9 @@ import { CommonModule }                       from '@angular/common';
 import { FormsModule }                        from '@angular/forms';
 import { SideMenuPageModule }                 from './../side-menu/side-menu.module';
 import { IonicModule }                        from '@ionic/angular';
-
 import { ParkingManagerPageRoutingModule }    from './parking-manager-routing.module';
-
 import { ParkingManagerPage }                 from './parking-manager.page';
+import { NgxCurrencyModule }                  from 'ngx-currency';
 
 @NgModule({
   imports: [
@@ -16,7 +15,8 @@ import { ParkingManagerPage }                 from './parking-manager.page';
     IonicModule,
     ParkingManagerPageRoutingModule,
     MaterialModule,
-    SideMenuPageModule
+    SideMenuPageModule,
+    NgxCurrencyModule
 
   ],
   declarations: [ParkingManagerPage]

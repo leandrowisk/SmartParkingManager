@@ -1,6 +1,5 @@
 
 <ion-content>
-  <side-menu (menuState)="menuState($event)"></side-menu>
 
   <div class="container"
       [class.open]="isMenuOpen"
@@ -14,6 +13,9 @@
 
     <mat-card>
       <div class="user-info">
+        <ion-avatar>
+          <img class="user-perfil"src="../../assets/images/perfil.jpeg">
+        </ion-avatar>
         <p>Nome: <span class="value">Leandro Tecioni</span> </p>
         <p>Usuário: <span class="value">Leandrowisk</span></p>
         <p>Placa:<span class="value"> D781FD8</span> </p>
@@ -37,34 +39,9 @@
     <h2 class="table-title">Histórico de hoje</h2>
     <table mat-table [dataSource]="diaryHistoric" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef>Data</th>
-        <td mat-cell *matCellDef="let historic">{{historic.date}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="user">
-        <th mat-header-cell *matHeaderCellDef> Usuário </th>
-        <td mat-cell *matCellDef="let historic">{{historic.user}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let historic">{{historic.name}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="brand">
-        <th mat-header-cell *matHeaderCellDef>Placa</th>
-        <td mat-cell *matCellDef="let historic">{{historic.board}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="period">
-        <th mat-header-cell *matHeaderCellDef>Periodo</th>
-        <td mat-cell *matCellDef="let historic">{{historic.period}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="value">
-        <th mat-header-cell *matHeaderCellDef>Valor</th>
-        <td mat-cell *matCellDef="let historic">R$ {{historic.value}}</td>
+      <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef>{{collumn}}</th>
+        <td mat-cell *matCellDef="let historic">{{historic[collumn]}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

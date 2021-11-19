@@ -3,9 +3,7 @@
     <div class="father-div">
 
         <img src="../../assets/images/Logo.png">
-
         <div class="formulario">
-
             <div class="input-container">
                 <mat-label>Nome fantasia</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
@@ -30,7 +28,7 @@
             <div class="input-container">
                 <mat-label>Valor por hora</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput currencyMask [options]="currencyOption" ngDefaultControl>
                 </mat-form-field>
             </div>
 
@@ -44,7 +42,7 @@
             <div class="input-container">
                 <mat-label>Valor diário</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput currencyMask [options]="currencyOption" ngDefaultControl>
                 </mat-form-field>
             </div>
 
@@ -72,23 +70,87 @@
             <div class="input-container">
                 <mat-label>Valor Mensal</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput currencyMask [options]="currencyOption" ngDefaultControl>
                 </mat-form-field>
             </div>
 
-        </div>
+            <div class="input-container funcioning">
+                <mat-label>Horários de funcionamento</mat-label>
 
-        <div class="flex-container">
+                <div class="flex-form">
+                    <mat-label>Abertura</mat-label>
+                    <mat-form-field class="form-input open" appearance="none">
+                        <mat-select [(value)]="openHour">
+                            <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                                {{hour}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex-form">
+                    <mat-label>Fechamento</mat-label>
+                    <mat-form-field class="form-input" appearance="none">
+                        <mat-select [(value)]="closeHour">
+                            <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                                {{hour}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="input-container funcioning">
+                <mat-label>Dias de funcionamento</mat-label>
+
+                <div class="flex-form">
+                    <mat-label>Dê</mat-label>
+                    <mat-form-field class="form-input" appearance="none">
+                        <mat-select [(value)]="dayFrom">
+                            <mat-option *ngFor="let weekDay of weekDays" value="{{weekDay}}">
+                                {{weekDay}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="flex-form">
+                    <mat-label>À</mat-label>
+                    <mat-form-field class="form-input to" appearance="none">
+                        <mat-select [(value)]="dayTo">
+                            <mat-option *ngFor="let weekDay of weekDays" value="{{weekDay}}">
+                                {{weekDay}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="full-width">
 
             <div class="input-container password">
                 <mat-label>Senha</mat-label>
-                <mat-form-field class="form-input" appearance="none">
+                <mat-form-field class="form-input right" appearance="none">
                     <input matInput [type]="hide ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
+            </div>
+
+            <div class="input-container photo-input">
+                <div class="label-container">
+                    <mat-label>Imagem de Apresentação</mat-label>
+                    <input type="file" (change)="imageSelected($event)" #imageUpload>
+                    <mat-icon class="add-photo" (click)="imageUpload.click()">add_a_photo</mat-icon>
+                </div>
+                <div class="image-container">
+                    <span class="remove-photo" (click)="removePhoto()" *ngIf="imageUrl">x</span>
+                    <span class="none-image" *ngIf="!imageUrl">Nenhuma imagem selecionada</span>
+                    <img class="cover-photo" src="{{imageUrl}}">
+                </div>
             </div>
 
             <div class="buttons-container">
@@ -100,7 +162,6 @@
                     Finalizar
                 </button>
             </div>
-
         </div>
     </div>
 </ion-content>

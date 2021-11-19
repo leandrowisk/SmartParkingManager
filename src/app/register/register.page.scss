@@ -11,6 +11,42 @@
     margin-bottom:  50px;
 }
 
+.photo-input {
+    flex-direction: row;
+}
+
+.funcioning {
+    flex-direction: row;
+    column-gap: 8px;
+}
+
+.flex-form {
+    display: flex;
+    align-items: baseline;
+    column-gap: 16px;
+    margin-top: 16px;
+    .to {
+        margin-left: 8px;
+    }
+    .open {
+        margin-left: 24px;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.image-container {
+    margin-left: auto;
+    margin-right: 10%;
+    display: flex;
+}
+
+.none-image {
+    margin-right: 10%;
+}
+
 img {
     width: 40%;
     margin-left: auto;
@@ -26,6 +62,10 @@ img {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-column-gap: 50px;
+}
+
+.remove-photo {
+    cursor: pointer;
 }
 
 .flex-container {
@@ -55,10 +95,6 @@ img {
     width: 350px;
 }
 
-.input-container, .password{
-    width: 60%;
-}
-
 ion-content{
 
     --ion-background-color:cornflowerblue;
@@ -70,6 +106,7 @@ ion-content{
     padding-left: 8px;
     height: 52px;
     margin-bottom: 18px;
+    font-weight: normal !important;
 }
 .input-container {
     display: flex;
@@ -83,4 +120,11 @@ mat-label {
 
 .password {
     width: 60%;
+}
+
+.add-photo {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 0;
+    cursor: pointer;
 }

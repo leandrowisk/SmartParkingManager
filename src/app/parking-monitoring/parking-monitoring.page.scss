@@ -37,9 +37,32 @@
     color: green;
 }
 
+mat-card-header {
+    justify-content: center;
+}
+
+.reserve-vacancy {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 70%;
+    border-radius: 20px;
+    background: green;
+    color: white;
+    width: 150px;
+    height: 52px;
+    font-size: 16px;
+    padding: 8px;
+}
+
 .spaces-container {
     display: flex;
     justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 32px;
 }
 
 .informations {
@@ -59,13 +82,17 @@
 }
 
 .vacancy-details {
-    width: 50vw;
+    width: 40vw;
 }
 
 .charts-container {
     display: flex;
     align-items: baseline;
     column-gap: 20px;
+}
+
+.card-title {
+    text-align: center;
 }
 
 .available {
@@ -98,12 +125,6 @@ circle-progress {
 .resize-avaliation {
     grid-template-columns: 150px 150px 150px !important;
 }
-
-.resize-percent-chart {
-    width: 40vw;
-}
-
-
 
 .satisfied {
     text-align: center;

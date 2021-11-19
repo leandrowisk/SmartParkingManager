@@ -1,64 +1,64 @@
-
 <ion-content>
 
-  <div class="container"
-      [class.open]="isMenuOpen"
-      [class.close]="!isMenuOpen">
-  <mat-card class="info-container" [class.resize]="isMenuOpen">
-    <h2>INFORMAÇÕES CADASTRAIS</h2>
-    <div class="user-infos">
-    <div class="info">
-      <p>Nome Fantasia</p>
-      <span class="value">Estacionamento Sol Poente</span>
-    </div>
-   
-    <div class="info">
-      <p>CNPJ</p>
-      <span class="value">4546448784</span>
-    </div>
+  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+    <mat-card class="info-container" [class.resize]="isMenuOpen">
+      <div class="title-container">
+        <mat-icon>person</mat-icon>
+        <h2>INFORMAÇÕES CADASTRAIS</h2>
+      </div>
+      <div class="user-infos">
+        <div class="info">
+          <p>Nome Fantasia</p>
+          <span class="value">ParkingSolutions</span>
+        </div>
 
-    <div class="info">
-       <p>Endereço</p>
-       <span class="value">Sol nascente rua da mata</span>
-     </div>
+        <div class="info">
+          <p>CNPJ</p>
+          <span class="value">07.527.986/0045-24</span>
+        </div>
 
-     <div class="info"> 
-       <p>Email</p>
-       <span class="value">SolPoenteEstacionamentos@gmail.com</span>
-     </div>
-     
-     <div class="info">
-      <p>Razão social</p>
-      <span class="value">Estacionamento Sol Poente</span>
-    </div>
-   
-    <div class="info"> 
-      <p>Qtd de vagas disponiveis</p>
-      <span class="value">42</span>
-    </div>
-  
-    <div class="info"> 
-      <p>Valor por hora</p>
-      <span class="value">R$25</span>
-    </div>
-  
-    <div class="info">
-      <p>Valor diário</p>
-      <span class="value">R$60</span>
-    </div>
-    
-    <div class="info"> 
-      <p>Vagas mensais</p>
-      <span class="value">10</span>
-    </div>
-    
-    <div class="info"> 
-      <p>Valor Mensal</p>
-      <span class="value">R$ 145</span>
-    </div>
-   
+        <div class="info">
+          <p>Endereço</p>
+          <span class="value">Rua das Árvores</span>
+        </div>
+
+        <div class="info">
+          <p>Email</p>
+          <span class="value">parkin_solutions@gmail.com</span>
+        </div>
+
+        <div class="info">
+          <p>Razão social</p>
+          <span class="value">ParkingSolutions</span>
+        </div>
+
+        <div class="info">
+          <p>Qtd de vagas disponiveis</p>
+          <span class="value">4</span>
+        </div>
+
+        <div class="info">
+          <p>Valor por hora</p>
+          <span class="value">R$35</span>
+        </div>
+
+        <div class="info">
+          <p>Valor diário</p>
+          <span class="value">R$80</span>
+        </div>
+
+        <div class="info">
+          <p>Vagas mensais</p>
+          <span class="value">2</span>
+        </div>
+
+        <div class="info">
+          <p>Valor Mensal</p>
+          <span class="value">R$ 120</span>
+        </div>
+
+      </div>
+      <button mat-button (click)="updateRegister()">Editar Informações</button>
+    </mat-card>
   </div>
-    <button mat-button (click)="updateRegister()">Editar Informações</button>
-  </mat-card>
-</div>
 </ion-content>

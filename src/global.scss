@@ -48,3 +48,11 @@ mat-card {
     width: 64px !important;
     transition: width 0.5s;
 }
+
+.title-container {
+    display: flex;
+}
+
+mat-step-text-label {
+    display: flex;
+}

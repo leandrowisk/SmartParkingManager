@@ -15,9 +15,9 @@
   <ion-item class="perfil" lines='none' *ngIf="isOpen">
     <div class="perfil-image-container">
       <ion-avatar>
-        <img src="../assets/images/perfil.jpeg">
+        <img src="../../assets/images/empresafict.jpg">
       </ion-avatar>
-      <p class="welcome-message">Bem vindo Leandro</p>
+      <p class="welcome-message">Bem vinda Parking Solutions</p>
     </div>
   </ion-item>
   <ion-item (click)="registration()" class="menu-item" id="first" lines='none' [class.active]="register">
@@ -35,14 +35,14 @@
   </ion-item>
 
 
-  <ion-item (click)="servicesMonitoring()"  class="menu-item" lines='none' [class.active]="services">
+  <ion-item (click)="servicesMonitoring()" class="menu-item" lines='none' [class.active]="services">
     <div class="item-container">
       <mat-icon>settings</mat-icon>
       <ion-label *ngIf="isOpen" class="two-lines">Monitoramento dos serviços</ion-label>
     </div>
   </ion-item>
 
-  <ion-item (click)="parkingManagement()"  class="menu-item" lines='none' [class.active]="management">
+  <ion-item (click)="parkingManagement()" class="menu-item" lines='none' [class.active]="management">
     <div class="item-container">
       <mat-icon>manage_accounts</mat-icon>
       <ion-label *ngIf="isOpen">Gerenciamento</ion-label>

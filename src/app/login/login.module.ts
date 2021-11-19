@@ -14,6 +14,7 @@ import { MaterialModule }         from '../material-module.module';
     LoginPageRoutingModule,
     MaterialModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
+  exports: [LoginPage]
 })
 export class LoginPageModule {}

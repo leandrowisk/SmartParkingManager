@@ -1,0 +1,94 @@
+.first-step {
+    display: flex;
+}
+
+.second-step {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.next-button {
+    background: #50bfe3;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    color: white;
+    cursor: pointer;
+}
+
+.finish-button {
+    cursor: pointer;
+    background: black;
+    width: 40%;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.register-form {
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.first-step {
+    display: flex;
+    align-items: center;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.second-step {
+    display: flex;
+    align-items: center;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+mat-error {
+    margin-top: 6px;
+}
+
+.form-input {
+    cursor: pointer;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    padding-left: 8px;
+    height: 52px;
+    margin-bottom: 18px;
+    font-weight: normal !important;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+mat-label {
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+ion-content {
+    --ion-background-color: #e5e5e5;
+}
+
+mat-stepper {
+    border-radius: 20px;
+}

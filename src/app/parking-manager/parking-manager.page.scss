@@ -13,12 +13,29 @@
 mat-label {
     margin-left: 6px;
     font-weight: 500;
+    margin-top: 8px;
+    margin-left: 8px;
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.mini-form {
+    height: 0;
+    transition: height 0.5s ease;
+}
+
+.show-form {
+    height: 280px;
+    transition: height 0.5s ease;
+}
+
+.show-form-2 {
+    height: 360px;
+    transition: height 0.5s ease;
 }
 
 button {
@@ -54,6 +71,31 @@ button {
     align-items: center;
     cursor: pointer;
     margin-bottom: 16px;
+}
+
+.work-hour {
+    margin-top: 16px;
+}
+
+.first {
+    margin-left: 32px;
+}
+
+.open-period {
+    margin-left: 72px;
+}
+
+.close-period {
+    margin-left: 84px;
+    margin-top: 16px;
+}
+
+.second {
+    margin-left: 8px;
+}
+
+.period {
+    margin-top: 24px;
 }
 
 .value {
@@ -175,8 +217,12 @@ ion-content {
     --ion-background-color: #e5e5e5;
 }
 
+.working-days {
+    display: flex;
+}
+
 .open {
-    margin-left: 250px;
+    margin-left: 350px;
     transition: margin-left 0.5s;
 }
 
@@ -184,3 +230,4 @@ ion-content {
     margin-left: 64px;
     transition: margin-left 0.5s;
 }
+

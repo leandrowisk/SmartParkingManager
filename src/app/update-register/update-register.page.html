@@ -1,79 +1,96 @@
 <ion-content>
     <div class="father-div" [class.open]="isMenuOpen"
                             [class.close]="!isMenuOpen">
-        <h2>ALTERAR CADASTRO</h2>
+        <div class="title-container">
+            <mat-icon>edit</mat-icon>
+            <h2>ALTERAR CADASTRO</h2>
+        </div>
+       
         <div class="formulario">
 
             <div class="input-container">
                 <mat-label>Nome fantasia</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
-                    <input matInput label="nome-fantasia">
+                    <input matInput label="nome-fantasia" [(ngModel)]="fantasyName" *ngIf="fantasyName">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Quantidade de vagas</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="vacanciesNumber" *ngIf="vacanciesNumber">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Email</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="email" *ngIf="email">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Valor por hora</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="hourValue" *ngIf="hourValue">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Endereço</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="address" *ngIf="address">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Valor diário</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="dailyValue" *ngIf="dailyValue">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>CNPJ</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="cnpj" *ngIf="cnpj">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Qtd de vagas mensais</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="monthlyVacanciesNumber" *ngIf="monthlyVacanciesNumber">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Razão social</mat-label>
                 <mat-form-field class="form-input" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="socialReason" *ngIf="socialReason">
                 </mat-form-field>
             </div>
 
             <div class="input-container">
                 <mat-label>Valor Mensal</mat-label>
                 <mat-form-field class="form-input right" appearance='none'>
-                    <input matInput>
+                    <input matInput [(ngModel)]="monthlyValue" *ngIf="monthlyValue">
                 </mat-form-field>
             </div>
 
+        </div>
+
+        <div class="input-container photo-input">
+            <mat-label>Imagem de Apresentação</mat-label>
+                <input type="file"
+                       (change)="imageSelected($event)"
+                       #imageUpload>
+                <mat-icon class="add-photo" (click)="imageUpload.click()">add_a_photo</mat-icon>
+                <div class="image-container">
+                    <span class="remove-photo" (click)="removePhoto()" *ngIf="imageUrl">x</span>
+                    <span class="none-image" *ngIf="!imageUrl">Nenhuma imagem selecionada</span>
+                    <img class="cover-photo" src="{{imageUrl}}">
+                </div>
         </div>
 
         <div class="flex-container">

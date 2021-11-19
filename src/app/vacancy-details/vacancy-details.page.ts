@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
-import { MenuController }    from '@ionic/angular';
-import { todayHistory }      from '../interfaces/historic';
+
 @Component({
   selector: 'app-vacancy-details',
   templateUrl: './vacancy-details.page.html',
@@ -9,22 +8,19 @@ import { todayHistory }      from '../interfaces/historic';
 })
 export class VacancyDetailsPage implements OnInit {
   public isMenuOpen = false;
-  constructor(private menu: MenuController,
-              private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.close();
-    let isMenuOpen = this.route.snapshot.paramMap.get('isMenuOpen');
-    if (isMenuOpen) {
+    this.resize();
+  }
+
+  resize() {
+    if (this.route.snapshot.paramMap.get('isMenuOpen'))
       this.isMenuOpen = true;
-    }
+    else
+      this.isMenuOpen = false;
   }
 
-  close() {  
-    this.menu.close();
-  }
-
-  displayedColumns: string[] = ['date', 'user', 'name', 'brand', 'period', 'value'];
-  diaryHistoric = todayHistory;
+  displayedColumns: string[] = ['data', 'usuário', 'nome', 'marca', 'periodo', 'valor'];
 
 }

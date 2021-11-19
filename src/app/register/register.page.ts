@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {Location }           from '@angular/common';
+import { Component, OnInit }        from '@angular/core';
+import { Location }                 from '@angular/common';
+import { ActivatedRoute }           from '@angular/router';
+import { FormBuilder, FormControl, 
+         FormGroup, Validators }    from '@angular/forms';
+import { Parking }                  from '../interfaces/Parking';
+import { CurrencyMaskConfig }       from 'ngx-currency/src/currency-mask.config';
+
 
 @Component({
   selector: 'app-register',
@@ -9,12 +15,90 @@ import {Location }           from '@angular/common';
 export class RegisterPage implements OnInit {
 
   public hide: boolean = true;
+  public isMenuOpen: boolean = false;
+  public company: Parking;
+  public imageUrl: string;
+  public dailyHours: Array<String>;
+  public weekDays: Array<String>;
+  public dayFrom: string;
+  public dayTo: string;
+  public openHour: string;
+  public closeHour: string;
+  public currencyOption = {prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false', align: 'left'};
 
-  constructor(private location: Location) { }
+  register: FormGroup;
+  constructor(private location: Location,
+              private _formBuilder: FormBuilder,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // this.initializeForm();
+    this.initializeArrays();
+    this.resize();
   }
 
+  imageSelected(event) {
+    // this.imageUrl = image.target.files[0].name;
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event:any) => {
+          this.imageUrl = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+  }
+}
+
+  removePhoto() {
+    this.imageUrl = '';
+  }
+
+  initializeArrays() {
+    this.dailyHours = ['00:00','00:30','01:00','01:30','02:00', '02:30', '03:00', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', 
+    '07:00', '07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30',
+    '15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30',
+    '23:00', '23:30'];
+    this.weekDays = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
+  }
+
+  initializeCompany() {
+    this.company.fantasy_name = '';
+    this.company.vacancies_number = 0;
+    this.company.company_email = '';
+    this.company.hour_price = 0;
+    this.company.daily_price = 0;
+    this.company.monthly_price = 0;
+    this.company.password = '';
+    this.company.vacancies_number = 0;
+    this.company.social_reason = '';
+    this.company.company_address = '';
+  }
+
+  // initializeForm() {
+  //   this.initializeCompany();
+  //   this.register = this._formBuilder.group({
+  //     //  fantasyName: [this.company.fantasy_name, Validators.required],
+  //      vacanciesNumber: [this.company.vacancies_number, Validators.required],
+  //      email: [this.company.company_email, Validators.required],
+  //      hourPrice: [this.company.hour_price, Validators.required],
+  //      address: [this.company.company_address, Validators.required],
+  //      dailyPrice: [this.company.daily_price, Validators.required],
+  //      cnpj: [this.company.cnpj, Validators.required],
+  //      monthlyVacancies: [this.company.monthly_vacancies, Validators.required],
+  //      socialReason: [this.company.social_reason, Validators.required],
+  //      monthlyPrice: [this.company.monthly_price, Validators.required],
+  //      apresentationImage: [this.company.apresentation_image, Validators.required],
+  //      password: [this.company.password, Validators.required]
+  //   });
+  // }
+
+  
+  
+  resize() {
+    if (this.route.snapshot.paramMap.get('menuState'))
+      this.isMenuOpen = true;
+    else 
+      this.isMenuOpen = false;
+  }
   goBack() {
     this.location.back();
   }
