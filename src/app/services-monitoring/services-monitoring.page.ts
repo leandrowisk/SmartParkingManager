@@ -40,7 +40,6 @@ export class ServicesMonitoringPage implements OnInit {
   }
 
   resize() {
-    console.log('chamou resize');
     if (this.route.snapshot.paramMap.get('menuState'))
       this.isMenuOpen = true;
     else 
@@ -52,7 +51,6 @@ export class ServicesMonitoringPage implements OnInit {
     this._services.getServices().subscribe(service=> {
         this.services.paginator = this.paginator;
         this.services.data = service;
-        console.log('services',this.services.data)
     })
   }
 

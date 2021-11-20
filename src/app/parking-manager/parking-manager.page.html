@@ -62,12 +62,11 @@
           <mat-icon *ngIf="newPeriod">remove</mat-icon>
         </div>
 
-        <div class="mini-form" [class.show-form-2]="newPeriod" *ngIf="newPeriod">
+        <div class="mini-form" [class.show-form-2]="newPeriod">
 
-          <mat-label>Horário de funcionamento</mat-label>
-
-          <div class="working-hours">
-          <div class="flex-form" *ngIf="newPeriod">
+          <div class="working-hours" *ngIf="newPeriod">
+            <mat-label>Horário de funcionamento</mat-label>
+          <div class="flex-form">
             <mat-label>Abertura</mat-label>
             <mat-form-field class="form-input work-hour first" appearance="none">
               <mat-select [(value)]="openHour">
@@ -78,7 +77,7 @@
             </mat-form-field>
           </div>
 
-          <div class="flex-form" *ngIf="newPeriod">
+          <div class="flex-form">
             <mat-label>Fechamento</mat-label>
             <mat-form-field class="form-input work-hour second" appearance="none">
               <mat-select [(value)]="closeHour">
@@ -90,7 +89,7 @@
           </div>
         </div>
       
-          <div class="period">
+          <div class="period" *ngIf="newPeriod">
             <mat-label>Dias de funcionamento</mat-label>
             <div class="flex-form" *ngIf="newPeriod">
               <mat-label>Dê</mat-label>

@@ -43,10 +43,6 @@ export class RegisterUserPage implements OnInit {
     }
   }
 
-  rentVacancy() {
-    console.log(this.user)
-  }
-
   initializeForms() {
     this.userInfoForm = this._formBuilder.group({
       name: [this.user.name,[ Validators.required, Validators.minLength(3), Validators.maxLength(30)]],

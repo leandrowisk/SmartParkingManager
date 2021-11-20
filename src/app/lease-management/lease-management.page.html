@@ -2,7 +2,7 @@
   <div id="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
     <div class="table-container">
       <span class="title">Histórico de Locações</span>
-      <table mat-table [dataSource]="lease" class="mat-elevation-z8" multiTemplateDataRows *ngIf="lease">
+      <table mat-table [dataSource]="lease" class="mat-elevation-z8" multiTemplateDataRows>
 
         <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of displayedColumns; let index=index">
           <th mat-header-cell *matHeaderCellDef>{{collumn}}</th>
@@ -16,7 +16,6 @@
                 <span class="lease-details">Detalhes</span>
               </div>
             </div>
-
           </td>
         </ng-container>
 
@@ -59,16 +58,14 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let element; columns: displayedColumns; let i = dataIndex" class="example-element-row" (click)="itemClicked(i)"
-          [class.example-expanded-row]="expandedElement === element"
+        <tr mat-row *matRowDef="let element; columns: displayedColumns; let i = dataIndex" class="example-element-row"
+          (click)="itemClicked(i)" [class.example-expanded-row]="expandedElement === element"
           (click)="expandedElement = expandedElement === element ? null : element">
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         {{element}}
       </table>
-      <mat-paginator [pageSize]="pageSize" [length]="length"></mat-paginator>
-
-
+      <mat-paginator #paginator [pageSize]="7" [length]="2" hidePageSize></mat-paginator>
     </div>
 
 
@@ -88,9 +85,9 @@
               <p class="total">Valor Total <span class="total-value">R$ 50</span></p>
             </div>
 
-            <canvas *ngIf="weekLabels" baseChart [datasets]="chartDaily" [labels]="weekLabels" [options]="lineChartOptions"
-              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-              [plugins]="lineChartPlugins">
+            <canvas *ngIf="weekLabels" baseChart [datasets]="chartDaily" [labels]="weekLabels"
+              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+              [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
           </div>
 
@@ -110,9 +107,9 @@
               <p class="total">Valor Total <span class="total-value"> R$ 250</span></p>
             </div>
 
-            <canvas *ngIf="monthLabels" baseChart [datasets]="chartMontly" [labels]="monthLabels" [options]="lineChartOptions"
-              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-              [plugins]="lineChartPlugins">
+            <canvas *ngIf="monthLabels" baseChart [datasets]="chartMontly" [labels]="monthLabels"
+              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+              [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
           </div>
         </mat-tab>

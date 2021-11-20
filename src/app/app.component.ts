@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
               private platform: Platform) {}
   
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap.get('init'));
     if(this.route.snapshot.paramMap.get('init')){
       this.init = true;
     }
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   resize(menuState: boolean) {
-    console.log('resize')
     if(menuState)
       this.isOpen = true;
     else

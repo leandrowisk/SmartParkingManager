@@ -42,7 +42,7 @@ export class LeaseManagementPage implements OnInit {
   public lenght = 2;
   public dataSource: Array<Lease>;
   public lease: MatTableDataSource<Lease> = new MatTableDataSource();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
   
 
   constructor(private route: ActivatedRoute,
@@ -69,7 +69,6 @@ export class LeaseManagementPage implements OnInit {
   }
 
   itemClicked(index: number) {
-      console.log('índice da linha',index);
       if (!this.isExpanded) {
         this.isExpanded = true;
       }

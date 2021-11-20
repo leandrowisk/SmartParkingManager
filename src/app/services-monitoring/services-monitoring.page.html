@@ -4,7 +4,7 @@
 
     <h2>MONITORAMENTO DOS SERVIÇOS</h2>
 
-    <table mat-table [dataSource]="services" class="mat-elevation-z8" *ngIf="services">
+    <table mat-table [dataSource]="services" class="mat-elevation-z8">
 
 
       <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of displayedColumns; let index=index">
@@ -24,7 +24,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSize]="10" [length]="10"></mat-paginator>
+    <mat-paginator #paginator [pageSize]="2" [length]="2"></mat-paginator>
 
   </div>
 

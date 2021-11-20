@@ -93,6 +93,22 @@ ion-avatar {
     transition: margin-left 0.5s;
 }
 
+
+.lease-details {
+    color: green;
+    margin-left: 32px;
+}
+
+.user-perfil {
+    transform: scale(0.7);
+}
+
+.flex-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .close {
     margin-left: 64px;
     transition: margin-left 0.5s;

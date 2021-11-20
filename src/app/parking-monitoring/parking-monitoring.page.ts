@@ -21,8 +21,6 @@ export class ParkingMonitoringPage implements OnInit {
   }
 
   resize() {
-    console.log('chamou resize do monitoring')
-    console.log('menu state',this.route.snapshot.paramMap.get('menuState'));
     if (this.route.snapshot.paramMap.get('menuState'))
       this.isMenuOpen = true;
     else 
