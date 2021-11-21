@@ -21,6 +21,7 @@ export class UpdateRegisterPage implements OnInit {
   public monthlyVacanciesNumber: number = 2;
   public socialReason: string = 'ParkingSolutions';
   public monthlyValue: number = 120;
+  public menuHistory: boolean = true;
 
   constructor(private location: Location,
               private userService: UserService,
@@ -50,10 +51,17 @@ export class UpdateRegisterPage implements OnInit {
   }
 
   resize() {
-    if (this.route.snapshot.paramMap.get('isMenuOpen'))
-      this.isMenuOpen = true;
-    else
-      this.isMenuOpen = false;
+    if (this.menuHistory != this.isMenuOpen) {
+      if (this.route.snapshot.paramMap.get('isMenuOpen')) {
+        this.isMenuOpen = true;
+        this.menuHistory = true;
+      }
+      else {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+        
+    }
   }
 
   imageSelected(event) {

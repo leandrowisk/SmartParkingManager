@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div class="services-table-container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+  <div class="services-table-container close" [class.open]="isMenuOpen">
 
     <h2>MONITORAMENTO DOS SERVIÇOS</h2>
 
@@ -25,7 +25,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator #paginator [pageSize]="2" [length]="2"></mat-paginator>
-
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
+      <mat-icon>chat</mat-icon>
+    </ion-fab>
   </div>
 
 </ion-content>

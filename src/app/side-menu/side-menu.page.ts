@@ -1,6 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController }                          from '@ionic/angular';
+import { Component, ElementRef, 
+         EventEmitter, Input,
+         OnInit, Output, ViewChild }   from '@angular/core';
+import { Router }                      from '@angular/router';
+import { AlertController }             from '@ionic/angular';
 
 @Component({ 
   selector: 'side-menu',
@@ -17,6 +19,7 @@ export class SideMenuPage implements OnInit {
   public services: boolean = false;
   public management: boolean = false;
   public leasesManagement: boolean = false;
+  public isMenuChange: boolean = false;
   @Output() menuState: EventEmitter<boolean> = new EventEmitter();
   @Input() initApp: boolean = false;
 
@@ -25,6 +28,7 @@ export class SideMenuPage implements OnInit {
 
 
   ngOnInit() {
+    this.menuState.emit(false);
   }
 
   ngOnChanges() {
@@ -95,8 +99,7 @@ export class SideMenuPage implements OnInit {
       menuFirstLine.classList.add('rotate1');
       menuSecondLine.classList.add('rotate2');
       menuThirdLine.classList.add('rotate3');
-      this.count += 1;
-     
+      this.count += 1; 
     }  
     else{
       this.isOpen = false;

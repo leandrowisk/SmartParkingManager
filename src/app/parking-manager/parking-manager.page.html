@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+  <div id="container" [class.close]="!isMenuOpen" [class.open]="isMenuOpen">
     <h2 class="title">GERENCIAMENTO DO ESTACIONAMENTO</h2>
     <div class="services-manager" [class.resise]="isMenuOpen">
       <div class="new-service">
@@ -105,7 +105,7 @@
             <div class="flex-form" *ngIf="newPeriod">
               <mat-label>À</mat-label>
               <mat-form-field class="form-input close-period" appearance="none">
-                <mat-select [(value)]="dayFrom">
+                <mat-select [(value)]="dayTo">
                   <mat-option *ngFor="let weekDay of weekDays" value="{{weekDay}}">
                     {{weekDay}}
                   </mat-option>
@@ -126,5 +126,9 @@
         <span>Periodo <span class="value">9h às 18h</span></span>
       </div>
     </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
+      <mat-icon>chat</mat-icon>
+    </ion-fab>
   </div>
 </ion-content>

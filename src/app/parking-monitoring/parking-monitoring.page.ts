@@ -1,4 +1,4 @@
-import { Component, OnInit }                      from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild }                      from '@angular/core';
 import { ActivatedRoute, Router }                                 from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet }             from 'ng2-charts';
@@ -11,20 +11,27 @@ import { Color, Label, MultiDataSet }             from 'ng2-charts';
 export class ParkingMonitoringPage implements OnInit {
   
   public date: Date = new Date();
-  public isMenuOpen: boolean = false;
+  public isMenuOpen: any = false;
+  public menuHistory: boolean = false;
+  @ViewChild('container') container: ElementRef;
   constructor(public router: Router,
               public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.snapshot.paramMap.get('menuState')
     this.resize();
-    
   }
 
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+      if(this.menuHistory != this.isMenuOpen) {
+        if (this.isMenuOpen) {
+          this.menuHistory = true;
+        }
+        else {
+          this.isMenuOpen = false;
+          this.menuHistory = false;
+        }
+      }
   }
 
   details() {

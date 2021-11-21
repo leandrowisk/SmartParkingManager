@@ -1,3 +1,4 @@
+
 import { NgModule }                         from '@angular/core';
 import { CommonModule }                     from '@angular/common';
 import { FormsModule }                      from '@angular/forms';
@@ -9,6 +10,8 @@ import { ChartsModule }                     from 'ng2-charts';
 import { SideMenuPageModule }               from './../side-menu/side-menu.module';
 import { ReactiveFormsModule }              from '@angular/forms'
 import { MatPaginatorModule }               from '@angular/material/paginator';
+import { ChatBotPageModule }                from './../chat-bot/chat-bot.module';
+
 
 @NgModule({
   imports: [
@@ -20,7 +23,8 @@ import { MatPaginatorModule }               from '@angular/material/paginator';
     MaterialModule,
     ChartsModule,
     SideMenuPageModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ChatBotPageModule
   ],
   declarations: [LeaseManagementPage]
 })

@@ -6,15 +6,15 @@ import { animate, state, style,
 import { MatCheckbox }                  from '@angular/material/checkbox';
 import { ActivatedRoute }               from '@angular/router';
 import { FormControl }                  from '@angular/forms';
-import { users }                         from '../mocks/users-mock';
-import { leases }                        from '../mocks/leases-mock';
+import { users }                        from '../mocks/users-mock';
+import { leases }                       from '../mocks/leases-mock';
 import {Observable, of }                from 'rxjs';
-import { UserService } from '../services/user.service';
-import { User } from '../interfaces/User';
-import { LeaseService } from '../services/lease.service';
-import { Lease } from '../interfaces/Lease';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { UserService }                  from '../services/user.service';
+import { User }                         from '../interfaces/User';
+import { LeaseService }                 from '../services/lease.service';
+import { Lease }                        from '../interfaces/Lease';
+import { MatTableDataSource }           from '@angular/material/table';
+import { MatPaginator }                 from '@angular/material/paginator';
 
 @Component({
   selector: 'app-lease-management',
@@ -30,7 +30,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class LeaseManagementPage implements OnInit {
   public isExpanded: boolean = false;
-  public isMenuOpen: boolean = false;
+  public isMenuOpen: any = false;
   public index: number;
   public weekDays: Array<string>;
   public months: Array<string>;
@@ -41,16 +41,18 @@ export class LeaseManagementPage implements OnInit {
   public pageSize = 2;
   public lenght = 2;
   public dataSource: Array<Lease>;
+  public menuHistory: boolean = false;
   public lease: MatTableDataSource<Lease> = new MatTableDataSource();
   @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
   
 
   constructor(private route: ActivatedRoute,
               private _leaseService: LeaseService,
+              private changes: ChangeDetectorRef,
               private changeDetector: ChangeDetectorRef) { }
 
-  ngOnInit() {
-  
+  ngOnInit() { 
+    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState')
     this.resize();
     this.initializeArrays();
     this.getLeases();
@@ -58,9 +60,7 @@ export class LeaseManagementPage implements OnInit {
     this.setDaysLabelsChart(this.weekDays);
     this.setMonthLabelsChart(this.months);
     this.changeDetector.detectChanges();
-   
   }
-
  
   initializeArrays() {
     this.months = ['Janeiro', 'Fevereiro', 'Março', 
@@ -85,10 +85,15 @@ export class LeaseManagementPage implements OnInit {
   }
 
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+    if(this.menuHistory != this.isMenuOpen) {
+      if (this.isMenuOpen) {
+        this.menuHistory = true;
+      }
+      else {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+    }
   }
 
   chartDaily: ChartDataSets[] = [

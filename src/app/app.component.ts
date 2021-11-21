@@ -54,9 +54,11 @@ export class AppComponent implements OnInit {
         if(component instanceof page) {
           if (!isOpen) {
             component.isMenuOpen = this.isOpen;
+            page[1].isMenuOpen = isOpen;
           }
           else {
             component.isMenuOpen = isOpen;
+            page[1].isMenuOpen = isOpen;
           }
         }
       }
