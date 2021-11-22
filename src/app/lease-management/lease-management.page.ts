@@ -52,7 +52,7 @@ export class LeaseManagementPage implements OnInit {
               private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() { 
-    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState')
+    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
     this.resize();
     this.initializeArrays();
     this.getLeases();

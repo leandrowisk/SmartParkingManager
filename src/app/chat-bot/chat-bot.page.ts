@@ -28,6 +28,7 @@ export class ChatBotPage implements OnInit {
 
   ngAfterViewInit() {
     this.refreshChat();
+    this.scroll();
     this.changeDetector.detectChanges();
   }
 
@@ -42,9 +43,11 @@ export class ChatBotPage implements OnInit {
     this.messages = [];
   }
 
-  scroll() {  
+  scroll() {
     let container = document.getElementById('container-messages');
-    container.scrollTop = (container.scrollHeight) + 62;
+    setTimeout(() => {
+      container.scrollTop = container.scrollHeight;
+    },0.5)
   }
 
   sendMessage() {
@@ -59,7 +62,6 @@ export class ChatBotPage implements OnInit {
     });
     this.loading = true;
     this.scroll();
-    this.changeDetector.detectChanges();
     setTimeout(() =>{
       this.messageChat();
     }, 3000)
