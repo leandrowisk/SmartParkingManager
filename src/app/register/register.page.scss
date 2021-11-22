@@ -78,7 +78,7 @@ img {
     display: flex;
     width: 100%;
     justify-content: space-around;
-   
+    margin-top: 62px;
 
     button {
         background-color: black;
@@ -127,4 +127,13 @@ mat-label {
     margin-left: 8px;
     margin-top: 0;
     cursor: pointer;
+    font-size: 32px;
+}
+
+.cover-photo {
+    width: 200px;
+    border-radius: 20px;
+    height: 200px;
+    margin-left: auto;
+    display: flex;
 }

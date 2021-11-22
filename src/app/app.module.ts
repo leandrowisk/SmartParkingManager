@@ -9,10 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule }          from './material-module.module';
 import { CommonModule }            from '@angular/common';
 import { SideMenuPageModule }      from './side-menu/side-menu.module';
-import { LoginPageModule }         from './login/login.module';
-import { RegisterPageModule }      from './register/register.module';
-import { MatFormFieldModule }      from '@angular/material/form-field';
-import { MatInputModule }          from '@angular/material/input';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,9 +21,8 @@ import { MatInputModule }          from '@angular/material/input';
             BrowserAnimationsModule,
             MaterialModule,
             CommonModule,
-            SideMenuPageModule,
-            LoginPageModule,
-            RegisterPageModule],
+            SideMenuPageModule
+          ],
   providers: [],
   bootstrap: [AppComponent],
 })

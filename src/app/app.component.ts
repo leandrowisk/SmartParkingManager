@@ -19,11 +19,10 @@ import { Platform }                from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public init;
+  public init: boolean = true;
   public component: any;
   public isOpen: boolean = false
   public pages: Array<any>;
-  public open: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private route: ActivatedRoute,
               private router: Router,

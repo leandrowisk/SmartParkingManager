@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { Location }                 from '@angular/common';
-import { ActivatedRoute }           from '@angular/router';
+import { ActivatedRoute, Router }   from '@angular/router';
 import { FormBuilder, FormControl, 
          FormGroup, Validators }    from '@angular/forms';
 import { Parking }                  from '../interfaces/Parking';
@@ -29,6 +29,7 @@ export class RegisterPage implements OnInit {
   register: FormGroup;
   constructor(private location: Location,
               private _formBuilder: FormBuilder,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -91,7 +92,9 @@ export class RegisterPage implements OnInit {
   //   });
   // }
 
-  
+  registerUser() {
+    this.router.navigate(['/app', {init: true}])
+  }
   
   resize() {
     if (this.route.snapshot.paramMap.get('menuState'))
@@ -99,6 +102,7 @@ export class RegisterPage implements OnInit {
     else 
       this.isMenuOpen = false;
   }
+
   goBack() {
     this.location.back();
   }
