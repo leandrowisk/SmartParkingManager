@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+  <div class="container" [class.open]="isMenuOpen">
     <mat-card class="info-container" [class.resize]="isMenuOpen">
       <div class="title-container">
         <mat-icon>person</mat-icon>
@@ -60,5 +60,9 @@
       </div>
       <button mat-button (click)="updateRegister()">Editar Informações</button>
     </mat-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
+      <mat-icon>chat</mat-icon>
+    </ion-fab>
   </div>
 </ion-content>

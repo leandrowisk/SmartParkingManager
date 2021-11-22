@@ -14,6 +14,7 @@ import { LeaseService }       from '../services/lease.service';
 })
 export class VacancyDetailsPage implements OnInit {
   public isMenuOpen = false;
+  public menuHistory: boolean = false;
   public leases: MatTableDataSource<Lease> = new MatTableDataSource();
   @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
 
@@ -26,15 +27,21 @@ export class VacancyDetailsPage implements OnInit {
   }
 
   resize() {
-    if (this.route.snapshot.paramMap.get('isMenuOpen'))
-      this.isMenuOpen = true;
-    else
-      this.isMenuOpen = false;
+    if (this.menuHistory != this.isMenuOpen) {
+      if (this.route.snapshot.paramMap.get('isMenuOpen')) {
+        this.isMenuOpen = true;
+        this.menuHistory = true;
+      }
+      else {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+        
+    }
   }
 
   getLeases() {
-    this._leasesService.getLeases().subscribe(lease =>{7
-      console.log('paginator', this.leases.paginator)
+    this._leasesService.getLeases().subscribe(lease => {
       this.leases.paginator = this.paginator;
       this.leases.data = lease;
     })

@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
+  <div id="container" [class.close]="!isMenuOpen" [class.open]="isMenuOpen">
     <div class="hello-message">
       <h2>Olá Parking Solutions</h2>
     </div>
@@ -105,7 +105,11 @@
       <div class="parking-space disponible">
         <h2>Livre</h2>
       </div>
-
     </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
+      <mat-icon>chat</mat-icon>
+    </ion-fab>
   </div>
+
+ 
 </ion-content>

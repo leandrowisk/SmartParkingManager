@@ -7,6 +7,11 @@
     margin-top: 50px;
 }
 
+.container {
+    margin-left: 64px;
+    transition: margin-left 0.5s;
+}
+
 .resize {
     width: 70vw;
 }
@@ -73,8 +78,18 @@ mat-card {
 }
 
 .open {
-    margin-left: 250px;
-    transition: margin-left 0.5s;
+    margin-left: 250px !important;
+    transition: margin-left 0.5s !important;
+}
+
+.chat-button {
+    cursor: pointer;
+    background: cornflowerblue;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    right: 32px;
+    bottom: 50px;
 }
 
 .close {

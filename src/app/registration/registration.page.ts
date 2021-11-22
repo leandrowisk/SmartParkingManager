@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RegistrationPage implements OnInit {
   public isMenuOpen: boolean = false;
+  public menuHistory: boolean = false;
   constructor(private route: ActivatedRoute,
               private router: Router) { }
 
@@ -16,10 +17,16 @@ export class RegistrationPage implements OnInit {
   }
   
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+    if (this.menuHistory != this.isMenuOpen) {
+      if (this.route.snapshot.paramMap.get('menuState')){
+        this.isMenuOpen = true;
+        this.menuHistory = true;
+      } 
+      else {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+    }
   }
 
   updateRegister() {

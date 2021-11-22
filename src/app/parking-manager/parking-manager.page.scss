@@ -17,6 +17,16 @@ mat-label {
     margin-left: 8px;
 }
 
+.chat-button {
+    cursor: pointer;
+    background: cornflowerblue;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    right: 32px;
+    bottom: 50px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -223,8 +233,8 @@ ion-content {
 }
 
 .open {
-    margin-left: 350px;
-    transition: margin-left 0.5s;
+    margin-left: 350px !important;
+    transition: margin-left 0.5s !important;
 }
 
 .close {

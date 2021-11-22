@@ -61,6 +61,16 @@
     }
 }
 
+.chat-button {
+    cursor: pointer;
+    background: cornflowerblue;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    right: 32px;
+    bottom: 50px;
+}
+
 mat-error {
     margin-top: 6px;
 }

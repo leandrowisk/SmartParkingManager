@@ -1,0 +1,27 @@
+<ion-content>
+
+  <div class="container">
+    <div class="chat-title">
+      <img src='../../assets/images/smartChat.png'>
+      <h2>SmartChat</h2>
+      <mat-icon (click)="close()" class="close">close</mat-icon>
+    </div>
+
+    <div id="container-messages" #container>
+      <div class="message-container" *ngFor="let message of messages; index as i">
+        <span [ngClass]="message.class" *ngIf="message.text != ''">
+          {{message.text}}
+        </span>
+      </div>
+      <ion-spinner name="dots" *ngIf="loading"></ion-spinner>
+    </div>
+
+    <div class="input-container">
+      <mat-form-field class="form-input" appearance='none'>
+        <input matInput [(ngModel)]="message" (keydown.enter)="sendMessage()">
+      </mat-form-field>
+      <mat-icon class='send-message' (click)="sendMessage()">send</mat-icon>
+    </div>
+
+  </div>
+</ion-content>

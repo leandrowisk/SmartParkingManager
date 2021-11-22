@@ -46,13 +46,23 @@ ion-content {
 }
 
 .open {
-    margin-left: 250px;
-    transition: margin-left 0.5s;
+    margin-left: 250px !important;
+    transition: margin-left 0.5s !important;
 }
 
 .close {
     margin-left: 64px;
     transition: margin-left 0.5s;
+}
+
+.chat-button {
+    cursor: pointer;
+    background: cornflowerblue;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    right: 32px;
+    bottom: 50px;
 }
 
 

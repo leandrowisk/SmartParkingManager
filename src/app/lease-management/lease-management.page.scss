@@ -230,8 +230,8 @@ opacity: 0.5;
 }
 
 .open {
-    margin-left: 250px;
-    transition: margin-left 0.5s;
+    margin-left: 250px !important;
+    transition: margin-left 0.5s !important;
 }
 
 .close {
@@ -242,6 +242,16 @@ opacity: 0.5;
 .lease-details {
     color: cornflowerblue;
     margin-left: 32px;
+}
+
+.chat-button {
+    cursor: pointer;
+    background: cornflowerblue;
+    padding: 16px;
+    border-radius: 50%;
+    position: fixed;
+    right: 32px;
+    bottom: 50px;
 }
 
 .mat-option .mat-option-text{

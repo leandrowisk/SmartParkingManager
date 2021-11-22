@@ -12,7 +12,7 @@ export class ParkingManagerPage implements OnInit {
 
   public newService: boolean = false;
   public newPeriod: boolean = false;
-  public isMenuOpen: boolean = false;
+  public isMenuOpen: any = false;
   public openHour: string;
   public closeHour: string;
   public dayFrom: string;
@@ -20,12 +20,14 @@ export class ParkingManagerPage implements OnInit {
   public dailyHours: Array<String>;
   public weekDays: Array<String>;
   public currencyOption = {prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false', align: 'left'};
-
+  public menuHistory: boolean = false;
+  public container =  document.getElementById('container');
 
 
   constructor(private route: ActivatedRoute) { }
   
   ngOnInit() {
+    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
     this.resize();
     this.initializeArrays();
   }
@@ -41,10 +43,15 @@ export class ParkingManagerPage implements OnInit {
 
 
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+    if(this.menuHistory != this.isMenuOpen) {
+      if (this.isMenuOpen) {
+        this.menuHistory = true;
+      }
+      else {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+    }
   }
   
 

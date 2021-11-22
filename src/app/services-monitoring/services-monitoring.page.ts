@@ -15,6 +15,7 @@ import { ServicesService }    from '../services/services.service';
 export class ServicesMonitoringPage implements OnInit {
 
   public isMenuOpen: boolean = false;
+  public menuHistory: boolean = false;
   public services: MatTableDataSource<Service> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,19 +32,17 @@ export class ServicesMonitoringPage implements OnInit {
     this.resize();
   }
 
-
-  menuState(state: boolean) {
-    if (state)
-      this.isMenuOpen = true;
-    else
-      this.isMenuOpen = false;
-  }
-
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+    if (this.menuHistory != this.isMenuOpen) {
+      if (this.route.snapshot.paramMap.get('menuState')) {
+        this.isMenuOpen = true;
+        this.menuHistory = true;
+      }
+      else  {
+        this.isMenuOpen = false;
+        this.menuHistory = false;
+      }
+    }
   }
 
   

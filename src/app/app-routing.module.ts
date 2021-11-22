@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'register-user',
     loadChildren: () => import('./register-user/register-user.module').then( m => m.RegisterUserPageModule)
   },
+  {
+    path: 'chat-bot',
+    loadChildren: () => import('./chat-bot/chat-bot.module').then( m => m.ChatBotPageModule)
+  },
 ];
 
 @NgModule({
