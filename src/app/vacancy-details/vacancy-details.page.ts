@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute }     from '@angular/router';
 import { Lease }              from '../interfaces/Lease';
 import { LeaseService }       from '../services/lease.service';
+import { ParkingService }     from '../services/parking.service';
+
 
 @Component({
   selector: 'app-vacancy-details',
@@ -18,12 +20,32 @@ export class VacancyDetailsPage implements OnInit {
   public leases: MatTableDataSource<Lease> = new MatTableDataSource();
   @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
 
+  public vacancyDetails = {
+      "name":"",
+      "user":"",
+      "plate":"",
+      "model":"",
+      "brand":"",
+      "date":"",
+      "value":"",
+      "user_image":""
+  };
+
+  public vacancyId = 0;
+
   constructor(private route: ActivatedRoute,
-              private _leasesService: LeaseService) { }
+              private _leasesService: LeaseService,
+              private parkingService: ParkingService) { }
 
   ngOnInit() {
+    this.route.queryParams
+    .subscribe(params => {
+      this.vacancyId = params.idVacancie}
+  );
+
     this.resize();
     this.getLeases();
+    this.getVacancieDetail();
   }
 
   resize() {
@@ -44,8 +66,15 @@ export class VacancyDetailsPage implements OnInit {
     this._leasesService.getLeases().subscribe(lease => {
       this.leases.paginator = this.paginator;
       this.leases.data = lease;
+      console.log(this.leases.data);
     })
   }
 
-  displayedColumns: string[] = ['usuário', 'data', 'placa', 'período', 'valor'];
+  getVacancieDetail() {
+    this.parkingService.getVacancieDetail(this.vacancyId).subscribe(response => {
+      this.vacancyDetails = response;
+    });
+  }
+
+  displayedColumns: string[] = ['usuario', 'data', 'placa', 'periodo', 'valor'];
 }

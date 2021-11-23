@@ -7,7 +7,6 @@ import { MatCheckbox }                  from '@angular/material/checkbox';
 import { ActivatedRoute }               from '@angular/router';
 import { FormControl }                  from '@angular/forms';
 import { users }                        from '../mocks/users-mock';
-import { leases }                       from '../mocks/leases-mock';
 import {Observable, of }                from 'rxjs';
 import { UserService }                  from '../services/user.service';
 import { User }                         from '../interfaces/User';
@@ -44,7 +43,10 @@ export class LeaseManagementPage implements OnInit {
   public menuHistory: boolean = false;
   public lease: MatTableDataSource<Lease> = new MatTableDataSource();
   @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
-  
+  public balance5day = [0, 0, 0, 0, 0];
+  public balance5month = [0, 0, 0, 0, 0];
+
+
 
   constructor(private route: ActivatedRoute,
               private _leaseService: LeaseService,
@@ -55,7 +57,8 @@ export class LeaseManagementPage implements OnInit {
     this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
     this.resize();
     this.initializeArrays();
-    this.getLeases();
+    this.balanceFiveDays();
+    this.balanceFiveMonths()
     this.setToday();
     this.setDaysLabelsChart(this.weekDays);
     this.setMonthLabelsChart(this.months);
@@ -63,9 +66,13 @@ export class LeaseManagementPage implements OnInit {
   }
  
   initializeArrays() {
+    let today: number = new Date().getDay();
+    let month: number = new Date().getMonth();
     this.months = ['Janeiro', 'Fevereiro', 'Março', 
     'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto' ,'Setembro','Outubro', 'Novembro', 'Dezembro'];
     this.weekDays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    this.selectedDay = this.weekDays[today];
+    this.selectedMonth = this.months[month];
   }
 
   itemClicked(index: number) {
@@ -77,11 +84,25 @@ export class LeaseManagementPage implements OnInit {
       }     
   }
 
-  getLeases() {
-    this._leaseService.getLeases().subscribe(lease=> {
-        this.lease.paginator = this.paginator;
-        this.lease.data = lease;
-    })
+  balanceFiveDays() {
+    this._leaseService.balanceFiveDays().subscribe(lease=> {
+      this.balance5day[4] = lease.today;
+      this.balance5day[3] = lease.last1day;
+      this.balance5day[2] = lease.last2day;
+      this.balance5day[1] = lease.last3day;
+      this.balance5day[0] = lease.last4day;
+    });
+  }
+
+
+  balanceFiveMonths() {
+    this._leaseService.balanceFiveMonths().subscribe(lease=> {
+      this.balance5month[4] = lease.now;
+      this.balance5month[3] = lease.last1month;
+      this.balance5month[2] = lease.last2month;
+      this.balance5month[1] = lease.last3month;
+      this.balance5month[0] = lease.last4month;
+    });
   }
 
   resize() {
@@ -97,11 +118,11 @@ export class LeaseManagementPage implements OnInit {
   }
 
   chartDaily: ChartDataSets[] = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Balanço ultimos 5 dias' }
+    { data: this.balance5day, label: 'Balanço ultimos 5 dias' }
   ];
 
   chartMontly: ChartDataSets[] = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Balanço ultimos 5 meses' }
+    { data: this.balance5month, label: 'Balanço ultimos 5 meses' }
   ]
 
   setToday() {
@@ -144,9 +165,30 @@ export class LeaseManagementPage implements OnInit {
   }
 
   setDaysLabelsChart(weekDays) {
-    let today: number = new Date().getDay();
-    this.weekLabels = weekDays.slice(3);
-    this.weekLabels[4] = 'Hoje';
+    let daySelected = weekDays.indexOf(this.selectedDay);
+    let aux = [];
+    let count = 0;
+    let diference: number = daySelected - 5;
+    if(daySelected < 5) {
+      for(let index = daySelected; index >= 0; index --) {
+        aux.push(weekDays[index]);
+      }
+      diference = 5 - aux.length;
+      while(count < diference) {
+        aux.push(weekDays[6 - count])
+        count ++;
+      }
+      this.weekLabels = aux.reverse();
+      this.weekLabels[4] = 'hoje';
+    }
+    else {
+      diference = (daySelected - 5) + 1
+      for (let index = diference; index < daySelected; index++) {
+        aux.push(weekDays[index])
+      }
+      this.weekLabels = aux;
+      this.weekLabels[4] = 'Hoje';
+    }
   }
 
   lineChartOptions = {
@@ -164,5 +206,5 @@ export class LeaseManagementPage implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
   
-  displayedColumns: string[] = ['usuário', 'data',  'placa', 'período', 'valor'];
+  displayedColumns: string[] = ['usuario', 'data',  'placa', 'periodo', 'valor'];
 }

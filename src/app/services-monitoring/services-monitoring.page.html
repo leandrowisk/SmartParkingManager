@@ -2,29 +2,92 @@
 
   <div class="services-table-container close" [class.open]="isMenuOpen">
 
-    <h2>MONITORAMENTO DOS SERVIÇOS</h2>
+    <h2>MONITORAMENTO - LOCAÇÕES E SERVIÇOS</h2>
 
-    <table mat-table [dataSource]="services" class="mat-elevation-z8">
+    <div class="table-container">
+      <table mat-table [dataSource]="lease" class="mat-elevation-z8" multiTemplateDataRows>
 
+        <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of leaseColumns; let index=index">
+          <th mat-header-cell *matHeaderCellDef>{{collumn}}</th>
+          <td mat-cell *matCellDef="let lease" [class.justified]="index == 5">
+            <div [class.flex-field-lease]="index == 0 || index == 5">
+              <ion-avatar *ngIf="index == 0">
+                <img class="user-perfil" src="{{lease.imagem}}">
+              </ion-avatar>
+              <div *ngIf="index > 0">
+              {{lease[collumn]}}
+              </div>
+              <div *ngIf="index == 5">
+                <span class="lease-details">Detalhes</span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="{{collumn}}" *ngFor="let collumn of displayedColumns; let index=index">
-        <th mat-header-cell *matHeaderCellDef>{{collumn}}</th>
-        <td mat-cell *matCellDef="let services">
-          <div [class.flex-field]="index == 0">
-            <ion-avatar *ngIf="index == 0">
-              <img class="user-perfil" src="{{services.imagem}}">
-            </ion-avatar>
-            {{services[collumn]}}
-          </div>
+        <ng-container matColumnDef="expandedDetail">
+          <td class="expand" mat-cell *matCellDef="let element" [attr.colspan]="leaseColumns.length">
+            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <div class="example-element-diagram">
+                <h2 class="details-title">Locação {{element.id_rent}}</h2>
+                <div class="location-infos">
+                  
+                  <div class="info">
+                    <p>Valor da Vaga</p>
+                    <span class="value">{{element.valor}}</span>
+                  </div>
 
-        </td>
-      </ng-container>
+                  <div class="info">
+                    <p>Placa</p>
+                    <span class="value">{{element.placa}}</span>
+                  </div>
 
+                  <div class="info">
+                    <p>Modelo</p>
+                    <span class="value">{{element.model}}</span>
+                  </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator #paginator [pageSize]="2" [length]="2"></mat-paginator>
+                  <div class="info">
+                    <p>Marca</p>
+                    <span class="value">{{element.brand}}</span>
+                  </div>
+
+                  
+                  <div class="info">
+                    <p>Entrada</p>
+                    <span class="value">{{element.entry_time}}</span>
+                  </div>
+      
+                  <div class="info">
+                    <p>Saída</p>
+                    <span class="value">{{element.exit_time}}</span>
+                  </div>
+                </div>
+
+                <div style="margin-left: 70px;padding-top: 15px;display: block;">
+                  <p style="font-weight: 500;">Serviços</p>
+                  <ul *ngFor="let service of element.services">
+                    <li><a style="font-weight: 500; color:black">Serviço: </a>{{service.name}} | <a style="font-weight: 500; color:black">Valor: </a> R${{service.value}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="leaseColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: leaseColumns; let i = dataIndex" class="example-element-row"
+          (click)="itemClicked(i)" [class.example-expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        {{expandedElement}}
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        {{element}}
+      </table>
+      <mat-paginator #paginator [pageSize]="7" [length]="2" hidePageSize></mat-paginator>
+    </div>
+
+<!------------------------------------------------------------------------------------------------->
+
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
       <mat-icon>chat</mat-icon>
     </ion-fab>

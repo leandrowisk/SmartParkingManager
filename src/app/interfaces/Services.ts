@@ -1,9 +1,9 @@
 export interface Service {
     descrição: string;
     usuário: string;
-    vaga: number;
-    período: string;
-    imagem: string;
+    carro: string;
+    placa: string;
+    imagem:string;
 }
 
 export interface newService {

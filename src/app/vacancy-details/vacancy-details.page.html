@@ -3,7 +3,7 @@
   <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
     <div class="space-informations">
       <div class="spaces-container">
-        <div class="parking-space" routerLink="/vacancy-details">
+        <div class="parking-space disponible" routerLink="/vacancy-details">
           <h2>Ocupada</h2>
         </div>
       </div>
@@ -13,14 +13,14 @@
           <ion-avatar>
             <img class="user-perfil" src="../../assets/images/perfil.jpeg">
           </ion-avatar>
-          <p>Nome: <span class="value">Leandro Tecioni</span> </p>
-          <p>Usuário: <span class="value">Leandrowisk</span></p>
-          <p>Placa:<span class="value"> D781FD8</span> </p>
-          <p>Modelo: <span class="value">Mustang</span> </p>
-          <p>Marca: <span class="value">Ford</span></p>
-          <p>Entrada: <span class="value">14:55 </span></p>
-          <p>Forma de pagamento: <span class="value">Crédito</span></p>
-          <p>Valor: <span class="value">24,39</span> </p>
+          <p>Nome: <span class="value">{{vacancyDetails.name}}</span> </p>
+          <p>Usuário: <span class="value">{{vacancyDetails.user}}</span></p>
+          <p>Placa:<span class="value"> {{vacancyDetails.plate}}</span> </p>
+          <p>Modelo: <span class="value">{{vacancyDetails.model}}</span> </p>
+          <p>Marca: <span class="value">{{vacancyDetails.brand}}</span></p>
+          <p>Entrada: <span class="value">{{vacancyDetails.date}}</span></p>
+          <p>Forma de pagamento: <span class="value">Cartão de Crédito</span></p>
+          <p>Valor: <span class="value">R$ {{vacancyDetails.value}}</span> </p>
 
           <div class="buttons-container">
             <button mat-button class="first">Voltar</button>

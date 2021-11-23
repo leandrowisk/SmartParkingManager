@@ -1,7 +1,10 @@
-import { Component, 
-         ElementRef, OnInit, 
-         ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Location }                     from '@angular/common';
+import {
+  Component,
+  ElementRef, OnInit,
+  ViewChild, ChangeDetectorRef
+} from '@angular/core';
+import { Location } from '@angular/common';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat-bot',
@@ -17,9 +20,11 @@ export class ChatBotPage implements OnInit {
   public userMessage: boolean = false;
   public chatMessage: boolean = false;
   public loading: boolean = false;
+  public returnMensage: String = ""
   constructor(
               private changeDetector: ChangeDetectorRef,
-              private location: Location
+              private location: Location,
+              private chatService: ChatService
               ) { }
 
   ngOnInit() {
@@ -55,6 +60,11 @@ export class ChatBotPage implements OnInit {
       this.chatMessage = false
     this.userMessage = true;
     this.messageSend = this.message;
+    this.chatService.toChat(this.message).subscribe(response =>{
+      this.returnMensage = response;
+      console.log(response);
+      this.messageChat(this.returnMensage);
+    });
     this.message = '';
     this.messages.push({
       text: this.messageSend,
@@ -62,22 +72,19 @@ export class ChatBotPage implements OnInit {
     });
     this.loading = true;
     this.scroll();
-    setTimeout(() =>{
-      this.messageChat();
-    }, 3000)
   }
 
   close() {
     this.location.back();
   }
 
-  messageChat() {
+  messageChat(message) {
     this.loading = true;
     if (this.userMessage)
       this.userMessage = false;
     this.chatMessage = true;
     this.messages.push({
-      text: 'Olá',
+      text: message,
       class: 'chat-message'
     });
     this.comeMessageSound();

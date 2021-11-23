@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location }          from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { ParkingService}          from '../services/parking.service'
 
 @Component({
   selector: 'app-update-register',
@@ -23,31 +24,50 @@ export class UpdateRegisterPage implements OnInit {
   public monthlyValue: number = 120;
   public menuHistory: boolean = true;
 
+  public parkingData = {
+    "fantasy_name": "",
+    "vacancies_number":0,
+    "company_email":"",
+    "hour_price":0,
+    "company_address":"",
+    "daily_price":0,
+    "cnpj":"",
+    "monthly_vacancies":0,
+    "social_reason":"",
+    "monthly_price":0,
+    "apresentation_image":"",
+    "password":"",
+}       
+
   constructor(private location: Location,
               private userService: UserService,
+              private parkingService : ParkingService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.resize();
+    this.getParking();
   }
 
   removePhoto() {
-    this.imageUrl = '';
+    this.parkingData.apresentation_image = '';
   }
 
-  getParking() {
-    //  this.fantasyName = '';
-    //  this.vacanciesNumber =,
-    //  this.email = '';
-    //  this.hourValue = '';
-    //  this.address = '';
-    //  this.dailyValue = '';
-    //  this.cnpj = '';
-    //  this.dailyValue = '';
-    //  this.monthlyVacanciesNumber;
-    //  this.socialReason;
-    //  this.monthlyValue
-
+  getParking(){
+    this.parkingService.getParking().subscribe(response => {
+      this.parkingData = response;
+      this.imageUrl = this.parkingData.apresentation_image;
+      this.fantasyName = this.parkingData.fantasy_name;
+      this.vacanciesNumber=this.parkingData.vacancies_number;
+      this.email=this.parkingData.company_email;
+      this.cnpj=this.parkingData.cnpj;
+      this.address=this.parkingData.company_address;
+      this.dailyValue=this.parkingData.daily_price;
+      this.hourValue=this.parkingData.hour_price;
+      this.monthlyVacanciesNumber=this.parkingData.monthly_vacancies;
+      this.socialReason=this.parkingData.social_reason;
+      this.monthlyValue=this.parkingData.monthly_price;
+    });
   }
 
   resize() {
@@ -69,7 +89,7 @@ export class UpdateRegisterPage implements OnInit {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {
-          this.imageUrl = event.target.result;
+        this.parkingData.apresentation_image = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
   }

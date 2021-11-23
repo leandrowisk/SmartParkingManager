@@ -20,14 +20,14 @@
 
             <div class="details">
               <div class="performance">
-                <span>Vagas utilizadas: 8 </span>
+                <span>Vagas utilizadas: {{parkingMonivorValues.vacancy_utilized}}</span>
                 <mat-icon class="up">arrow_upward</mat-icon>
               </div>
               <div class="available">
-                <span>2 vagas dísponiveis</span>
+                <span>{{parkingMonivorValues.disponible_vacancies}} vagas dísponiveis</span>
               </div>
               <div class="occupied">
-                <span>2 vagas dísponiveis</span>
+                <span>{{parkingMonivorValues.busy_vacancies}} vagas ocupadas</span>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
           <mat-card-content class="user-avaliation-charts" [class.resize-avaliation]="isMenuOpen">
             <div class="very-satisfied">
               <h2>Ótimo</h2>
-              <circle-progress [percent]="70" [radius]="60" [showUnits]="true" [showSubtitle]="false"
+              <circle-progress [percent]="ratingPerCent.very_satisfied" [radius]="60" [showUnits]="true" [showSubtitle]="false"
                 [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#008000'"
                 [animation]="true" [animationDuration]="300">
               </circle-progress>
@@ -51,7 +51,7 @@
 
             <div class="satisfied">
               <h2>Bom</h2>
-              <circle-progress [percent]="10" [radius]="60" [showUnits]="true" [showSubtitle]="false"
+              <circle-progress [percent]="ratingPerCent.satisfied" [radius]="60" [showUnits]="true" [showSubtitle]="false"
                 [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#0000FF'"
                 [animation]="true" [animationDuration]="300">
               </circle-progress>
@@ -59,7 +59,7 @@
 
             <div class="good">
               <h2>Mediano</h2>
-              <circle-progress [percent]="12" [radius]="60" [showUnits]="true" [showSubtitle]="false"
+              <circle-progress [percent]="ratingPerCent.medium" [radius]="60" [showUnits]="true" [showSubtitle]="false"
                 [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#000000'"
                 [animation]="true" [animationDuration]="300">
               </circle-progress>
@@ -67,7 +67,7 @@
 
             <div class="bad">
               <h2>Ruim</h2>
-              <circle-progress [percent]="5" [radius]="60" [showUnits]="true" [showSubtitle]="false"
+              <circle-progress [percent]="ratingPerCent.bad" [radius]="60" [showUnits]="true" [showSubtitle]="false"
                 [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#A52A2A'"
                 [animation]="true" [animationDuration]="300">
               </circle-progress>
@@ -75,7 +75,7 @@
 
             <div class="terrible">
               <h2>Pessimo</h2>
-              <circle-progress [percent]="3" [radius]="60" [showUnits]="true" [showSubtitle]="false"
+              <circle-progress [percent]="ratingPerCent.very_bad" [radius]="60" [showUnits]="true" [showSubtitle]="false"
                 [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#FF0000'"
                 [animation]="true" [animationDuration]="300">
               </circle-progress>
@@ -90,21 +90,31 @@
         <mat-icon>add_circle_outline</mat-icon>
         <span>Reservar Vaga</span>
       </div>
-      <div class="parking-space" (click)="details()">
-        <h2>Ocupada</h2>
-      </div>
 
-      <div class="parking-space">
-        <h2>Ocupada</h2>
-      </div>
-
-      <div class="parking-space disponible">
+      <div *ngIf="vacanciesStatus.v1 == 0" class="parking-space">
         <h2>Livre</h2>
       </div>
 
-      <div class="parking-space disponible">
+      <div *ngIf="vacanciesStatus.v1 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV1)">
+        <h2>Ocupada</h2>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v2 == 0" class="parking-space">
         <h2>Livre</h2>
       </div>
+
+      <div *ngIf="vacanciesStatus.v2 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV2)">
+        <h2>Ocupada</h2>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v3 == 0" class="parking-space">
+        <h2>Livre</h2>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v3 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV3)">
+        <h2>Ocupada</h2>
+      </div>
+
     </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
       <mat-icon>chat</mat-icon>

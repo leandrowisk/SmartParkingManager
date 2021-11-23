@@ -28,6 +28,8 @@ ion-spinner {
     border-radius: 20px;
     border-top-right-radius: 0;
     font-weight: 500;
+    word-break: break-word;
+    line-height: 2.3;
 }
 
 .container-message {
@@ -68,6 +70,8 @@ ion-content {
     border-top-right-radius: 0;
     color: white;
     font-weight: 500;
+    word-break: break-word;
+    line-height: 2.3;
 }
 
 .send-message {

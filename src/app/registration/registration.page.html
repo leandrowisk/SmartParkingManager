@@ -9,52 +9,53 @@
       <div class="user-infos">
         <div class="info">
           <p>Nome Fantasia</p>
-          <span class="value">ParkingSolutions</span>
+          <span class="value">{{parkingData.fantasy_name}}</span>
         </div>
 
         <div class="info">
           <p>CNPJ</p>
-          <span class="value">07.527.986/0045-24</span>
+          <span class="value">{{parkingData.cnpj}}</span>
         </div>
 
         <div class="info">
           <p>Endereço</p>
-          <span class="value">Rua das Árvores</span>
+          <span class="value">{{parkingData.company_address}}</span>
         </div>
 
         <div class="info">
           <p>Email</p>
-          <span class="value">parkin_solutions@gmail.com</span>
+          <span class="value">{{parkingData.company_email}}</span>
         </div>
 
         <div class="info">
           <p>Razão social</p>
-          <span class="value">ParkingSolutions</span>
+          <span class="value">{{parkingData.social_reason}}</span>
         </div>
 
         <div class="info">
           <p>Qtd de vagas disponiveis</p>
-          <span class="value">4</span>
+          <span class="value">{{parkingData.vacancies_number}}</span>
         </div>
 
         <div class="info">
           <p>Valor por hora</p>
-          <span class="value">R$35</span>
+          <span class="value">R${{parkingData.hour_price}}</span>
         </div>
 
+        <!--
         <div class="info">
           <p>Valor diário</p>
-          <span class="value">R$80</span>
+          <span class="value">R${{parkingData.daily_price}}</span>
         </div>
-
+-->
         <div class="info">
           <p>Vagas mensais</p>
-          <span class="value">2</span>
+          <span class="value">{{parkingData.monthly_vacancies}}</span>
         </div>
 
         <div class="info">
           <p>Valor Mensal</p>
-          <span class="value">R$ 120</span>
+          <span class="value">R${{parkingData.monthly_price}}</span>
         </div>
 
       </div>
