@@ -102,6 +102,18 @@ h4 {
     margin-left: 8px;
 }
 
+mat-spinner {
+    margin-left: auto;
+    margin-right: auto;
+    transform: scale(0.4);
+    margin-top: 50px;
+}
+
+.not-values {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
 .total {
     color: grey;
     margin-left: auto;
@@ -114,10 +126,15 @@ h4 {
     margin-top: 16px;
     font-size: 16px;
     font-weight: 500;
+    width: 100vw;
 }
 
 .total-value {
     margin-left: 8px;
+    background: cornflowerblue;
+    color: white;
+    border-radius: 20px;
+    padding: 16px;
 }
 
 ion-content {
@@ -243,6 +260,32 @@ opacity: 0.5;
 .lease-details {
     color: cornflowerblue;
     margin-left: 32px;
+}
+
+.select {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    button {
+        background: cornflowerblue;
+        border-radius: 20px;
+    }
+}
+
+.selected-year {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.view-mods {
+    display: flex;
+    align-items: center;
+    margin-left: 70%;
+    margin-top: 50px;
+    font-weight: 500;
+    mat-icon {
+        cursor: pointer;
+    }
 }
 
 .chat-button {

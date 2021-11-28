@@ -43,20 +43,20 @@ export class ServicesMonitoringPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.resize();
   }
 
   resize() {
-    if (this.menuHistory != this.isMenuOpen) {
-      if (this.route.snapshot.paramMap.get('menuState')) {
-        this.isMenuOpen = true;
-        this.menuHistory = true;
-      }
-      else  {
-        this.isMenuOpen = false;
-        this.menuHistory = false;
-      }
-    }
+    this.route.snapshot.paramMap.get('menuState');
+    // if (this.menuHistory != this.isMenuOpen) {
+    //   if (this.route.snapshot.paramMap.get('menuState')) {
+    //     this.isMenuOpen = true;
+    //     this.menuHistory = true;
+    //   }
+    //   else  {
+    //     this.isMenuOpen = false;
+    //     this.menuHistory = false;
+    //   }
+    // }
   }
 
   

@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router }            from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
   public hide: boolean = true;
-
+  @Output() initing: EventEmitter<any> = new EventEmitter();
+ 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  login() {
-    this.router.navigate(['/app', { init: true }])
+  public login() {
+    console.log('login') 
+    this.initing.emit('olá')   
   }
 
   register() {

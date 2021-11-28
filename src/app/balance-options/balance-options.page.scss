@@ -1,0 +1,43 @@
+p {
+    font-size: 16px;
+    font-weight: 500;
+    color: cornflowerblue;
+}
+
+.option {
+    display: flex;
+    align-items: self-end;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+button {
+    height: 42px;
+    width: 40%;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.back {
+    background: black;
+    color: white;
+}
+
+.save {
+    background: cornflowerblue;
+    color: white;
+}
+
+.disable-field {
+    cursor: none;
+    opacity: 0.5;
+}
+
+ion-toogle {
+    margin-left: auto;
+}

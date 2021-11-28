@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild }                      from '@angular/core';
+import { Component, ElementRef, Injectable, OnInit, ViewChild }                      from '@angular/core';
 import { ActivatedRoute, Router }                                 from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet }             from 'ng2-charts';
@@ -9,6 +9,7 @@ import { ParkingService }    from '../services/Parking.service';
   templateUrl: './parking-monitoring.page.html',
   styleUrls: ['./parking-monitoring.page.scss'],
 })
+@Injectable()
 export class ParkingMonitoringPage implements OnInit {
 
   doughnutChartData: MultiDataSet = [[0,0]];
@@ -93,16 +94,12 @@ export class ParkingMonitoringPage implements OnInit {
     this.doughnutChartData = [[busyFinal,disponibleFinal]]
   }
 
-  resize() {
-      if(this.menuHistory != this.isMenuOpen) {
-        if (this.isMenuOpen) {
-          this.menuHistory = true;
-        }
-        else {
-          this.isMenuOpen = false;
-          this.menuHistory = false;
-        }
-      }
+  ngAfterViewInit() {
+    console.log('afterView')
+  }
+
+  public resize() {
+    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
   }
 
   details(id) {

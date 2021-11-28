@@ -1,0 +1,50 @@
+<h2>Alterar modo de visualização do Gráfico</h2>
+
+
+<div class="montly-options" *ngIf="viewType && viewType == 'monthly'">
+<div class="option">
+  <p>Balanço dos ultimos 3 meses</p>
+  <ion-toggle class="threeMonths" [disabled]="hasMonthlyModeSelected && monthlyModeSelected != 'three'"  [(ngModel)]="threeMonths" (ionChange)="hasMonthlyOptionSelected()"></ion-toggle>
+</div>
+
+<div class="option">
+  <p>Balanço dos ultimos 6 meses</p>
+  <ion-toggle class="sixMonths" [disabled]="hasMonthlyModeSelected && monthlyModeSelected != 'six'"  [(ngModel)]="sixMonths" (ionChange)="hasMonthlyOptionSelected()"></ion-toggle>
+</div>
+
+<div class="option">
+  <p>Balanço dos ultimos 12 meses</p>
+  <ion-toggle [disabled]="hasMonthlyModeSelected && monthlyModeSelected != 'twelve'" [(ngModel)]="twelveMonths" (ionChange)="hasMonthlyOptionSelected()"></ion-toggle>
+</div>
+
+<div class="buttons">
+  <button class="back" (click)="closeModal()">Voltar</button>
+  <button class="save" (click)="saveMonthlyOption()">Salvar</button>
+</div>
+</div>
+
+
+<div class="daily-options" *ngIf="viewType && viewType == 'daily'">
+  <div class="option">
+    <p>Balanço dos 3 dias anteriores</p>
+    <ion-toggle [disabled]="hasDailyModeSelected && dailyModeSelected != 'three'" [(ngModel)]="threeDays" (ionChange)="hasDailyOptionSelected()"></ion-toggle>
+  </div>
+  
+  <div class="option">
+    <p>Balanço dos 5 dias anteriores</p>
+    <ion-toggle [disabled]="hasDailyModeSelected && dailyModeSelected != 'five'" [(ngModel)]="fiveDays" (ionChange)="hasDailyOptionSelected()"></ion-toggle>
+  </div>
+  
+  <div class="option">
+    <p>Balanço dos 7 dias anteriores</p>
+    <ion-toggle [disabled]="hasDailyModeSelected && dailyModeSelected != 'seven'" [(ngModel)]="sevenDays"  (ionChange)="hasDailyOptionSelected()"></ion-toggle>
+  </div>
+
+  <div class="buttons">
+    <button class="back" (click)="closeModal()">Voltar</button>
+    <button class="save" (click)="saveDailyOption()">Salvar</button>
+  </div>
+  </div>
+
+
+

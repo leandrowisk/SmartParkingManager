@@ -1,3 +1,4 @@
+import { ParkingMonitoringPage } from './parking-monitoring/parking-monitoring.page';
 import { NgModule }                from '@angular/core';
 import { BrowserModule }           from '@angular/platform-browser';
 import { RouteReuseStrategy }      from '@angular/router';
@@ -9,11 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule }          from './material-module.module';
 import { CommonModule }            from '@angular/common';
 import { SideMenuPageModule }      from './side-menu/side-menu.module';
-import { LoginPageModule }         from './login/login.module';
-import { RegisterPageModule }      from './register/register.module';
 import { MatFormFieldModule }      from '@angular/material/form-field';
 import { MatInputModule }          from '@angular/material/input';
 import { HttpClientModule }          from '@angular/common/http';
+import { RegisterPageModule }      from './register/register.module';
+import { LoginPageModule }         from './login/login.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,9 +29,12 @@ import { HttpClientModule }          from '@angular/common/http';
             BrowserModule,
             MaterialModule,
             CommonModule,
-            SideMenuPageModule
+            SideMenuPageModule,
+            LoginPageModule,
+            RegisterPageModule
           ],
-  providers: [],
+  exports: [CommonModule],
+  providers: [ParkingMonitoringPage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

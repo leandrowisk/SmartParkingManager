@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div id="container" [class.close]="!isMenuOpen" [class.open]="isMenuOpen">
+  <div id="container" [className]="isMenuOpen? 'open': 'close'">
     <div class="hello-message">
       <h2>Olá Parking Solutions</h2>
     </div>
@@ -86,6 +86,7 @@
       </div>
     </div>
     <div class="spaces-container">
+
       <div class="reserve-vacancy" routerLink="/register-user">
         <mat-icon>add_circle_outline</mat-icon>
         <span>Reservar Vaga</span>
@@ -93,21 +94,38 @@
 
       <div *ngIf="vacanciesStatus.v1 == 0" class="parking-space">
         <h2>Livre</h2>
+      <div class="vacancy-container">
+        <span class="vacancy-number">Vaga nº1</span>
+      <div class="parking-space" (click)="details()">
+        <h2>Ocupada</h2>
+      </div>
       </div>
 
       <div *ngIf="vacanciesStatus.v1 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV1)">
+      <div class="vacancy-container">
+        <span class="vacancy-number">Vaga nº2</span>
+      <div class="parking-space">
         <h2>Ocupada</h2>
       </div>
+    </div>
 
       <div *ngIf="vacanciesStatus.v2 == 0" class="parking-space">
+      
+    <div class="vacancy-container">
+      <span class="vacancy-number">Vaga nº3</span>
+      <div class="parking-space disponible">
         <h2>Livre</h2>
       </div>
+    </div>
 
       <div *ngIf="vacanciesStatus.v2 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV2)">
         <h2>Ocupada</h2>
       </div>
 
       <div *ngIf="vacanciesStatus.v3 == 0" class="parking-space">
+    <div class="vacancy-container">
+      <span class="vacancy-number">Vaga nº3</span>
+      <div class="parking-space disponible">
         <h2>Livre</h2>
       </div>
 
@@ -115,6 +133,7 @@
         <h2>Ocupada</h2>
       </div>
 
+    </div>
     </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
       <mat-icon>chat</mat-icon>

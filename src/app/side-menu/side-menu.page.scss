@@ -6,6 +6,7 @@ ion-content {
     position: fixed;
     width: 64px;
     transition: width 0.5s;
+    user-select: none;
 }
 .menu-item {
     margin-top: 18px;

@@ -32,8 +32,6 @@ export class ParkingManagerPage implements OnInit {
   constructor(private route: ActivatedRoute, private parkingService: ParkingService,public router: Router) { }
   
   ngOnInit() {
-    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
-    this.resize();
     this.initializeArrays();
     this.getParkingServices();
     this.getOpeningHours();
@@ -65,15 +63,7 @@ export class ParkingManagerPage implements OnInit {
   }
 
   resize() {
-    if(this.menuHistory != this.isMenuOpen) {
-      if (this.isMenuOpen) {
-        this.menuHistory = true;
-      }
-      else {
-        this.isMenuOpen = false;
-        this.menuHistory = false;
-      }
-    }
+    this.route.snapshot.paramMap.get('menuState')
   }
   
 

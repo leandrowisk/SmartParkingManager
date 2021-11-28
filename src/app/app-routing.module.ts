@@ -1,8 +1,10 @@
+import { LoginPage } from './login/login.page';
 import { NgModule }           from '@angular/core';
 import { PreloadAllModules, 
          RouterModule, 
          Routes }             from '@angular/router';
 import { AppComponent }       from './app.component';
+import { RegisterPage } from './register/register.page';
 
 const routes: Routes = [
   {
@@ -12,15 +14,18 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadChildren: () => import('./app.module').then(m => m.AppModule)
+    component: AppComponent
+    // loadChildren: () => import('./app.module').then(m => m.AppModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    component: LoginPage
+    // loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    component: RegisterPage
+    // loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'lease-management',
@@ -61,6 +66,10 @@ const routes: Routes = [
   {
     path: 'chat-bot',
     loadChildren: () => import('./chat-bot/chat-bot.module').then( m => m.ChatBotPageModule)
+  },
+  {
+    path: 'balance-options',
+    loadChildren: () => import('./balance-options/balance-options.module').then( m => m.BalanceOptionsPageModule)
   },
 ];
 

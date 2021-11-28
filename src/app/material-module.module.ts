@@ -27,6 +27,7 @@ import { MatPaginatorModule }              from '@angular/material/paginator';
      MatTabsModule,
      MatAutocompleteModule,
      MatDividerModule,
+     MatDialogModule,
      MatInputModule,
      MatFormFieldModule,
      MatIconModule,

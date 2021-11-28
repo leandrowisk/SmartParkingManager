@@ -28,14 +28,9 @@ export class SideMenuPage implements OnInit {
 
 
   ngOnInit() {
-    this.menuState.emit(false);
+    this.menuState.emit(this.isMenuChange);
   }
 
-  ngOnChanges() {
-    this.monitoring = true;
-    this.router.navigate(['/parking-monitoring'])
-  }
-  
   async logout() {
     this.changeActive();
     this.out = true;
@@ -82,6 +77,7 @@ export class SideMenuPage implements OnInit {
   leaseManagement() {
     this.changeActive();
     this.leasesManagement = true;
+    this.menuState.emit(this.isOpen)
     this.router.navigate(['/lease-management', { menuState: this.isOpen }]) 
   }
 
