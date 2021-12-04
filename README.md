@@ -4,7 +4,7 @@
 
 ![Logo-removebg-preview](https://user-images.githubusercontent.com/48762418/142700862-d16e02b3-129c-40af-9492-3dba6e8996f8.png)
 <h2>TCC 8ºSemestre do curso de ciência da computação</h2>
-<p>SmartParking é um aplicativo web desktop construido utilizando os frameworks angular e ionic no front-end.</p>
+<p>SmartParkingManager é um aplicativo web desktop construido utilizando os frameworks angular e ionic no front-end.</p>
 <p>Com foco em empresas e donos de estacionamentos, para que possam gerenciar e supervisionar seu estacionamento</p>
 <p>-Gerencia locações, vagas e serviços</p>
 <p>-Feedback de usuários e balanços financeiros</p>
