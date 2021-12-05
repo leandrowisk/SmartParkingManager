@@ -1,10 +1,10 @@
-import { LoginPage } from './login/login.page';
+import { LoginPage }          from './login/login.page';
 import { NgModule }           from '@angular/core';
 import { PreloadAllModules, 
          RouterModule, 
          Routes }             from '@angular/router';
 import { AppComponent }       from './app.component';
-import { RegisterPage } from './register/register.page';
+import { RegisterPage }       from './register/register.page';
 
 const routes: Routes = [
   {
@@ -15,17 +15,14 @@ const routes: Routes = [
   {
     path: 'app',
     component: AppComponent
-    // loadChildren: () => import('./app.module').then(m => m.AppModule)
   },
   {
     path: 'login',
     component: LoginPage
-    // loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     component: RegisterPage
-    // loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'lease-management',

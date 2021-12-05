@@ -93,21 +93,48 @@
           <mat-card-content [class.closeResume]="!isMenuOpen" [class.openResume]="isMenuOpen" style="top: -14px;">
             <div class="list">
               <span>Quantidade de vagas locadas hoje: {{establishmentData.qtdRent}}</span>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.qtdRent - this.establishmentData.yesterdayQtdRent}} a mais que ontem." class="up resumeIcon"  *ngIf="this.establishmentData.qtdRent > this.establishmentData.yesterdayQtdRent">arrow_upward</mat-icon>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayQtdRent - this.establishmentData.qtdRent}} a menos que ontem." class="down resumeIcon" *ngIf="this.establishmentData.qtdRent < this.establishmentData.yesterdayQtdRent">arrow_downward</mat-icon>
-              <mat-icon title="Atualmente, temos a mesma quantidade de vagas locadas de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.qtdRent == this.establishmentData.yesterdayQtdRent">remove</mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.qtdRent - this.establishmentData.yesterdayQtdRent}} a mais que ontem."
+                class="up resumeIcon" *ngIf="this.establishmentData.qtdRent > this.establishmentData.yesterdayQtdRent">
+                arrow_upward</mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.yesterdayQtdRent - this.establishmentData.qtdRent}} a menos que ontem."
+                class="down resumeIcon"
+                *ngIf="this.establishmentData.qtdRent < this.establishmentData.yesterdayQtdRent">arrow_downward
+              </mat-icon>
+              <mat-icon title="Atualmente, temos a mesma quantidade de vagas locadas de ontem."
+                class="neutral resumeIcon"
+                *ngIf="this.establishmentData.qtdRent == this.establishmentData.yesterdayQtdRent">remove</mat-icon>
             </div>
             <div class="list">
               <span>Quantidade de serviços contradados hoje: {{establishmentData.qtdServices}}</span>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.qtdServices - this.establishmentData.yesterdayQtdServices}} a mais que ontem." class="up resumeIcon" *ngIf="this.establishmentData.qtdServices > this.establishmentData.yesterdayQtdServices">arrow_upward</mat-icon>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayQtdServices - this.establishmentData.qtdServices}} a menos que ontem." class="down resumeIcon" *ngIf="this.establishmentData.qtdServices < this.establishmentData.yesterdayQtdServices">arrow_downward</mat-icon>
-              <mat-icon title="Atualmente, temos a mesma quantidade de serviços realizados de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.qtdServices == this.establishmentData.yesterdayQtdServices">remove</mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.qtdServices - this.establishmentData.yesterdayQtdServices}} a mais que ontem."
+                class="up resumeIcon"
+                *ngIf="this.establishmentData.qtdServices > this.establishmentData.yesterdayQtdServices">arrow_upward
+              </mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.yesterdayQtdServices - this.establishmentData.qtdServices}} a menos que ontem."
+                class="down resumeIcon"
+                *ngIf="this.establishmentData.qtdServices < this.establishmentData.yesterdayQtdServices">arrow_downward
+              </mat-icon>
+              <mat-icon title="Atualmente, temos a mesma quantidade de serviços realizados de ontem."
+                class="neutral resumeIcon"
+                *ngIf="this.establishmentData.qtdServices == this.establishmentData.yesterdayQtdServices">remove
+              </mat-icon>
             </div>
             <div class="list">
               <span>Tempo médio utilizado nas vagas hoje: {{establishmentData.avgTime}}</span>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a mais que ontem" class="up resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'false'">arrow_upward</mat-icon>
-              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a menos que ontem"class="down resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'true'">arrow_downward</mat-icon>
-              <mat-icon title="Atualmente, temos o mesmo tempo médio de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'same'">remove</mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a mais que ontem"
+                class="up resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'false'">arrow_upward
+              </mat-icon>
+              <mat-icon
+                title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a menos que ontem"
+                class="down resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'true'">arrow_downward
+              </mat-icon>
+              <mat-icon title="Atualmente, temos o mesmo tempo médio de ontem." class="neutral resumeIcon"
+                *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'same'">remove</mat-icon>
             </div>
           </mat-card-content>
         </mat-card>
@@ -118,5 +145,5 @@
     </ion-fab>
   </div>
 
- 
+
 </ion-content>

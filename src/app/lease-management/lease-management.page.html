@@ -1,27 +1,31 @@
 <ion-content>
   <div id="container" [class.close]="!isMenuOpen" [class.open]="isMenuOpen">
-    
+
     <div class="financial-card">
-      <mat-tab-group dynamicHeight mat-align-tabs="center" mat-stretch-tabs (click)="scroll()" (selectedTabChange)="resetData()">
+      <mat-tab-group dynamicHeight mat-align-tabs="center" mat-stretch-tabs (click)="scroll()"
+        (selectedTabChange)="resetData()">
         <mat-tab label="Balanço diário">
           <div class="daily">
             <div class="view-mods">
               <span>Mudar modo de visualização</span>
-               <mat-icon (click)="changeViewChart('daily')">date_range</mat-icon>
+              <mat-icon (click)="changeViewChart('daily')">date_range</mat-icon>
             </div>
             <div class="daily-infos">
-            
+
               <mat-form-field appearance="none">
-                  <input matInput [matDatepicker]="picker" [(ngModel)]="financialDaySelected" (dateChange)="showSelectDay()">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker [color]="cornflowerblue"></mat-datepicker>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="financialDaySelected"
+                  (dateChange)="showSelectDay()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [color]="cornflowerblue"></mat-datepicker>
               </mat-form-field>
-              <p class="total" *ngIf="hasValues; else notValues">Valor Total {{selectedDay}} {{dayOfYear}}<span class="total-value">R$ {{balance5day[4]}}</span></p>
+              <p class="total" *ngIf="hasValues; else notValues">Valor Total {{selectedDay}} {{dayOfYear}}<span
+                  class="total-value">R$ {{balance5day[4]}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
             </div>
-            <canvas *ngIf="dailyLabels && !loading" baseChart [datasets]="[{ data: this.balance5day, label:  labelDaily}]" [labels]="dailyLabels"
+            <canvas *ngIf="dailyLabels && !loading" baseChart
+              [datasets]="[{ data: this.balance5day, label:  labelDaily}]" [labels]="dailyLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
               [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
@@ -37,22 +41,22 @@
               <div class="select">
                 <ion-buttons left (click)="previusYear()">
                   <button> <i class="material-icons">keyboard_arrow_left</i> </button>
-               </ion-buttons>
-                  <span class="selected-year">{{selectedYear}}</span>
-               <ion-buttons right (click)="nextYear()">
-                <button> <i class="material-icons">keyboard_arrow_right</i> </button>
-             </ion-buttons>
-            </div>
+                </ion-buttons>
+                <span class="selected-year">{{selectedYear}}</span>
+                <ion-buttons right (click)="nextYear()">
+                  <button> <i class="material-icons">keyboard_arrow_right</i> </button>
+                </ion-buttons>
+              </div>
 
-            <div class="select">
-              <ion-buttons left (click)="previusMonth()">
-                <button> <i class="material-icons">keyboard_arrow_left</i> </button>
-             </ion-buttons>
+              <div class="select">
+                <ion-buttons left (click)="previusMonth()">
+                  <button> <i class="material-icons">keyboard_arrow_left</i> </button>
+                </ion-buttons>
                 <span class="selected-year">{{selectedMonth}}</span>
-             <ion-buttons right (click)="nextMonth()">
-              <button> <i class="material-icons">keyboard_arrow_right</i> </button>
-           </ion-buttons>
-          </div>
+                <ion-buttons right (click)="nextMonth()">
+                  <button> <i class="material-icons">keyboard_arrow_right</i> </button>
+                </ion-buttons>
+              </div>
               <mat-form-field appearance="none" *ngIf="selectedWeek">
                 <mat-select [(ngModel)]="selectedWeek" (ngModelChange)="formatDate()" #select>
                   <mat-option *ngFor="let week of numberWeeksOfMonth" value="{{week}}">
@@ -60,9 +64,10 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-            
+
               <p class="total">Valor Total Hoje: <span class="total-value"> R${{totalTodayWeek}}</span></p>
-              <p class="total" *ngIf="hasValues; else notValues">Valor Total da {{selectedWeek}} de {{selectedMonth}} - {{selectedYear}}<span class="total-value">R$ {{totalByWeek}}</span></p>
+              <p class="total" *ngIf="hasValues; else notValues">Valor Total da {{selectedWeek}} de {{selectedMonth}} -
+                {{selectedYear}}<span class="total-value">R$ {{totalByWeek}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
@@ -70,8 +75,7 @@
 
             <canvas *ngIf="weekLabels && !loading" baseChart [datasets]="[
                     { data: this.balanceWeekValue, label: 'Balanço Semanal'}
-            ]" [labels]="weekLabels"
-              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+            ]" [labels]="weekLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
               [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
             <mat-spinner *ngIf="loading"></mat-spinner>
@@ -83,20 +87,20 @@
           <div class="monthly">
             <div class="view-mods">
               <span>Mudar modo de visualização</span>
-               <mat-icon (click)="changeViewChart('monthly')">date_range</mat-icon>
+              <mat-icon (click)="changeViewChart('monthly')">date_range</mat-icon>
             </div>
             <div class="monthly-infos">
-            
-              
+
+
               <div class="select">
-              <ion-buttons left (click)="previusYear()">
-                <button> <i class="material-icons">keyboard_arrow_left</i> </button>
-             </ion-buttons>
+                <ion-buttons left (click)="previusYear()">
+                  <button> <i class="material-icons">keyboard_arrow_left</i> </button>
+                </ion-buttons>
                 <span class="selected-year">{{selectedYear}}</span>
-             <ion-buttons right (click)="nextYear()">
-              <button> <i class="material-icons">keyboard_arrow_right</i> </button>
-           </ion-buttons>
-          </div>
+                <ion-buttons right (click)="nextYear()">
+                  <button> <i class="material-icons">keyboard_arrow_right</i> </button>
+                </ion-buttons>
+              </div>
               <mat-form-field appearance="none">
                 <mat-select [(ngModel)]="selectedMonth" (ngModelChange)="monthSelectedChange()" #select>
                   <mat-option *ngFor="let month of months" value="{{month}}">
@@ -104,19 +108,19 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-           
+
               <p class="total">Valor Total Mês Atual:<span class="total-value"> R${{currentMonth}}</span></p>
-              <p class="total">Valor Total {{selectedMonth}} - {{selectedYear}}<span class="total-value"> R${{balance5month[11]}}</span></p>
+              <p class="total">Valor Total {{selectedMonth}} - {{selectedYear}}<span class="total-value">
+                  R${{balance5month[11]}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
             </div>
 
             <canvas *ngIf="monthLabels && !loading" baseChart [datasets]="[
-                { data: balance5month, label: labelMonthly}
-          ]" [labels]="monthLabels"
-              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
-              [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                { data: balance5month, label: labelMonthly}]" [labels]="monthLabels" [options]="lineChartOptions"
+              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
             </canvas>
             <mat-spinner *ngIf="loading"></mat-spinner>
           </div>

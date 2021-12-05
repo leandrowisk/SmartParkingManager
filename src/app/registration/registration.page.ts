@@ -9,30 +9,37 @@ import { ParkingService}          from '../services/parking.service'
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
+
   public isMenuOpen: boolean = false;
   public menuHistory: boolean = false;
+  public parkingData;
+
   constructor(private route: ActivatedRoute,
               private parkingService : ParkingService,
               private router: Router,
               private menuService: MenuService) { }
 
-  public parkingData = {
-        "fantasy_name": "",
-        "vacancies_number":"",
-        "company_email":"",
-        "hour_price":"",
-        "company_address":"",
-        "daily_price":"",
-        "cnpj":"",
-        "monthly_vacancies":"",
-        "social_reason":"",
-        "monthly_price":"",
-        "apresentation_image":"",
-        "password":"",
-  }             
   ngOnInit() {
    this.resize();
-   this.getParking()
+   this.initializeInfos();
+   this.getParking();
+  }
+
+  initializeInfos() {
+    this.parkingData = {
+      "fantasy_name": "",
+      "vacancies_number":"",
+      "company_email":"",
+      "hour_price":"",
+      "company_address":"",
+      "daily_price":"",
+      "cnpj":"",
+      "monthly_vacancies":"",
+      "social_reason":"",
+      "monthly_price":"",
+      "apresentation_image":"",
+      "password":"",
+    }              
   }
 
   getParking(){

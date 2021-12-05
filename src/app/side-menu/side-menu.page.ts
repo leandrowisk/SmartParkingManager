@@ -23,7 +23,6 @@ export class SideMenuPage implements OnInit {
   public leasesManagement: boolean = false;
   public isMenuChange: boolean = false;
   @Output() logged: EventEmitter<boolean> = new EventEmitter();
-
   @Output() menuState: EventEmitter<boolean> = new EventEmitter();
   @Input() initApp: boolean = false;
 
@@ -129,43 +128,43 @@ export class SideMenuPage implements OnInit {
         else
           this.changeTabInBack(event.url)
       })
+    }
   }
-}
 
-userLogged() {
-  this.logged.emit(true);
-}
+  userLogged() {
+    this.logged.emit(true);
+  }
 
-changeTabInBack(url: string) {
-  switch(url) {
-    case '/registration':
-      this.changeActive();
-      this.register = true;
-      break;
-      case '/parking-monitoring':
+  changeTabInBack(url: string) {
+    switch(url) {
+      case '/registration':
         this.changeActive();
-        this.monitoring = true;
+        this.register = true;
         break;
-        case '/services-monitoring':
+        case '/parking-monitoring':
           this.changeActive();
-          this.services = true;
+          this.monitoring = true;
           break;
-          case '/parking-manager':
+          case '/services-monitoring':
             this.changeActive();
-            this.management = true;
+            this.services = true;
             break;
-            case '/lease-management':
+            case '/parking-manager':
               this.changeActive();
-              this.leasesManagement = true;
+              this.management = true;
               break;
+              case '/lease-management':
+                this.changeActive();
+                this.leasesManagement = true;
+                break;
+    }
   }
-}
 
-resize() {
-  if (this.isOpen)
-    this.menuService.menuOpened();
-  else
-    this.menuService.menuClosed();
-}
+  resize() {
+    if (this.isOpen)
+      this.menuService.menuOpened();
+    else
+      this.menuService.menuClosed();
+  }
 
 }

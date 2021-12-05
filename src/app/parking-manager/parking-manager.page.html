@@ -40,7 +40,7 @@
       <div class="services-status">
         <div class="services">
           <h2>Serviços</h2>
-          <div *ngFor="let service of services"  class="services">
+          <div *ngFor="let service of services" class="services">
             <span class="value">{{service.service_name}}</span>
           </div>
         </div>
@@ -53,7 +53,7 @@
               <span class="value" *ngIf="!service.active">Inativo</span>
               <ion-toggle [(ngModel)]="service.active" (ionChange)="updateService(service)"></ion-toggle>
             </div>
-        </div>
+          </div>
         </div>
       </div>
 
@@ -72,29 +72,29 @@
 
           <div class="working-hours" *ngIf="newPeriod">
             <mat-label>Horário de funcionamento</mat-label>
-          <div class="flex-form">
-            <mat-label>Abertura</mat-label>
-            <mat-form-field class="form-input work-hour first" appearance="none" >
-              <mat-select [(value)]="openingHour.open" [(ngModel)]="openingHour.open">
-                <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
-                  {{hour}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div class="flex-form">
+              <mat-label>Abertura</mat-label>
+              <mat-form-field class="form-input work-hour first" appearance="none">
+                <mat-select [(value)]="openingHour.open" [(ngModel)]="openingHour.open">
+                  <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                    {{hour}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="flex-form">
+              <mat-label>Fechamento</mat-label>
+              <mat-form-field class="form-input work-hour second" appearance="none">
+                <mat-select [(value)]="openingHour.close" [(ngModel)]="openingHour.close">
+                  <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
+                    {{hour}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
 
-          <div class="flex-form">
-            <mat-label>Fechamento</mat-label>
-            <mat-form-field class="form-input work-hour second" appearance="none">
-              <mat-select [(value)]="openingHour.close" [(ngModel)]="openingHour.close">
-                <mat-option *ngFor="let hour of dailyHours" value="{{hour}}">
-                  {{hour}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      
           <div class="period" *ngIf="newPeriod">
             <mat-label>Dias de funcionamento</mat-label>
             <div class="flex-form" *ngIf="newPeriod">
@@ -128,7 +128,8 @@
 
       <div class="period-details">
         <h2>Funcionamento</h2>
-        <span class="days">Dias: <span class="value">{{openingHour.day_week_init}} a {{openingHour.day_week_end}}</span></span>
+        <span class="days">Dias: <span class="value">{{openingHour.day_week_init}} a
+            {{openingHour.day_week_end}}</span></span>
         <span>Período: <span class="value">{{openingHour.open}} às {{openingHour.close}}</span></span>
       </div>
     </div>
