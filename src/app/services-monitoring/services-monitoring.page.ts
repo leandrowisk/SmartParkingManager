@@ -6,10 +6,13 @@ import { ActivatedRoute }     from '@angular/router';
 import { MenuController }     from '@ionic/angular';
 import { Service }            from '../interfaces/Services';
 import { ServicesService }    from '../services/services.service';
-import { Lease }                        from '../interfaces/Lease';
-import { LeaseService } from '../services/lease.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MenuService } from '../services/menu.service';
+import { Lease }              from '../interfaces/Lease';
+import { LeaseService }       from '../services/lease.service';
+import { animate, state, 
+         style, transition, 
+         trigger }            from '@angular/animations';
+import { MenuService }        from '../services/menu.service';
+
 
 @Component({
   selector: 'app-services-monitoring',

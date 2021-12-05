@@ -1,11 +1,9 @@
-import {
-  Component,
-  ElementRef, OnInit,
-  ViewChild, ChangeDetectorRef
-} from '@angular/core';
-import { Location } from '@angular/common';
-import { ChatService } from '../services/chat.service';
-import { MenuService } from '../services/menu.service';
+import {Component,
+        OnInit, 
+        ChangeDetectorRef }   from '@angular/core';
+import { Location }           from '@angular/common';
+import { ChatService }        from '../services/chat.service';
+import { MenuService }        from '../services/menu.service';
 
 @Component({
   selector: 'app-chat-bot',

@@ -2,7 +2,9 @@
   <ion-router-outlet id="main"></ion-router-outlet>
   <side-menu [initApp]="init"
              (logged)="isUserLogged($event)"
-             *ngIf="init"></side-menu>
+             *ngIf="init">
+  </side-menu>
   <login *ngIf="!init" 
-         (refresh)="loginRefresh($event)"></login>
+         (refresh)="loginRefresh($event)">
+  </login>
 </ion-app>

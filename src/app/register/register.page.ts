@@ -1,12 +1,11 @@
 import { Component, OnInit }        from '@angular/core';
 import { Location }                 from '@angular/common';
 import { ActivatedRoute, Router }   from '@angular/router';
-import { FormBuilder, FormControl, 
-         FormGroup, Validators }    from '@angular/forms';
+import { FormBuilder, 
+         FormGroup }                from '@angular/forms';
 import { Parking }                  from '../interfaces/Parking';
-import { CurrencyMaskConfig }       from 'ngx-currency/src/currency-mask.config';
-import { LoginService } from '../services/login.service';
-import { MenuService } from '../services/menu.service';
+import { LoginService }             from '../services/login.service';
+import { MenuService }              from '../services/menu.service';
 
 
 @Component({
@@ -37,14 +36,12 @@ export class RegisterPage implements OnInit {
               private menuService: MenuService) { }
 
   ngOnInit() {
-    // this.initializeForm();
     this.initializeArrays();
     this.resize();
     this.pageRefresh();
   }
 
   imageSelected(event) {
-    // this.imageUrl = image.target.files[0].name;
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {
@@ -79,24 +76,6 @@ export class RegisterPage implements OnInit {
     this.company.company_address = '';
   }
 
-  // initializeForm() {
-  //   this.initializeCompany();
-  //   this.register = this._formBuilder.group({
-  //     //  fantasyName: [this.company.fantasy_name, Validators.required],
-  //      vacanciesNumber: [this.company.vacancies_number, Validators.required],
-  //      email: [this.company.company_email, Validators.required],
-  //      hourPrice: [this.company.hour_price, Validators.required],
-  //      address: [this.company.company_address, Validators.required],
-  //      dailyPrice: [this.company.daily_price, Validators.required],
-  //      cnpj: [this.company.cnpj, Validators.required],
-  //      monthlyVacancies: [this.company.monthly_vacancies, Validators.required],
-  //      socialReason: [this.company.social_reason, Validators.required],
-  //      monthlyPrice: [this.company.monthly_price, Validators.required],
-  //      apresentationImage: [this.company.apresentation_image, Validators.required],
-  //      password: [this.company.password, Validators.required]
-  //   });
-  // }
-
   registerUser() {
     this.loginService.registerUser();
   }
@@ -108,7 +87,7 @@ export class RegisterPage implements OnInit {
   resize() {
     this.menuService.isMenuOpen.subscribe(isOpen => {
         this.isMenuOpen = isOpen;
-      })   
+    })   
   }
 
   goBack() {

@@ -1,9 +1,10 @@
-import { Component, ElementRef, 
+import { Component, 
          EventEmitter, Input,
-         OnInit, Output, ViewChild }   from '@angular/core';
-import { NavigationStart, Router }                      from '@angular/router';
+         OnInit, Output }              from '@angular/core';
+import { NavigationStart, 
+         Router }                      from '@angular/router';
 import { AlertController }             from '@ionic/angular';
-import { MenuService } from '../services/menu.service';
+import { MenuService }                 from '../services/menu.service';
 
 @Component({ 
   selector: 'side-menu',

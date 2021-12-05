@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable }      from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -12,12 +12,12 @@ export class MenuService {
   constructor() { }
 
 
-menuOpened() {
-    this.isMenuOpen.next(true);
-}
+  menuOpened() {
+      this.isMenuOpen.next(true);
+  }
 
-menuClosed() {
-    this.isMenuOpen.next(false);
-}
+  menuClosed() {
+      this.isMenuOpen.next(false);
+  }
 
 }

@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, 
+         OnInit }                          from '@angular/core';
 import { MatDialogRef, 
-         MAT_DIALOG_DATA, 
-         MatDialog}                  from '@angular/material/dialog';
+         MAT_DIALOG_DATA}                  from '@angular/material/dialog';
 
 @Component({
   selector: 'app-balance-options',
@@ -143,13 +143,11 @@ export class BalanceOptionsPage implements OnInit {
 
   saveDailyOption() {
     this.setSendMode();
-    // this.updateMode variavel para atualizar o modo diário
     this.dialogRef.close({data: this.viewType});
   }
 
   saveMonthlyOption() {
     this.setSendMode();
-    // this.updateMode variável para atualizar o modo mensal
     this.dialogRef.close({data: this.viewType});
   }
 }

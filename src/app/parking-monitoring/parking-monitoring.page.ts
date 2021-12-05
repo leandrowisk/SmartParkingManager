@@ -1,9 +1,10 @@
-import { Component, ElementRef, Injectable, OnInit, ViewChild }                      from '@angular/core';
+import { Component, ElementRef, 
+         Injectable, OnInit, ViewChild }                          from '@angular/core';
 import { ActivatedRoute, Router }                                 from '@angular/router';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, Label, MultiDataSet }             from 'ng2-charts';
-import { MenuService } from '../services/menu.service';
-import { ParkingService }    from '../services/Parking.service';
+import { ChartOptions, ChartType }                                from 'chart.js';
+import { Color, Label, MultiDataSet }                             from 'ng2-charts';
+import { MenuService }                                            from '../services/menu.service';
+import { ParkingService }                                         from '../services/Parking.service';
 
 @Component({
   selector: 'app-parking-monitoring',

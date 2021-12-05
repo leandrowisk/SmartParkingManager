@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute }     from '@angular/router';
 import { Lease }              from '../interfaces/Lease';
 import { LeaseService }       from '../services/lease.service';
-import { MenuService } from '../services/menu.service';
+import { MenuService }        from '../services/menu.service';
 import { ParkingService }     from '../services/parking.service';
 
 

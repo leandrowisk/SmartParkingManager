@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location }          from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/user.service';
-import { ParkingService}          from '../services/parking.service'
-import { MenuService } from '../services/menu.service';
+import { ActivatedRoute }    from '@angular/router';
+import { UserService }       from '../services/user.service';
+import { ParkingService}     from '../services/parking.service'
+import { MenuService }       from '../services/menu.service';
 
 @Component({
   selector: 'app-update-register',
@@ -79,16 +79,14 @@ export class UpdateRegisterPage implements OnInit {
   }
 
   imageSelected(event) {
-    // this.imageUrl = image.target.files[0].name;
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event:any) => {
         this.parkingData.apresentation_image = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
+    }
   }
-}
-
 
   goBack() {
     this.location.back();
