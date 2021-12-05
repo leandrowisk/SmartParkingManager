@@ -67,7 +67,6 @@ export class ServicesMonitoringPage implements OnInit {
     this._leaseService.getLeases().subscribe(lease=> {
         this.lease.paginator = this.paginator;
         this.lease.data = lease;
-        console.log(lease);
     });
   }
 

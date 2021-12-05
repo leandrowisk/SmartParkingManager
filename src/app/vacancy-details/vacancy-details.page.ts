@@ -60,7 +60,6 @@ export class VacancyDetailsPage implements OnInit {
     this._leasesService.getLeases().subscribe(lease => {
       this.leases.paginator = this.paginator;
       this.leases.data = lease;
-      console.log(this.leases.data);
     })
   }
 

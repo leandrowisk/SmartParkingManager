@@ -232,9 +232,8 @@ export class LeaseManagementPage implements OnInit {
 
   changeViewChart(viewType: string): void {
     let viewMode;
-    if (viewType == 'daily'){
+    if (viewType == 'daily')
       viewMode = this.dailyViewMode;
-      console.log(viewMode);}
     else
       viewMode = this.monthlyViewMode
     const dialogRef = this.dialog.open(BalanceOptionsPage, {

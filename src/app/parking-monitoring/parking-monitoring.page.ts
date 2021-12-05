@@ -74,7 +74,6 @@ export class ParkingMonitoringPage implements OnInit {
   getParkingMonitorVacancies(): void{
     this.parkingService.getParkingMonitorVacancies().subscribe(result => {
       this.parkingMonivorValues = result;
-      console.log("consulta",this.parkingMonivorValues)
       this.setPerCentValues();
     });
   }
@@ -87,14 +86,7 @@ export class ParkingMonitoringPage implements OnInit {
 
     let busyFinal = (busy / utilized) * 100;
     let disponibleFinal = (disponible / utilized)*100;
-
-    console.log("setPerCentValues",this.parkingMonivorValues)
-
     this.doughnutChartData = [[busyFinal,disponibleFinal]]
-  }
-
-  ngAfterViewInit() {
-    console.log('afterView')
   }
 
   resize() {

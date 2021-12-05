@@ -70,7 +70,6 @@ export class ChatBotPage implements OnInit {
     this.messageSend = this.message;
     this.chatService.toChat(this.message).subscribe(response =>{
       this.returnMensage = response;
-      console.log(response);
       this.messageChat(this.returnMensage);
     });
     this.message = '';
