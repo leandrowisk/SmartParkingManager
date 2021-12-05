@@ -2,6 +2,8 @@
   <h2>SmartParking Manager</h2>
 </div>
 
+<b>Link do vídeo de correções solicitadas pela banca: https://www.youtube.com/watch?v=_S5ac4hPcC0</b>
+
 ![Logo-removebg-preview](https://user-images.githubusercontent.com/48762418/142700862-d16e02b3-129c-40af-9492-3dba6e8996f8.png)
 <h2>TCC 8ºSemestre do curso de ciência da computação</h2>
 <p>SmartParkingManager é um aplicativo web desktop construido utilizando os frameworks angular e ionic no front-end.</p>
@@ -17,8 +19,9 @@
 <p>- realize a instalação do ionic framework atráves do comando: "npm install -g @ionic/cli"</p>
 <p>- realize a adição da biblioteca angular material atráves do comando: "ng add @angular/material"</p>
 <p>- realizados os passos acima com sucesso, inicie o servidor local do ionic atráves do comando "ionic serve"</p>
-<p>- para que o app funcione corretamente é necessário que esteja rodando localmente em conjunto com a API SmartParking com suas dependências devidamente instaladas. O link do projeto da API se encontra no repositório à seguir: https://github.com/tiagotorres98/SmartParkingBackEnd </p>
 <p>- caso o browser não abra automaticamente navegue até https://localhost:8100</p>
+<p>- para que o app funcione corretamente é necessário que esteja rodando localmente em conjunto com a API SmartParking com suas dependências devidamente instaladas. O link do projeto da API se encontra no repositório à seguir: https://github.com/tiagotorres98/SmartParkingBackEnd </p>
+
 
 <img src="https://user-images.githubusercontent.com/48762418/142712027-30b5d723-39e9-4a30-a69d-57f7d0681984.PNG" height="550px" width="100%">
 <img src="https://user-images.githubusercontent.com/48762418/142712034-66ead927-78cf-4ae0-86db-8f652caca71d.PNG" height="550px" width="100%">
@@ -32,5 +35,6 @@
 <img src="https://user-images.githubusercontent.com/48762418/144732111-a3f54dfd-a525-4cc6-bfb3-8c3c6d91dc23.jpeg" height="550px" width="100%">
 <img src="https://user-images.githubusercontent.com/48762418/144732190-7812f5b4-28ab-4b4c-8377-ff7bf3ea35d6.jpeg" height="550px" width="100%">
 <img src="https://user-images.githubusercontent.com/48762418/144732525-af719f08-403b-43f2-b21c-e3b5c6fcc055.jpeg" height="550px" width="100%">
+<img src="https://user-images.githubusercontent.com/48762418/144748700-b0d092a6-30e8-4556-ab15-437e99b1e77d.jpeg" height="550px" width="100%">
 <img src="https://user-images.githubusercontent.com/48762418/144732528-06368ad5-5e8d-4d49-974f-105f4c403b24.jpeg" height="550px" width="100%">
 
