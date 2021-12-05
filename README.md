@@ -17,7 +17,7 @@
 <p>- realize a instalação do ionic framework atráves do comando: "npm install -g @ionic/cli"</p>
 <p>- realize a adição da biblioteca angular material atráves do comando: "ng add @angular/material"</p>
 <p>- realizados os passos acima com sucesso, inicie o servidor local do ionic atráves do comando "ionic serve"</p>
-<p>- para que o app roda corretamente é necessário que esteja rodando localmente em conjunto com a API SmartParking com suas dependências devidamente instaladas. E o link do projeto da API se encontra no repositório à seguir :https://github.com/tiagotorres98/SmartParkingBackEnd </p>
+<p>- para que o app funcione corretamente é necessário que esteja rodando localmente em conjunto com a API SmartParking com suas dependências devidamente instaladas. O link do projeto da API se encontra no repositório à seguir: https://github.com/tiagotorres98/SmartParkingBackEnd </p>
 <p>- caso o browser não abra automaticamente navegue até https://localhost:8100</p>
 
 <img src="https://user-images.githubusercontent.com/48762418/142712027-30b5d723-39e9-4a30-a69d-57f7d0681984.PNG" height="550px" width="100%">
