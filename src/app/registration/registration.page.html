@@ -1,6 +1,6 @@
 <ion-content>
 
-  <div class="container" [class.open]="isMenuOpen">
+  <div class="container" [class.open]="isMenuOpen" [class.close]="!isMenuOpen">
     <mat-card class="info-container" [class.resize]="isMenuOpen">
       <div class="title-container">
         <mat-icon>person</mat-icon>

@@ -149,7 +149,7 @@
                 <div class="image-container">
                     <span class="remove-photo" (click)="removePhoto()" *ngIf="imageUrl">x</span>
                     <span class="none-image" *ngIf="!imageUrl">Nenhuma imagem selecionada</span>
-                    <img class="cover-photo" src="{{imageUrl}}">
+                    <img class="cover-photo" *ngIf="imageUrl" src="{{imageUrl}}">
                 </div>
             </div>
 
