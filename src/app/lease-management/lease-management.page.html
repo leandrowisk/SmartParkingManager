@@ -10,18 +10,18 @@
                <mat-icon (click)="changeViewChart('daily')">date_range</mat-icon>
             </div>
             <div class="daily-infos">
-            <!--
+            
               <mat-form-field appearance="none">
                   <input matInput [matDatepicker]="picker" [(ngModel)]="financialDaySelected" (dateChange)="showSelectDay()">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker [color]="cornflowerblue"></mat-datepicker>
               </mat-form-field>
-              <p class="total" *ngIf="hasValues; else notValues">Valor Total {{selectedDay}} {{dayOfYear}}<span class="total-value">R$ 50</span></p>
+              <p class="total" *ngIf="hasValues; else notValues">Valor Total {{selectedDay}} {{dayOfYear}}<span class="total-value">R$ {{balance5day[4]}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
             </div>
-            <canvas *ngIf="dailyLabels && !loading" baseChart [datasets]="chartDaily" [labels]="dailyLabels"
+            <canvas *ngIf="dailyLabels && !loading" baseChart [datasets]="[{ data: this.balance5day, label:  labelDaily}]" [labels]="dailyLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
               [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
@@ -60,15 +60,17 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-            -->
-              <p class="total">Valor Total Hoje: R$<span class="total-value">{{balance5day[4]}}</span></p>
-              <p class="total" *ngIf="hasValues; else notValues">Valor Total da {{selectedWeek}} de {{selectedMonth}} - {{selectedYear}}<span class="total-value">R$ 50</span></p>
+            
+              <p class="total">Valor Total Hoje: <span class="total-value"> R${{totalTodayWeek}}</span></p>
+              <p class="total" *ngIf="hasValues; else notValues">Valor Total da {{selectedWeek}} de {{selectedMonth}} - {{selectedYear}}<span class="total-value">R$ {{totalByWeek}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
             </div>
 
-            <canvas *ngIf="weekLabels && !loading" baseChart [datasets]="chartWeekly" [labels]="weekLabels"
+            <canvas *ngIf="weekLabels && !loading" baseChart [datasets]="[
+                    { data: this.balanceWeekValue, label: 'Balanço Semanal'}
+            ]" [labels]="weekLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
               [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
@@ -103,14 +105,16 @@
                 </mat-select>
               </mat-form-field>
            
-              <p class="total">Valor Total Mês Atual:<span class="total-value"> R${{balance5month[4]}}</span></p>
-              <p class="total" *ngIf="hasValues; else notValues">Valor Total {{selectedMonth}} - {{selectedYear}}<span class="total-value"> R$ 250</span></p>
+              <p class="total">Valor Total Mês Atual:<span class="total-value"> R${{currentMonth}}</span></p>
+              <p class="total">Valor Total {{selectedMonth}} - {{selectedYear}}<span class="total-value"> R${{balance5month[11]}}</span></p>
               <ng-template #notValues>
                 <p class="not-values">Não há dados à partir desta data</p>
               </ng-template>
             </div>
 
-            <canvas *ngIf="monthLabels && !loading" baseChart [datasets]="chartMontly" [labels]="monthLabels"
+            <canvas *ngIf="monthLabels && !loading" baseChart [datasets]="[
+                { data: balance5month, label: labelMonthly}
+          ]" [labels]="monthLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
               [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>

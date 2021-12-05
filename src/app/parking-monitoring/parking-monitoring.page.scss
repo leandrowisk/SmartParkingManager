@@ -11,11 +11,22 @@
     align-items: center;
     color: green;
     cursor: pointer;
+    text-align: center;
 }
 
 .open {
     margin-left: 250px !important;
     transition: margin-left 0.5s !important;
+}
+
+.closeResume {
+    width: 640px !important;
+    transition: width 0.5s !important;
+}
+
+.openResume{
+    width: 450px !important;
+    transition: width 0.5s !important;
 }
 
 .chat-button {
@@ -26,6 +37,11 @@
     position: fixed;
     right: 32px;
     bottom: 50px;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .close {
@@ -45,6 +61,14 @@
 
 .up {
     color: green;
+}
+
+.down {
+    color: red;
+}
+
+.neutral {
+    color: lightseagreen;
 }
 
 mat-card-header {
@@ -72,7 +96,8 @@ mat-card-header {
     background-color: white;
     border-radius: 20px;
     padding: 16px;
-    margin-top: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .informations {
@@ -175,4 +200,14 @@ ion-content {
 
 #container {
     padding: 25px;
+}
+
+.resumeIcon{
+    position:absolute;
+    top: -4px;
+}
+
+.list{
+    position: relative;
+    margin-top:10px;
 }

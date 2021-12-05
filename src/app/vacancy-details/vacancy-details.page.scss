@@ -101,6 +101,11 @@ ion-avatar {
     position: fixed;
     right: 32px;
     bottom: 50px;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 mat-paginator {

@@ -1,5 +1,8 @@
 <ion-app>
-  <ion-router-outlet id="main" (activate)="activated($event)"></ion-router-outlet>
-  <side-menu [initApp]="init" (menuState)="resize($event)"></side-menu>
-  <!-- <app-login (initing)="iniciar($event)" *ngIf="!init"></app-login> -->
+  <ion-router-outlet id="main"></ion-router-outlet>
+  <side-menu [initApp]="init"
+             (logged)="isUserLogged($event)"
+             *ngIf="init"></side-menu>
+  <login *ngIf="!init" 
+         (refresh)="loginRefresh($event)"></login>
 </ion-app>

@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChatService } from '../services/chat.service';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-chat-bot',
@@ -21,14 +22,23 @@ export class ChatBotPage implements OnInit {
   public chatMessage: boolean = false;
   public loading: boolean = false;
   public returnMensage: String = ""
+  public isMenuOpen: boolean = false;
   constructor(
               private changeDetector: ChangeDetectorRef,
               private location: Location,
-              private chatService: ChatService
+              private chatService: ChatService,
+              private menuService: MenuService
               ) { }
 
   ngOnInit() {
     this.refreshChat();
+    this.resize();
+  }
+
+  resize() {
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   ngAfterViewInit() {

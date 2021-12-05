@@ -19,14 +19,14 @@ export class ParkingService {
       private _requests: RequestService
     ) { }
 
-    getRatingsMonitor(): Observable<any[]> {
-      this.path = this._requests.api() + '/getParkingMonitorFeedback';
+  getParkingMonitorResume(): Observable<any> {
+      this.path = this._requests.api() + '/getParkingMonitorResume';
       return this.httpClient.get<any[]>(this.path);
   }
     
   getParkingMonitorVacancies(): Observable<any> {
     this.path = this._requests.api() + '/getParkingVacancies';
-    return this.httpClient.get<any[]>(this.path);
+    return this.httpClient.get<any>(this.path);
 }
 
   getVacanciesStatus(): Observable<any> {

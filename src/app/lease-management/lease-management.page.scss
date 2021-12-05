@@ -36,8 +36,8 @@ td {
     display: flex;
     flex-direction: column;
     background-color: snow;
-    width: 80vw;
-    margin-top: 50px;
+    width: 70vw;
+    margin: 50px 0;
     margin-left: auto;
     margin-right: auto;
     padding: 16px;
@@ -296,6 +296,11 @@ opacity: 0.5;
     position: fixed;
     right: 32px;
     bottom: 50px;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .mat-option .mat-option-text{

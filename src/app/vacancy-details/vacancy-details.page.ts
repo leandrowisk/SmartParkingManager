@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute }     from '@angular/router';
 import { Lease }              from '../interfaces/Lease';
 import { LeaseService }       from '../services/lease.service';
+import { MenuService } from '../services/menu.service';
 import { ParkingService }     from '../services/parking.service';
 
 
@@ -35,7 +36,8 @@ export class VacancyDetailsPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private _leasesService: LeaseService,
-              private parkingService: ParkingService) { }
+              private parkingService: ParkingService,
+              private menuService: MenuService) { }
 
   ngOnInit() {
     this.route.queryParams
@@ -49,17 +51,9 @@ export class VacancyDetailsPage implements OnInit {
   }
 
   resize() {
-    if (this.menuHistory != this.isMenuOpen) {
-      if (this.route.snapshot.paramMap.get('isMenuOpen')) {
-        this.isMenuOpen = true;
-        this.menuHistory = true;
-      }
-      else {
-        this.isMenuOpen = false;
-        this.menuHistory = false;
-      }
-        
-    }
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   getLeases() {

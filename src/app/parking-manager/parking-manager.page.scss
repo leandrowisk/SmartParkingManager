@@ -25,6 +25,8 @@ mat-label {
     position: fixed;
     right: 32px;
     bottom: 50px;
+    width:60px;
+    height:60px;
 }
 
 .input-container {
@@ -233,7 +235,7 @@ ion-content {
 }
 
 .open {
-    margin-left: 350px !important;
+    margin-left: 300px !important;
     transition: margin-left 0.5s !important;
 }
 

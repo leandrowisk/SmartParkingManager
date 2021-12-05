@@ -3,6 +3,7 @@ import { MenuController }           from '@ionic/angular';
 import { CurrencyMaskConfig }       from 'ngx-currency/src/currency-mask.config';
 import {ParkingService}             from '../services/parking.service'
 import { ActivatedRoute, Router }                                 from '@angular/router';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-parking-manager',
@@ -29,12 +30,13 @@ export class ParkingManagerPage implements OnInit {
   public serviceQtdDay=0;
   public serviceValue=0;
   public openingHour = {"open": "00:00:00", "close": "00:00:00", "day_week_init": "Segunda-feira", "day_week_end": "Domingo"};
-  constructor(private route: ActivatedRoute, private parkingService: ParkingService,public router: Router) { }
+  constructor(private menuService: MenuService,private route: ActivatedRoute, private parkingService: ParkingService,public router: Router) { }
   
   ngOnInit() {
     this.initializeArrays();
     this.getParkingServices();
     this.getOpeningHours();
+    this.resize()
   }
 
 
@@ -63,7 +65,9 @@ export class ParkingManagerPage implements OnInit {
   }
 
   resize() {
-    this.route.snapshot.paramMap.get('menuState')
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
   
 

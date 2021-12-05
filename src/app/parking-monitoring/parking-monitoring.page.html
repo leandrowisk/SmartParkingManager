@@ -1,8 +1,58 @@
 <ion-content>
 
-  <div id="container" [className]="isMenuOpen? 'open': 'close'">
+  <div id="container" [class.close]="!isMenuOpen" [class.open]="isMenuOpen">
     <div class="hello-message">
       <h2>Olá Parking Solutions</h2>
+    </div>
+
+    <div class="spaces-container">
+      <div class="reserve-vacancy" routerLink="/register-user" *ngIf="activeReservarVaga">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Reservar Vaga</span>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v1 == 0" class="parking-space">
+        <div>
+          <h2>Vaga SP01</h2>
+          <h2>Livre</h2>
+        </div>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v1 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV1)">
+        <div>
+          <h2>Vaga SP01</h2>
+          <h2>Ocupada</h2>
+        </div>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v2 == 0" class="parking-space">
+        <div>
+          <h2>Vaga SP02</h2>
+          <h2>Livre</h2>
+        </div>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v2 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV2)">
+        <div>
+          <h2>Vaga SP02</h2>
+          <h2>Ocupada</h2>
+        </div>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v3 == 0" class="parking-space">
+        <div>
+          <h2>Vaga SP03</h2>
+          <h2>Livre</h2>
+        </div>
+      </div>
+
+      <div *ngIf="vacanciesStatus.v3 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV3)">
+        <div>
+          <h2>Vaga SP03</h2>
+          <h2>Ocupada</h2>
+        </div>
+      </div>
+
     </div>
     <div class="charts-container">
       <div class="vacancy-details">
@@ -34,106 +84,34 @@
         </mat-card>
       </div>
 
-      <div class="users-avaliations">
+      <div>
         <mat-card>
-          <mat-card-header>
-            <mat-card-title>Avaliações dos usuários</mat-card-title>
+          <mat-card-header style="margin-bottom: 10px;">
+            <mat-card-title>Resumo - Dados das locações</mat-card-title>
           </mat-card-header>
 
-          <mat-card-content class="user-avaliation-charts" [class.resize-avaliation]="isMenuOpen">
-            <div class="very-satisfied">
-              <h2>Ótimo</h2>
-              <circle-progress [percent]="ratingPerCent.very_satisfied" [radius]="60" [showUnits]="true" [showSubtitle]="false"
-                [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#008000'"
-                [animation]="true" [animationDuration]="300">
-              </circle-progress>
+          <mat-card-content [class.closeResume]="!isMenuOpen" [class.openResume]="isMenuOpen" style="top: -14px;">
+            <div class="list">
+              <span>Quantidade de vagas locadas hoje: {{establishmentData.qtdRent}}</span>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.qtdRent - this.establishmentData.yesterdayQtdRent}} a mais que ontem." class="up resumeIcon"  *ngIf="this.establishmentData.qtdRent > this.establishmentData.yesterdayQtdRent">arrow_upward</mat-icon>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayQtdRent - this.establishmentData.qtdRent}} a menos que ontem." class="down resumeIcon" *ngIf="this.establishmentData.qtdRent < this.establishmentData.yesterdayQtdRent">arrow_downward</mat-icon>
+              <mat-icon title="Atualmente, temos a mesma quantidade de vagas locadas de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.qtdRent == this.establishmentData.yesterdayQtdRent">remove</mat-icon>
             </div>
-
-            <div class="satisfied">
-              <h2>Bom</h2>
-              <circle-progress [percent]="ratingPerCent.satisfied" [radius]="60" [showUnits]="true" [showSubtitle]="false"
-                [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#0000FF'"
-                [animation]="true" [animationDuration]="300">
-              </circle-progress>
+            <div class="list">
+              <span>Quantidade de serviços contradados hoje: {{establishmentData.qtdServices}}</span>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.qtdServices - this.establishmentData.yesterdayQtdServices}} a mais que ontem." class="up resumeIcon" *ngIf="this.establishmentData.qtdServices > this.establishmentData.yesterdayQtdServices">arrow_upward</mat-icon>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayQtdServices - this.establishmentData.qtdServices}} a menos que ontem." class="down resumeIcon" *ngIf="this.establishmentData.qtdServices < this.establishmentData.yesterdayQtdServices">arrow_downward</mat-icon>
+              <mat-icon title="Atualmente, temos a mesma quantidade de serviços realizados de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.qtdServices == this.establishmentData.yesterdayQtdServices">remove</mat-icon>
             </div>
-
-            <div class="good">
-              <h2>Mediano</h2>
-              <circle-progress [percent]="ratingPerCent.medium" [radius]="60" [showUnits]="true" [showSubtitle]="false"
-                [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#000000'"
-                [animation]="true" [animationDuration]="300">
-              </circle-progress>
+            <div class="list">
+              <span>Tempo médio utilizado nas vagas hoje: {{establishmentData.avgTime}}</span>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a mais que ontem" class="up resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'false'">arrow_upward</mat-icon>
+              <mat-icon title="Atualmente, temos {{this.establishmentData.yesterdayAvgTimeDiference}} horas a menos que ontem"class="down resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'true'">arrow_downward</mat-icon>
+              <mat-icon title="Atualmente, temos o mesmo tempo médio de ontem." class="neutral resumeIcon" *ngIf="this.establishmentData.yesterdayAvgTimeBigger == 'same'">remove</mat-icon>
             </div>
-
-            <div class="bad">
-              <h2>Ruim</h2>
-              <circle-progress [percent]="ratingPerCent.bad" [radius]="60" [showUnits]="true" [showSubtitle]="false"
-                [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#A52A2A'"
-                [animation]="true" [animationDuration]="300">
-              </circle-progress>
-            </div>
-
-            <div class="terrible">
-              <h2>Pessimo</h2>
-              <circle-progress [percent]="ratingPerCent.very_bad" [radius]="60" [showUnits]="true" [showSubtitle]="false"
-                [unitsFontSize]="18" [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'#FF0000'"
-                [animation]="true" [animationDuration]="300">
-              </circle-progress>
-            </div>
-
           </mat-card-content>
         </mat-card>
       </div>
-    </div>
-    <div class="spaces-container">
-
-      <div class="reserve-vacancy" routerLink="/register-user">
-        <mat-icon>add_circle_outline</mat-icon>
-        <span>Reservar Vaga</span>
-      </div>
-
-      <div *ngIf="vacanciesStatus.v1 == 0" class="parking-space">
-        <h2>Livre</h2>
-      <div class="vacancy-container">
-        <span class="vacancy-number">Vaga nº1</span>
-      <div class="parking-space" (click)="details()">
-        <h2>Ocupada</h2>
-      </div>
-      </div>
-
-      <div *ngIf="vacanciesStatus.v1 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV1)">
-      <div class="vacancy-container">
-        <span class="vacancy-number">Vaga nº2</span>
-      <div class="parking-space">
-        <h2>Ocupada</h2>
-      </div>
-    </div>
-
-      <div *ngIf="vacanciesStatus.v2 == 0" class="parking-space">
-      
-    <div class="vacancy-container">
-      <span class="vacancy-number">Vaga nº3</span>
-      <div class="parking-space disponible">
-        <h2>Livre</h2>
-      </div>
-    </div>
-
-      <div *ngIf="vacanciesStatus.v2 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV2)">
-        <h2>Ocupada</h2>
-      </div>
-
-      <div *ngIf="vacanciesStatus.v3 == 0" class="parking-space">
-    <div class="vacancy-container">
-      <span class="vacancy-number">Vaga nº3</span>
-      <div class="parking-space disponible">
-        <h2>Livre</h2>
-      </div>
-
-      <div *ngIf="vacanciesStatus.v3 == 1" class="parking-space disponible" (click)="details(vacanciesStatus.detailV3)">
-        <h2>Ocupada</h2>
-      </div>
-
-    </div>
     </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="chat-button" routerLink="/chat-bot">
       <mat-icon>chat</mat-icon>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router }            from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,23 @@ export class LoginPage implements OnInit {
   public hide: boolean = true;
   @Output() initing: EventEmitter<any> = new EventEmitter();
  
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private loginService: LoginService) { }
 
   ngOnInit() {
+    this.refresh();
   }
 
   public login() {
-    console.log('login') 
-    this.initing.emit('olá')   
+    this.loginService.login();
   }
 
-  register() {
+  public register() {
     this.router.navigate(['/register']);
+  }
+
+  public refresh() {
+    this.loginService.pageRefresh();
   }
 
 }

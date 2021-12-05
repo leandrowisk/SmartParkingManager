@@ -9,6 +9,7 @@ import { ServicesService }    from '../services/services.service';
 import { Lease }                        from '../interfaces/Lease';
 import { LeaseService } from '../services/lease.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-services-monitoring',
@@ -34,7 +35,8 @@ export class ServicesMonitoringPage implements OnInit {
   constructor(private menu: MenuController,
               private _services: ServicesService,
               private _leaseService: LeaseService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private menuService: MenuService) { }
 
   ngOnInit() {
     this.resize();
@@ -46,19 +48,10 @@ export class ServicesMonitoringPage implements OnInit {
   }
 
   resize() {
-    this.route.snapshot.paramMap.get('menuState');
-    // if (this.menuHistory != this.isMenuOpen) {
-    //   if (this.route.snapshot.paramMap.get('menuState')) {
-    //     this.isMenuOpen = true;
-    //     this.menuHistory = true;
-    //   }
-    //   else  {
-    //     this.isMenuOpen = false;
-    //     this.menuHistory = false;
-    //   }
-    // }
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
-
   
   getServices() {
     this._services.getServices().subscribe(service=> {

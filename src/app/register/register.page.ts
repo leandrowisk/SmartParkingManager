@@ -5,6 +5,8 @@ import { FormBuilder, FormControl,
          FormGroup, Validators }    from '@angular/forms';
 import { Parking }                  from '../interfaces/Parking';
 import { CurrencyMaskConfig }       from 'ngx-currency/src/currency-mask.config';
+import { LoginService } from '../services/login.service';
+import { MenuService } from '../services/menu.service';
 
 
 @Component({
@@ -30,12 +32,15 @@ export class RegisterPage implements OnInit {
   constructor(private location: Location,
               private _formBuilder: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private loginService: LoginService,
+              private menuService: MenuService) { }
 
   ngOnInit() {
     // this.initializeForm();
     this.initializeArrays();
     this.resize();
+    this.pageRefresh();
   }
 
   imageSelected(event) {
@@ -93,14 +98,17 @@ export class RegisterPage implements OnInit {
   // }
 
   registerUser() {
-    this.router.navigate(['/app', {init: true}])
+    this.loginService.registerUser();
   }
-  
+
+  pageRefresh() {
+    this.loginService.pageRefresh();
+  }
+
   resize() {
-    if (this.route.snapshot.paramMap.get('menuState'))
-      this.isMenuOpen = true;
-    else 
-      this.isMenuOpen = false;
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   goBack() {

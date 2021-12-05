@@ -27,6 +27,7 @@
     color: cornflowerblue;
     margin-left: 40px;
     display: flex;
+    cursor: pointer;
 }
 
 .mat-header-cell {
@@ -127,7 +128,7 @@ ion-content {
 }
 
 .close {
-    margin-left: 64px;
+    margin-left: 150px;
     transition: margin-left 0.5s;
 }
 
@@ -139,6 +140,10 @@ ion-content {
     position: fixed;
     right: 32px;
     bottom: 50px;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-
 

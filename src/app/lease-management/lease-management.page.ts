@@ -10,7 +10,7 @@ import { MatCheckbox }                  from '@angular/material/checkbox';
 import { ActivatedRoute }               from '@angular/router';
 import { FormControl }                  from '@angular/forms';
 import { users }                        from '../mocks/users-mock';
-import {Observable, of }                from 'rxjs';
+import { Observable, of }                from 'rxjs';
 import { UserService }                  from '../services/user.service';
 import { User }                         from '../interfaces/User';
 import { LeaseService }                 from '../services/lease.service';
@@ -20,6 +20,7 @@ import { MatPaginator }                 from '@angular/material/paginator';
 import { MatSelect, MatSelectChange }   from '@angular/material/select';
 import { MatDialog, MatDialogConfig }   from '@angular/material/dialog';
 import { BalanceOptionsPage }           from '../balance-options/balance-options.page';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-lease-management',
@@ -67,26 +68,27 @@ export class LeaseManagementPage implements OnInit {
   public dailyLabelDescription: string = '';
   public monthlyLabelDescription: string = '';
   public loading: boolean = false;
+  public balance5day = [0,0,0,0,0];
+  public balance5month = [0,0,0,0,0];
+  public balanceWeekValue = [0,0,0,0,0,0,0];
+  public currentMonth = 0;
   public lease: MatTableDataSource<Lease> = new MatTableDataSource();
+  public labeldaily: String = 'Balanço dos ' + String(this.dailyViewMode + 1) + ' dias anteriores';
+  public labelMonthly: String = 'Balanço dos ' + String(this.monthlyViewMode) + ' meses anteriores';
+  public totalByWeek = 0;
+  public totalTodayWeek = 0;
   @ViewChild(MatPaginator,  { static: true }) paginator: MatPaginator;
-<<<<<<< Updated upstream
-  public balance5day = [0, 0, 0, 0, 0];
-  public balance5month = [0, 0, 0, 0, 0];
-
-
-=======
   @ViewChild('select') select: MatSelect;
->>>>>>> Stashed changes
 
   constructor(private route: ActivatedRoute,
               private _leaseService: LeaseService,
               private changes: ChangeDetectorRef,
               public dialog: MatDialog,
-              private changeDetector: ChangeDetectorRef) { }
+              private changeDetector: ChangeDetectorRef,
+              private menuService : MenuService) { }
 
   ngOnInit() {
     this.initializeArrays();
-    this.balanceFiveDays();
     this.balanceFiveMonths()
     this.setToday();
     this.formatDate();
@@ -98,12 +100,16 @@ export class LeaseManagementPage implements OnInit {
     this.setDaysOfWeeks();
     this.showSelectDay();
     this.changeDetector.detectChanges();
+    this.balanceWeek();
+    this.resize();
   }
 
   previusYear() {
     if(this.selectedYear > this.registerYear)
       this.selectedYear -= 1;
     this.formatDate();
+    this.balanceFiveMonths();
+    this.balanceWeek();
     }
 
   showSelectDay() {
@@ -149,6 +155,8 @@ export class LeaseManagementPage implements OnInit {
   nextYear() {
     this.selectedYear += 1;
     this.formatDate();
+    this.balanceFiveMonths();
+    this.balanceWeek();
   }
 
   previusMonth() {
@@ -161,6 +169,7 @@ export class LeaseManagementPage implements OnInit {
     this.setDaysOfWeeks();
     this.getNumberWeeksOfMonth();
     this.formatDate();
+    this.balanceWeek();
   }
 
   nextMonth() {
@@ -174,6 +183,7 @@ export class LeaseManagementPage implements OnInit {
     this.setDaysOfWeeks();
     this.getNumberWeeksOfMonth();
     this.formatDate();
+    this.balanceWeek();
   }
 
   scroll() {
@@ -186,13 +196,6 @@ export class LeaseManagementPage implements OnInit {
   initializeArrays() {
     let today: number = new Date().getDay();
     let month: number = new Date().getMonth();
-<<<<<<< Updated upstream
-    this.months = ['Janeiro', 'Fevereiro', 'Março', 
-    'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto' ,'Setembro','Outubro', 'Novembro', 'Dezembro'];
-    this.weekDays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-    this.selectedDay = this.weekDays[today];
-    this.selectedMonth = this.months[month];
-=======
     this.selectedYear = new Date().getFullYear();
     this.semanalMonth = new Date().getMonth();
     this.financialDaySelected.toISOString();
@@ -204,16 +207,14 @@ export class LeaseManagementPage implements OnInit {
   }
 
   getDailyValues() {
-    if(this.financialDaySelected > this.today || this.financialDaySelected < this.registerDate)
+    if(this.financialDaySelected > this.today || this.financialDaySelected < this.registerDate){
       this.hasValues = false;
+      this.balance5day = [0,0,0,0,0]}
     else {
-      this.chartDaily['data'] = [];
-      // this._financialService.getDailyValues().subscribe(values => {
-              //  this.loading = true;
-            // this.chartDaily['data'].push(values)
-      // });
+      this.balanceFiveDays();
       this.loading = false;
       this.hasValues = true;
+      
     }
   }
 
@@ -232,9 +233,8 @@ export class LeaseManagementPage implements OnInit {
     if (dateToSend > this.today || dateToSend < this.registerDate)
       this.hasValues = false;
     else {
-      console.log(this.weekToSend)
       // this.weekToSend => Data para fazer o get
-      this.chartWeekly['data'] = [];
+      //this.chartWeekly['data'] = [];
       // this._financialService.getDailyValues().subscribe(values => {
               //  this.loading = true;
             // this.chartWeekly['data'].push(values)
@@ -256,7 +256,7 @@ export class LeaseManagementPage implements OnInit {
     if(month > this.today || month < this.registerDate)
       this.hasValues = false;
     else {
-        this.chartMontly['data'] = [];
+        //this.chartMontly['data'] = [];
         // this._financialService.getDailyValues().subscribe(values => {
               //  this.loading = true;
             // this.chartMontly['data'].push(values)
@@ -270,8 +270,9 @@ export class LeaseManagementPage implements OnInit {
 
   changeViewChart(viewType: string): void {
     let viewMode;
-    if (viewType == 'daily')
+    if (viewType == 'daily'){
       viewMode = this.dailyViewMode;
+      console.log(viewMode);}
     else
       viewMode = this.monthlyViewMode
     const dialogRef = this.dialog.open(BalanceOptionsPage, {
@@ -280,7 +281,6 @@ export class LeaseManagementPage implements OnInit {
               viewMode: viewMode},
     });
     dialogRef.afterClosed().subscribe(viewType => {
-      console.log('result', viewType)
       if (viewType.data == 'daily') {
         this.getDailyValues()
       }
@@ -314,6 +314,7 @@ export class LeaseManagementPage implements OnInit {
     this.getWeekValues();
     this.setWeekLabelChart();
     this.getWeekBalance(); 
+    this.balanceWeek();
   }
 
   getWeekBalance() {
@@ -368,7 +369,6 @@ export class LeaseManagementPage implements OnInit {
         break;
     }
     this.getNumberWeeksOfMonth();
->>>>>>> Stashed changes
   }
 
   itemClicked(index: number) {
@@ -381,28 +381,55 @@ export class LeaseManagementPage implements OnInit {
   }
 
   balanceFiveDays() {
-    this._leaseService.balanceFiveDays().subscribe(lease=> {
-      this.balance5day[4] = lease.today;
-      this.balance5day[3] = lease.last1day;
-      this.balance5day[2] = lease.last2day;
-      this.balance5day[1] = lease.last3day;
-      this.balance5day[0] = lease.last4day;
+    this._leaseService.balanceFiveDays(this.financialDaySelected.toISOString()).subscribe(lease=> {
+      this.balance5day=[];
+      this.balance5day.push(lease.last4day);
+      this.balance5day.push(lease.last3day);
+      this.balance5day.push(lease.last2day);
+      this.balance5day.push(lease.last1day);
+      this.balance5day.push(lease.today);
     });
   }
 
+  balanceWeek() {
+    this._leaseService.balanceWeek(this.selectedMonth,this.selectedYear,this.selectedWeek).subscribe(lease=> {
+      this.balanceWeekValue=[];
+      this.balanceWeekValue.push(lease.day1);
+      this.balanceWeekValue.push(lease.day2);
+      this.balanceWeekValue.push(lease.day3);
+      this.balanceWeekValue.push(lease.day4);
+      this.balanceWeekValue.push(lease.day5);
+      this.balanceWeekValue.push(lease.day6);
+      this.balanceWeekValue.push(lease.day7);
+
+      this.totalByWeek = lease.total;
+      this.totalTodayWeek = lease.today;
+    });
+  }
 
   balanceFiveMonths() {
-    this._leaseService.balanceFiveMonths().subscribe(lease=> {
-      this.balance5month[4] = lease.now;
-      this.balance5month[3] = lease.last1month;
-      this.balance5month[2] = lease.last2month;
-      this.balance5month[1] = lease.last3month;
-      this.balance5month[0] = lease.last4month;
+    this._leaseService.balanceFiveMonths(this.selectedMonth,this.selectedYear).subscribe(lease=> {
+      this.balance5month = [];
+      this.balance5month.push(lease.last11month);
+      this.balance5month.push(lease.last10month);
+      this.balance5month.push(lease.last9month);
+      this.balance5month.push(lease.last8month);
+      this.balance5month.push(lease.last7month);
+      this.balance5month.push(lease.last6month);
+      this.balance5month.push(lease.last5month);
+      this.balance5month.push(lease.last4month);
+      this.balance5month.push(lease.last3month);
+      this.balance5month.push(lease.last2month);
+      this.balance5month.push(lease.last1month);
+      this.balance5month.push(lease.now);
+      this.currentMonth = lease.currentMonth;
     });
   }
 
   resize() {
-    this.route.snapshot.paramMap.get('menuState');
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   getDailyViewMode() {
@@ -413,27 +440,21 @@ export class LeaseManagementPage implements OnInit {
     // obter o modo de visualização do gráfico mensal e jogar na variavel monthlyViewMode
   }
 
-
+/*
   chartDaily: ChartDataSets[] = [
-<<<<<<< Updated upstream
-    { data: this.balance5day, label: 'Balanço ultimos 5 dias' }
+    { data: balance5day, label: 'Balanço dos ' + String(this.dailyViewMode + 1) + ' dias anteriores'}
   ];
-
-  chartMontly: ChartDataSets[] = [
-    { data: this.balance5month, label: 'Balanço ultimos 5 meses' }
-=======
-    { data: [85, 72, 78, 75, 77, 75, 100], label: 'Balanço dos ' + String(this.dailyViewMode + 1) + ' dias anteriores'}
-  ];
-
+*/
+/*
   chartWeekly: ChartDataSets[] = [
     { data: [85, 72, 78, 75, 77, 75, 100], label: 'Balanço Semanal'}
   ];
-
+*/
+/*
   chartMontly: ChartDataSets[] = [
     { data: [85, 72, 78, 75, 77, 75, 45,45,86,10,74,12], label: 'Balanço dos ' + String(this.monthlyViewMode) + ' meses anteriores'}
->>>>>>> Stashed changes
   ]
-
+*/
   setToday() {
     let day = new Date().getMonth();
     switch(day) {
@@ -488,33 +509,6 @@ export class LeaseManagementPage implements OnInit {
       this.monthLabels = this.months.slice((selectedMonth - this.monthlyViewMode), selectedMonth);
   }
 
-<<<<<<< Updated upstream
-  setDaysLabelsChart(weekDays) {
-    let daySelected = weekDays.indexOf(this.selectedDay);
-    let aux = [];
-    let count = 0;
-    let diference: number = daySelected - 5;
-    if(daySelected < 5) {
-      for(let index = daySelected; index >= 0; index --) {
-        aux.push(weekDays[index]);
-      }
-      diference = 5 - aux.length;
-      while(count < diference) {
-        aux.push(weekDays[6 - count])
-        count ++;
-      }
-      this.weekLabels = aux.reverse();
-      this.weekLabels[4] = 'hoje';
-    }
-    else {
-      diference = (daySelected - 5) + 1
-      for (let index = diference; index < daySelected; index++) {
-        aux.push(weekDays[index])
-      }
-      this.weekLabels = aux;
-      this.weekLabels[4] = 'Hoje';
-    }
-=======
   setDaysLabelsChart() {
     let today = new Date().toString();
     let daySelected = this.weekDays.indexOf(this.selectedDay);
@@ -547,6 +541,7 @@ export class LeaseManagementPage implements OnInit {
 
   monthSelectedChange() {
     this.setMonthLabelsChart();
+    this.balanceFiveMonths();
   }
 
   setWeekLabelChart() {
@@ -562,7 +557,6 @@ export class LeaseManagementPage implements OnInit {
     }
     this.weekLabels = daysOfWeek.reverse();
   }
->>>>>>> Stashed changes
   }
 
   lineChartOptions = {
@@ -581,4 +575,6 @@ export class LeaseManagementPage implements OnInit {
   lineChartType = 'line';
   
   displayedColumns: string[] = ['usuario', 'data',  'placa', 'periodo', 'valor'];
+
+
 }

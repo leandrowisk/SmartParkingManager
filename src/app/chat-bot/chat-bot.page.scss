@@ -10,10 +10,20 @@
     bottom: 50px;
 }
 
-.close {
+.close-button {
     cursor: pointer;
     font-size: 32px;
     margin-left: auto;
+}
+
+.open {
+    margin-left: 400px !important;
+    transition: margin-left 0.5s !important;
+}
+
+.close {
+    margin-left: 150px;
+    transition: margin-left 0.5s;
 }
 
 ion-spinner {

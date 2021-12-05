@@ -2,6 +2,7 @@ import { Component, ElementRef, Injectable, OnInit, ViewChild }                 
 import { ActivatedRoute, Router }                                 from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet }             from 'ng2-charts';
+import { MenuService } from '../services/menu.service';
 import { ParkingService }    from '../services/Parking.service';
 
 @Component({
@@ -14,9 +15,13 @@ export class ParkingMonitoringPage implements OnInit {
 
   doughnutChartData: MultiDataSet = [[0,0]];
 
-  public parkingMonivorValues;
+  public parkingMonivorValues = {
+    "busy_vacancies": 0,
+    "disponible_vacancies": 0,
+    "vacancy_utilized": 0
+  };
 
-  public ratingValues;
+  public establishmentData: any = {"qtdRent": 0, "qtdServices": 0, "avgTime": "0:00:00", "yesterdayQtdRent": 0, "yesterdayQtdServices": 0, "yesterdayAvgTimeBigger": "false"};
 
   public vacanciesStatus = {
     "v1":0,
@@ -38,27 +43,24 @@ export class ParkingMonitoringPage implements OnInit {
   public date: Date = new Date();
   public isMenuOpen: any = false;
   public menuHistory: boolean = false;
+
+  public activeReservarVaga = false;
   @ViewChild('container') container: ElementRef;
   constructor(public router: Router,
               private parkingService: ParkingService,
-              public route: ActivatedRoute) { }
+              public route: ActivatedRoute,
+              public menuService:MenuService) { }
 
   ngOnInit() {
-    this.parkingMonivorValues  = {
-      "busy_vacancies": 0,
-      "disponible_vacancies": 0,
-      "vacancy_utilized": 0
-    };
     this.resize();
-    this.getRatingsMonitor();
-    this.getParkingMonitorFeedback();
+    this.getParkingMonitorVacancies();
+    this.getParkingMonitorResume ();
     this.getVacanciesStatus();
   }
 
-  getParkingMonitorFeedback(){
-      this.parkingService.getRatingsMonitor().subscribe(results => {
-        this.ratingValues = results;
-        this.setRatingPerCentValues();
+  getParkingMonitorResume(){
+      this.parkingService.getParkingMonitorResume().subscribe(results => {
+        this.establishmentData = results;
       });
   }
   
@@ -68,20 +70,14 @@ export class ParkingMonitoringPage implements OnInit {
     });
 }
 
-  getRatingsMonitor(): void{
+  getParkingMonitorVacancies(): void{
     this.parkingService.getParkingMonitorVacancies().subscribe(result => {
       this.parkingMonivorValues = result;
-      this.setPerCentValues()
+      console.log("consulta",this.parkingMonivorValues)
+      this.setPerCentValues();
     });
   }
 
-  setRatingPerCentValues(){
-    this.ratingPerCent.bad = (this.ratingValues.bad / this.ratingValues.total ) * 100;
-    this.ratingPerCent.very_bad = (this.ratingValues.very_bad / this.ratingValues.total ) * 100;
-    this.ratingPerCent.medium = (this.ratingValues.medium / this.ratingValues.total ) * 100;
-    this.ratingPerCent.satisfied = (this.ratingValues.satisfied / this.ratingValues.total ) * 100;
-    this.ratingPerCent.very_satisfied = (this.ratingValues.very_satisfied / this.ratingValues.total ) * 100;
-  }
 
   setPerCentValues(){
     let disponible = this.parkingMonivorValues.disponible_vacancies;
@@ -91,6 +87,8 @@ export class ParkingMonitoringPage implements OnInit {
     let busyFinal = (busy / utilized) * 100;
     let disponibleFinal = (disponible / utilized)*100;
 
+    console.log("setPerCentValues",this.parkingMonivorValues)
+
     this.doughnutChartData = [[busyFinal,disponibleFinal]]
   }
 
@@ -98,8 +96,10 @@ export class ParkingMonitoringPage implements OnInit {
     console.log('afterView')
   }
 
-  public resize() {
-    this.isMenuOpen = this.route.snapshot.paramMap.get('menuState');
+  resize() {
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   details(id) {

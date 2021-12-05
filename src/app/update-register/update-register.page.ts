@@ -3,6 +3,7 @@ import { Location }          from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { ParkingService}          from '../services/parking.service'
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-update-register',
@@ -42,7 +43,8 @@ export class UpdateRegisterPage implements OnInit {
   constructor(private location: Location,
               private userService: UserService,
               private parkingService : ParkingService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private menuService: MenuService) { }
 
   ngOnInit() {
     this.resize();
@@ -71,17 +73,9 @@ export class UpdateRegisterPage implements OnInit {
   }
 
   resize() {
-    if (this.menuHistory != this.isMenuOpen) {
-      if (this.route.snapshot.paramMap.get('isMenuOpen')) {
-        this.isMenuOpen = true;
-        this.menuHistory = true;
-      }
-      else {
-        this.isMenuOpen = false;
-        this.menuHistory = false;
-      }
-        
-    }
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   imageSelected(event) {

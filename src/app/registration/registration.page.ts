@@ -1,5 +1,6 @@
 import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuService } from '../services/menu.service';
 import { ParkingService}          from '../services/parking.service'
 
 @Component({
@@ -12,7 +13,8 @@ export class RegistrationPage implements OnInit {
   public menuHistory: boolean = false;
   constructor(private route: ActivatedRoute,
               private parkingService : ParkingService,
-              private router: Router) { }
+              private router: Router,
+              private menuService: MenuService) { }
 
   public parkingData = {
         "fantasy_name": "",
@@ -40,7 +42,9 @@ export class RegistrationPage implements OnInit {
   }
   
   resize() {
-    this.route.snapshot.paramMap.get('menuState');
+    this.menuService.isMenuOpen.subscribe(isOpen => {
+        this.isMenuOpen = isOpen;
+      })   
   }
 
   updateRegister() {
