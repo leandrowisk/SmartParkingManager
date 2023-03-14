@@ -2,8 +2,6 @@
   <h2>SmartParking Manager</h2>
 </div>
 
-<b>Link do vídeo de correções solicitadas pela banca: https://www.youtube.com/watch?v=_S5ac4hPcC0</b>
-
 ![Logo-removebg-preview](https://user-images.githubusercontent.com/48762418/142700862-d16e02b3-129c-40af-9492-3dba6e8996f8.png)
 <h2>TCC 8ºSemestre do curso de ciência da computação</h2>
 <p>SmartParkingManager é um aplicativo web desktop construido utilizando os frameworks angular e ionic no front-end.</p>
